@@ -85,3 +85,4 @@
   .catalog-shell .product-info h3{font-size:12px}
   .catalog-shell .product-price{font-size:15px}
 }
+.shop-chat-msg{margin:0 0 8px;white-space:pre-wrap;overflow-wrap:anywhere}.shop-chat-msg.from-you{color:#391b66}.shop-chat-form{display:flex;gap:7px;margin:-6px 0 14px}.shop-chat-form input{flex:1;min-width:0;padding:9px 12px;border:1px solid #d7c7e6;border-radius:8px;font:inherit;font-size:14px}.shop-chat-form button{padding:9px 14px;border:1px solid #d7c7e6;border-radius:8px;color:#fff;background:#391b66;font-weight:700;cursor:pointer}.shop-chat-form button:disabled,.shop-chat-form input:disabled{opacity:.6}
