@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner() { return request.auth != null && request.auth.uid == "REPLACE_WITH_OWNER_FIREBASE_UID"; }
+    match /products/{productId} {
+      allow read: if isOwner() || resource.data.status == 'ready';
+      allow create, update: if isOwner() && request.resource.data.id == productId
+        && request.resource.data.title is string && request.resource.data.title.size() > 1
+        && request.resource.data.price is number && request.resource.data.price >= 0
+        && request.resource.data.stock is int && request.resource.data.stock >= 0
+        && request.resource.data.status in ['ready','draft']
+        && request.resource.data.store in ['author-bookstore','preloved-books','thrift-store','affiliate-marketing','lala-merchants','global-shop'];
+      allow delete: if isOwner();
+      match /reviews/{reviewerId} {
+        function publicProduct(){
+          return get(/databases/$(database)/documents/products/$(productId)).data.status == 'ready';
+        }
+        function validReview(){
+          return request.resource.data.keys().hasOnly(['stars','text','authorId','mediaPath','mediaKind','createdAt'])
+            && request.resource.data.authorId == request.auth.uid
+            && request.resource.data.stars is int
+            && request.resource.data.stars >= 1 && request.resource.data.stars <= 5
+            && request.resource.data.text is string && request.resource.data.text.size() <= 500
+            && request.resource.data.mediaPath is string
+            && request.resource.data.mediaPath.size() <= 250
+            && request.resource.data.mediaKind in ['', 'image', 'video']
+            && ((request.resource.data.mediaPath == '' && request.resource.data.mediaKind == '')
+                 || (request.resource.data.mediaPath.matches('review-media/' + productId + '/' + reviewerId + '/review[.](jpg|png|webp|mp4|webm|mov)')
+                     && request.resource.data.mediaKind in ['image','video']))
+            && request.resource.data.createdAt == request.time;
+        }
+        allow read: if isOwner() || publicProduct();
+        allow create: if request.auth != null && reviewerId == request.auth.uid
+          && publicProduct() && validReview();
+        allow update: if request.auth != null && reviewerId == request.auth.uid
+          && resource.data.authorId == request.auth.uid && publicProduct() && validReview();
+        allow delete: if isOwner();
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isOwner(){ return request.auth != null && request.auth.uid == "REPLACE_WITH_OWNER_FIREBASE_UID"; }
+    match /products/{productId}/{fileId} {
+      allow read: if true;
+      allow create, update: if isOwner()
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType == 'image/jpeg';
+      allow delete: if isOwner();
+    }
+    match /review-media/{productId}/{reviewerId}/{fileName} {
+      function availableProduct(){return firestore.get(/databases/(default)/documents/products/$(productId)).data.status == 'ready';}
+      function linkedReview(){return firestore.get(/databases/(default)/documents/products/$(productId)/reviews/$(reviewerId)).data.mediaPath == 'review-media/' + productId + '/' + reviewerId + '/' + fileName;}
+      function goodMedia(){
+        return (request.resource.contentType.matches('image/(jpeg|png|webp)') && request.resource.size <= 8 * 1024 * 1024)
+          || (request.resource.contentType.matches('video/(mp4|webm|quicktime)') && request.resource.size <= 25 * 1024 * 1024);
+      }
+      allow read: if availableProduct() && linkedReview();
+      allow create, update: if request.auth != null && request.auth.uid == reviewerId
+        && availableProduct()
+        && fileName.matches('review[.](jpg|png|webp|mp4|webm|mov)')
+        && goodMedia();
+      allow delete: if isOwner() || (request.auth != null && request.auth.uid == reviewerId);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+LALA AYEN GLOBAL PLAZA — OWNER LAUNCH PACKAGE (October 22, 2026)
+
+START ADDING PRODUCTS RIGHT NOW — even before Firebase:
+1. Extract ZIP on your OWN computer.
+2. Open PRIVATE_OWNER_PRODUCT_PREP.html, outside the site folder.
+3. Add each REAL item: exact name, photo, price, quantity, description, and store; Save.
+4. Click Download products.json.
+5. Replace site/products.json with the downloaded file.
+6. Open the site using a local HTTP preview or deploy the site folder to YOUR approved Firebase Hosting project after review. Re-deploy whenever the static file changes.
+
+PUBLIC WEBSITE: site/index.html. Six separate shop pages are linked on Home and in the shop sidebar. Two Facebook pages + TikTok are linked. About, Music, Portraits, Videos, Books, Contact guide chat, and the confirmed-quote Square link remain.
+
+ONLINE OWNER ADMIN and real customer accounts / reviews (requires Firebase setup):
+1. In your existing AUTHORIZED Firebase project, register a Web App, then paste its Firebase Web App config into site/firebase-config.js (public config, not a secret key).
+2. Enable Authentication > Email/Password, Firestore Database, and Storage if you will upload images. Check whether Firebase Storage requires a billing plan in your region BEFORE enabling; do not upgrade or buy without explicit approval.
+3. Sign up as OWNER via website to create your Firebase Authentication user. Find your UID in Firebase Console > Authentication > Users.
+4. Set site/firebase-config.js LALA_OWNER_UID to your exact UID. Set REPLACE_WITH_OWNER_FIREBASE_UID in both firestore.rules and storage.rules to this same UID. Confirm your Firebase project ID.
+5. In Firebase CLI for the intended project, deploy: firebase deploy --only firestore:rules,storage --project YOUR_PROJECT_ID. Then deploy Hosting: firebase deploy --only hosting --project YOUR_PROJECT_ID. No real deployment has been performed by this package.
+6. Sign in with that owner email. Only this exact UID gets Upload products and Manage listings buttons, plus server-enforced create/edit/delete. Other users can register/sign in/sign out/reset password and leave 1-5 star reviews on published products.
+7. Firestore product documents and storage uploads are not ready until setup and rules are verified. Without setup the static products.json path works for real public listings, but reviews and online admin do not.
+
+IMPORTANT: Owner prep tool is NOT a live admin account. Do NOT upload the PRIVATE_OWNER_PRODUCT_PREP.html into the public site folder. Other visitors cannot edit your real hosted inventory with the public website. The JSON static workflow requires owner to replace the website file and redeploy it.
+
+No fake products, star ratings, reviews or automatic payment checkout. The Quote Basket prepares an email inquiry, not a completed order. PayPal is not connected. Square is a manual confirmed-quote link ONLY. International buyers need written confirmation before paying. No background agent, hidden changes, live host modification or publishing has occurred.
+
+For legal and financial safety, finalize shipping, tax, refund and fulfillment policies before taking real payments. Merchant affiliates link out to their own checkout.
+
+Test everything before launch: mobile navigation, product images, real prices/stock, inquiry email, account login, admin access, review posting and access rules. Firebase Hosting project and domain status have not been independently verified.
+
+NEW: Read REVIEW_SETUP_FIRST.md for 1–5 star reviews, photo or video uploads, Firebase rules, and verification.
