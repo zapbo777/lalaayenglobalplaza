@@ -14,8 +14,30 @@
 <meta content="LALA AYEN GLOBAL PLAZA MALL" name="twitter:title"/>
 <meta content="Music, custom portraits, videos, books, and shops from Lala Ayen." name="twitter:description"/>
 <link href="styles.css" rel="stylesheet"/>
+<link href="sidebar.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">LALA AYEN</div>
+  <nav class="sidebar-nav" aria-label="Plaza sidebar">
+    <a href="#top" class="sidebar-link active">Home</a>
+    <a href="#music" class="sidebar-link">Lala Ayen Music</a>
+    <a href="#vibes-title" class="sidebar-link">Lala Ayen Vibes</a>
+    <a href="#videos" class="sidebar-link">Creative Studio</a>
+    <a href="#portraits" class="sidebar-link">Portrait Studio</a>
+    <a href="#books" class="sidebar-link">Books</a>
+    <a href="#marketplace" class="sidebar-link">Shop</a>
+    <a href="#contact" class="sidebar-link">Contact</a>
+    <a href="LALA_AYEN_GLOBAL_SHOP_MARK1.html" class="sidebar-link">Global Shop</a>
+    <a href="LALA_AYEN_MERCHANTS_MARK1.html" class="sidebar-link">Merchants</a>
+    <a href="LALA_AYEN_AFFILIATE_MARKETING_MARK1.html" class="sidebar-link">Affiliate Marketing</a>
+    <a href="LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html" class="sidebar-link">Author Bookstore</a>
+    <a href="PRELOVED_BOOKSTORE_MARK1.html" class="sidebar-link">Preloved Bookstore</a>
+    <a href="LALA_IRON_THRIFT_STORE_MARK1.html" class="sidebar-link">Thrift Store</a>
+  </nav>
+  <div class="sidebar-footer">© 2026 Lala Ayen Global Plaza Mall</div>
+</div>
+<button class="sidebar-toggle" id="sidebarToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar">☰</button><div class="main-content">
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header" id="top">
 <div class="header-inner">
@@ -285,6 +307,9 @@
 <div class="chat-bottom"><p>This guide uses preset answers—not a live AI agent or staff chat. Messages are not sent or saved.</p><a href="#contact" id="chat-contact">Prepare an email inquiry →</a></div>
 </aside>
 <dialog aria-labelledby="account-title" class="account-dialog" id="account-dialog"><div class="dialog-heading"><h2 id="account-title">Customer account</h2><button aria-label="Close" class="dialog-close" data-auth-close="" type="button">×</button></div><p id="account-intro">Create an account, sign in, or reset a password securely.</p><form id="account-form"><label>Email<input autocomplete="email" id="account-email" maxlength="254" placeholder="you@example.com" required="" type="email"/></label><label>Password<input autocomplete="current-password" id="account-password" minlength="6" required="" type="password"/></label><div class="account-actions"><button id="account-submit" type="submit">Sign in</button><button id="account-create" type="button">Create account</button><button id="account-reset" type="button">Forgot password?</button></div><p id="account-status" role="status">Customer accounts are unavailable until a replacement secure login system is configured.</p></form></dialog>
+</div>
+<script>/* Sidebar toggle for small screens (original sidebar restored from the Oct 19 site) */
+(function(){var b=document.getElementById('sidebarToggle'),sb=document.getElementById('sidebar');if(!b||!sb)return;b.addEventListener('click',function(){var o=sb.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});sb.addEventListener('click',function(e){if(e.target.closest('a')){sb.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();</script>
 <script src="plaza-shop.js" type="module"></script><script src="site.js"></script>
 </body>
 </html>

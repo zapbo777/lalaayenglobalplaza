@@ -1,0 +1,138 @@
+/* ===== LALA AYEN GLOBAL PLAZA — SIDEBAR NAVIGATION ===== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: linear-gradient(180deg, #0a0a1a 0%, #13132b 100%);
+  border-right: 1px solid #333;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: transform .3s ease;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 1rem;
+}
+
+.sidebar-logo img {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.sidebar-logo span {
+  color: #c9a84c;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: 0 .8rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .85rem 1rem;
+  border-radius: 10px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: .95rem;
+  transition: all .25s ease;
+  border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+  background: #c9a84c15;
+  border-color: #c9a84c55;
+  color: #f0d78c;
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(90deg, #c9a84c22, transparent);
+  border-color: #c9a84c;
+  color: #c9a84c;
+  font-weight: 600;
+}
+
+.sidebar-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  font-size: .65rem;
+  background: #ff990022;
+  color: #ff9900;
+  border: 1px solid #ff990055;
+  padding: .15rem .5rem;
+  border-radius: 20px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  border-top: 1px solid #333;
+  color: #666;
+  font-size: .75rem;
+  text-align: center;
+}
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background: #13132b;
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.main-content {
+  margin-left: 260px;
+  transition: margin-left .3s ease;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-toggle {
+    display: block;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Small screens: keep the menu button clear of the header logo */
+@media (max-width: 900px) {
+  .sidebar-toggle { top: auto; bottom: 1rem; left: 1rem; }
+}
