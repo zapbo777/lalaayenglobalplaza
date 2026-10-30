@@ -15,9 +15,10 @@ const categories={
  'thrift-store':['Women’s Tops','Women’s Dresses','Women’s Shorts','Women’s Bottoms','Women’s Outerwear','Men’s Clothing','Kids & Babies','Shoes','Bags & Accessories','Toys & Games','Home & Kitchen','Other Finds'],
  'affiliate-marketing':['Affiliate Links','Discount Codes','Resources','Other Programs'],
  'lala-merchants':['T-Shirts','Hoodies','Mugs & Drinkware','Tote Bags','Stickers & Prints','Other Merch'],
- 'global-shop':['Home & Living','Gadgets & Tech','Beauty & Wellness','Fashion Accessories','Kids & Baby','Trending Finds']
+ 'global-shop':['Home & Living','Gadgets & Tech','Beauty & Wellness','Fashion Accessories','Kids & Baby','Trending Finds'],
+ 'diy-craft':['DIY Craft Kits','Painting & Drawing','Sewing & Embroidery','Crochet & Knitting','Beads & Jewelry','Paper & Scrapbooking','Resin & Candle Making','Woodcraft & Home Decor','Kids Creative Crafts','Seasonal & Party Crafts','Craft Tools & Supplies','Storage & Organization']
 };
-const symbols={'author-bookstore':'📚','preloved-books':'📖','thrift-store':'🛍️','affiliate-marketing':'🔗','lala-merchants':'👕','global-shop':'🌐'};
+const symbols={'author-bookstore':'📚','preloved-books':'📖','thrift-store':'🛍️','affiliate-marketing':'🔗','lala-merchants':'👕','global-shop':'🌐','diy-craft':'✂️'};
 const priceFormat = n => Number(n).toLocaleString('en-US',{style:'currency',currency:'USD'});
 const safe = v => String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isHttp = u=>{try{const a=new URL(String(u));return a.protocol==='https:';}catch{return false;}};
