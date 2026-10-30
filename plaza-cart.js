@@ -87,7 +87,7 @@
       ctr.append(minus,num,plus,rm);info.appendChild(ctr);row.appendChild(info);list.appendChild(row);
     });
     var st=byId('lc-subtotal');if(st){st.setAttribute('data-usd',String(subtotal()));st.textContent=usd(subtotal())+' USD';}
-    var co=byId('lc-checkout');if(co)co.disabled=!c.length;var em=byId('lc-email');if(em)em.disabled=!c.length;
+    var co=byId('lc-checkout');if(co)co.disabled=!c.length;var sq=byId('lc-square');if(sq)sq.disabled=!c.length;var em=byId('lc-email');if(em)em.disabled=!c.length;
     applyPrices(byId('lc-drawer'));
   }
   function emailOrder(){
@@ -126,6 +126,20 @@
       .catch(function(e){var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'International checkout is coming soon (TEST mode). Your cart is saved. To order now, use "Email my order".':m);});
   }
 
+  function squareClick(){
+    var b=byId('lc-square');var items=load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});if(!items.length)return;
+    if(b)b.disabled=true;status('Opening secure Square checkout…');
+    fetch('/api/checkout/square',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:items,returnTo:location.href.split('#')[0].split('?')[0]})})
+      .then(function(r){return r.json().then(function(d){if(!r.ok||!d.url)throw new Error(d.error||'');return d.url;});})
+      .then(function(url){location.href=url;})
+      .catch(function(e){if(b)b.disabled=false;var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'Square quick pay is coming soon (TEST mode). Your cart is saved. To order now, use "Email my order".':m);});
+  }
+  function paidNotice(){
+    if(!/[?&]paid=square\b/.test(location.search))return;
+    try{localStorage.removeItem(KEY);}catch(e){}
+    toast('Thank you! Your Square payment was received. A receipt is sent by Square to your email.');
+  }
+
   /* ---------- Build UI ---------- */
   function build(){
     var host=document.querySelector('.topbar-actions')||document.querySelector('.site-account-actions');
@@ -135,17 +149,17 @@
     var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
-    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note">Prices are charged in US dollars. Other currencies are shown as an approximate guide. Shipping, duties and taxes for your country are calculated at checkout.</p><button type="button" id="lc-checkout" class="lc-primary">International checkout <span class="lc-test">TEST MODE</span></button><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
+    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note">Prices are charged in US dollars. Other currencies are shown as an approximate guide. Shipping, duties and taxes for your country are calculated at checkout.</p><div class="lc-pay-row"><button type="button" id="lc-checkout" class="lc-primary">International checkout (Zonos) <span class="lc-test">TEST MODE</span></button><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span></button></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
     document.body.appendChild(d);
     var dd=el('dialog',{id:'lc-details',class:'lc-details','aria-label':'Product details'});dd.innerHTML='<button type="button" class="lc-close" aria-label="Close">×</button><div id="lc-details-body"></div>';document.body.appendChild(dd);
     dd.querySelector('.lc-close').addEventListener('click',function(){dd.close();});
     d.querySelector('.lc-close').addEventListener('click',function(){d.close();});
     d.addEventListener('click',function(e){if(e.target===d)d.close();});dd.addEventListener('click',function(e){if(e.target===dd)dd.close();});
     btn.addEventListener('click',function(){render();status('');d.showModal();initZonos();});
-    byId('lc-checkout').addEventListener('click',checkoutClick);byId('lc-email').addEventListener('click',emailOrder);
+    byId('lc-checkout').addEventListener('click',checkoutClick);byId('lc-square').addEventListener('click',squareClick);byId('lc-email').addEventListener('click',emailOrder);
     var grid=byId('product-grid');if(grid&&window.MutationObserver)new MutationObserver(function(){applyPrices(grid);}).observe(grid,{childList:true});
     window.addEventListener('storage',function(e){if(e.key===KEY)render();});
-    render();loadRates();
+    render();loadRates();paidNotice();render();
   }
   window.LalaCart={add:add,addProduct:addProduct,showDetails:showDetails,items:load,count:count,applyPrices:applyPrices};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
