@@ -29,6 +29,9 @@
 .lc-secondary{background:#fff;color:#29115f;border:1px solid #d8b781;border-radius:9px;padding:10px;font-weight:700;cursor:pointer}
 .lc-pay-row{display:flex;flex-direction:column;gap:8px}
 .lc-square{background:#006aff}
+.lc-btn-sub{display:block;font-size:11px;font-weight:600;opacity:.9;margin-top:2px}
+.lc-intl{background:#6b5a86}
+.lc-note a{color:#4a1ca0}
 .lc-test{display:inline-block;background:#dfbd77;color:#29115f;border-radius:5px;font-size:10px;padding:2px 5px;margin-left:6px;vertical-align:middle}
 .lc-status{font-size:12px;color:#4a276e;margin:0;min-height:1em}
 .lc-details{border:0;border-radius:14px;padding:18px;width:min(440px,94vw);max-height:90vh;overflow:auto;position:relative;color:#251c37;font-family:inherit}

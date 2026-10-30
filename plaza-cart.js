@@ -122,22 +122,38 @@
     if(zonosState==='ready')return; // Zonos handles the click itself
     // Not ready: still validate the cart with the server, then explain.
     status('Checking your cart…');
-    createCartId().then(function(){status('International checkout is in TEST mode and not open to the public yet. Your cart is saved. To order now, use "Email my order".');})
-      .catch(function(e){var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'International checkout is coming soon (TEST mode). Your cart is saved. To order now, use "Email my order".':m);});
+    createCartId().then(function(){status('International checkout is in TEST mode and not open yet. We ship to US addresses only for now. Your cart is saved.');})
+      .catch(function(e){var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'International checkout is coming soon. We ship to US addresses only for now. Your cart is saved.':m);});
   }
 
   function squareClick(){
     var b=byId('lc-square');var items=load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});if(!items.length)return;
     if(b)b.disabled=true;status('Opening secure Square checkout…');
     fetch('/api/checkout/square',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:items,returnTo:location.href.split('#')[0].split('?')[0]})})
-      .then(function(r){return r.json().then(function(d){if(!r.ok||!d.url)throw new Error(d.error||'');return d.url;});})
-      .then(function(url){location.href=url;})
-      .catch(function(e){if(b)b.disabled=false;var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'Square quick pay is coming soon (TEST mode). Your cart is saved. To order now, use "Email my order".':m);});
+      .then(function(r){return r.json().then(function(d){if(!r.ok||!d.url)throw new Error(d.error||'');return d;});})
+      .then(function(d){try{localStorage.setItem('lala_pending_order',d.ref||'');}catch(e){}location.href=d.url;})
+      .catch(function(e){if(b)b.disabled=false;var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'Square checkout is coming soon. Your cart is saved. To order now, use "Email my order".':m);});
   }
   function paidNotice(){
-    if(!/[?&]paid=square\b/.test(location.search))return;
-    try{localStorage.removeItem(KEY);}catch(e){}
-    toast('Thank you! Your Square payment was received. A receipt is sent by Square to your email.');
+    var m=location.search.match(/[?&]lalaorder=([0-9a-f-]{36})/);if(!m)return;
+    var ref=m[1],tries=0;
+    toast('Checking your payment…');
+    (function poll(){
+      fetch('/api/orders/status?order='+ref,{headers:{Accept:'application/json'}}).then(function(r){return r.json();}).then(function(d){
+        if(d&&d.paid){try{localStorage.removeItem(KEY);localStorage.removeItem('lala_pending_order');}catch(e){}render();
+          toast(d.nonUS?'Thank you! Payment received. Note: we ship to US addresses only, so we will contact you about this order.':'Thank you! Your payment was received. Square emails your receipt. Questions? Email us with your order number.');return;}
+        if(d&&(d.status==='failed'||d.status==='canceled')){toast('Your payment was not completed. Your cart is saved, so you can try again.');return;}
+        if(++tries<10)return setTimeout(poll,3000);
+        toast('We are still confirming your payment. Your cart is saved. If you paid, you will get a Square receipt by email.');
+      }).catch(function(){if(++tries<10)setTimeout(poll,3000);});
+    })();
+  }
+  function applyCheckoutConfig(){
+    fetch('/api/checkout/config',{headers:{Accept:'application/json'}}).then(function(r){return r.json();}).then(function(c){
+      var sb=document.querySelector('#lc-square .lc-test'),zb=document.querySelector('#lc-checkout .lc-test');
+      if(sb){if(c.square&&c.squareEnv==='production')sb.remove();else sb.textContent=c.square?'TEST MODE':'COMING SOON';}
+      if(zb)zb.textContent=c.enabled?'TEST MODE':'COMING SOON';
+    }).catch(function(){});
   }
 
   /* ---------- Build UI ---------- */
@@ -149,13 +165,13 @@
     var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
-    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note">Prices are charged in US dollars. Other currencies are shown as an approximate guide. Shipping, duties and taxes for your country are calculated at checkout.</p><div class="lc-pay-row"><button type="button" id="lc-checkout" class="lc-primary">International checkout (Zonos) <span class="lc-test">TEST MODE</span></button><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span></button></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
+    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free US shipping. Ships to US addresses only.</strong> Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Ships to US addresses only</small></button><button type="button" id="lc-checkout" class="lc-primary lc-intl">International checkout (Zonos) <span class="lc-test">COMING SOON</span></button></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
     document.body.appendChild(d);
     var dd=el('dialog',{id:'lc-details',class:'lc-details','aria-label':'Product details'});dd.innerHTML='<button type="button" class="lc-close" aria-label="Close">×</button><div id="lc-details-body"></div>';document.body.appendChild(dd);
     dd.querySelector('.lc-close').addEventListener('click',function(){dd.close();});
     d.querySelector('.lc-close').addEventListener('click',function(){d.close();});
     d.addEventListener('click',function(e){if(e.target===d)d.close();});dd.addEventListener('click',function(e){if(e.target===dd)dd.close();});
-    btn.addEventListener('click',function(){render();status('');d.showModal();initZonos();});
+    btn.addEventListener('click',function(){render();status('');d.showModal();initZonos();applyCheckoutConfig();});
     byId('lc-checkout').addEventListener('click',checkoutClick);byId('lc-square').addEventListener('click',squareClick);byId('lc-email').addEventListener('click',emailOrder);
     var grid=byId('product-grid');if(grid&&window.MutationObserver)new MutationObserver(function(){applyPrices(grid);}).observe(grid,{childList:true});
     window.addEventListener('storage',function(e){if(e.key===KEY)render();});
