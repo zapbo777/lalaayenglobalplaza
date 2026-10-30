@@ -101,8 +101,32 @@
     if(!document.dispatchEvent(ev))return;
     var n=$(noteId);if(n){n.style.display='block';n.innerHTML='Our Plaza Guide chat is coming soon. For now, email <a style="color:#d4af37" href="mailto:'+EMAIL+'">'+EMAIL+'</a> and we will reply.';}
   };
+  // "Pay agreed amount" (Square enter-amount link) is only for signed-in customers.
+  // The URL is never in the page: GET /api/pay-link returns it only with a valid session cookie (401 otherwise).
+  function payState(url){
+    document.querySelectorAll('[data-pay-agreed]').forEach(function(a){if(url){a.href=url;a.hidden=false;}else{a.removeAttribute('href');a.hidden=true;}});
+    document.querySelectorAll('[data-pay-signin]').forEach(function(b){b.hidden=!!url;});
+  }
+  var payReq=0;
+  function refreshPayLink(user){
+    var n=++payReq;
+    if(user===null){payState(null);return;}
+    fetch('/api/pay-link',{credentials:'same-origin',headers:{'Accept':'application/json'}})
+      .then(function(r){return r.ok?r.json():{};})
+      .then(function(d){if(n===payReq)payState(d&&typeof d.url==='string'&&/^https:\/\/square\.link\//.test(d.url)?d.url:null);})
+      .catch(function(){if(n===payReq)payState(null);});
+  }
+  function openSignIn(){
+    var dlg=document.getElementById('account-dialog');
+    if(dlg&&typeof dlg.showModal==='function'&&!dlg.open){dlg.showModal();return;}
+    var b=document.querySelector('[data-auth-open]');if(b)b.click();
+  }
   function init(){
     fillLists();
+    payState(null);
+    document.querySelectorAll('[data-pay-signin]').forEach(function(b){b.addEventListener('click',openSignIn);});
+    document.addEventListener('lala-auth',function(e){refreshPayLink(e.detail&&e.detail.user?e.detail.user:null);});
+    if(window.LalaAuth&&window.LalaAuth.user)refreshPayLink(window.LalaAuth.user);
     var sel=$('modal-portrait-type');if(sel)sel.addEventListener('change',setPortrait);
     fetch('/api/checkout/config',{credentials:'same-origin'}).then(function(r){return r.ok?r.json():{};}).then(function(c){squareOn=!!(c&&c.square);payLabel();}).catch(function(){squareOn=false;payLabel();});
     var b=$('sidebarToggle'),sb=$('sidebar');if(b&&sb&&document.body.hasAttribute('data-studio-page'))b.addEventListener('click',function(){var o=sb.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});

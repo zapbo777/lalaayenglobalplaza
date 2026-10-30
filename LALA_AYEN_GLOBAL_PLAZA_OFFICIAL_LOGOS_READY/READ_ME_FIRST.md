@@ -16,7 +16,7 @@ There are self-service FAQ panels for Music, Portraits, Videos, Books, and Conta
 
 ## Limits before accepting real sales
 - This is the original static Echo mini-site, not the complete shop. Customer registration/sign-in/reset, private admin, persistent customer reviews, shop inventory, cart checkout, tax and shipping, and automatic order fulfillment are **not implemented**. Do not pretend to sell products using demo pages.
-- Square `https://square.link/u/v3Q1eMl8` remains an owner-provided enter-amount link for **confirmed** written quotes, not an automatic checkout.
+- The owner-provided Square enter-amount link is served only to signed-in customers by the account Worker (`GET /api/pay-link`, Worker var `PAY_AGREED_URL`). It remains for **confirmed** written quotes, not an automatic checkout.
 - Do not publish the local Thrift Store Mark 1 demo as a live shop; its demo products and checkout are not real.
 - No changes to the user's old Google project, Cloud Run, domain, or live website have been made.
 
