@@ -85,7 +85,7 @@
       ['What bundles do you have?', 'Complete Party Design Bundle $39.99 (invitation, poster, cards and video). Also: Party Essentials $19.99, Birthday Deluxe $29.99, Wedding Memories $39.99, Family Celebration $39.99, Ultimate Creative $59.99. See each bundle on the Party Shop page.'],
       ['How do I order a design?', 'Tap "Email to request" on the design you want and attach your photos to the email. We confirm your design and total by email, then you pay the agreed amount (signed-in customers) and receive your files.'],
       ['What formats do I get?', 'Digital file (hi-res), print-ready PDF, video file (MP4) and multiple sizes for social media. All are digital: nothing is shipped.'],
-      ['Do you sell balloons and party supplies?', 'Our physical party collections are coming soon. The Party Creative Suite (digital designs) is available to order now.']],
+      ['Do you sell balloons and party supplies?', 'Yes. The Party Shop now has number foil balloons, birthday banners, cake toppers and a foil fringe backdrop; tap + Add to Cart on the item. The Party Creative Suite (digital designs) is also available to order now.']],
     contact: [['How do I contact the Plaza?', 'Email ' + EMAIL + '. You can also prepare an email with the contact form on the Plaza Home page.']]
   };
   var PAGE_TOPIC = { 'party-shop': 'party', 'creative-studio': 'videos', 'portrait-studio': 'portraits', 'author-bookstore': 'books', 'preloved-books': 'books' };
