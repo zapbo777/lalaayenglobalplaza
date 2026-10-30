@@ -16,9 +16,9 @@ const categories={
  'affiliate-marketing':['Affiliate Links','Discount Codes','Resources','Other Programs'],
  'lala-merchants':['T-Shirts','Hoodies','Mugs & Drinkware','Tote Bags','Stickers & Prints','Other Merch'],
  'global-shop':['Home & Living','Gadgets & Tech','Beauty & Wellness','Fashion Accessories','Kids & Baby','Trending Finds'],
- 'diy-craft':['DIY Craft Kits','Painting & Drawing','Sewing & Embroidery','Crochet & Knitting','Beads & Jewelry','Paper & Scrapbooking','Resin & Candle Making','Woodcraft & Home Decor','Kids Creative Crafts','Seasonal & Party Crafts','Craft Tools & Supplies','Storage & Organization']
+ 'diy-craft':['DIY Craft Kits','Painting & Drawing','Sewing & Embroidery','Crochet & Knitting','Beads & Jewelry','Paper & Scrapbooking','Resin & Candle Making','Woodcraft & Home Decor','Kids Creative Crafts','Seasonal & Party Crafts','Craft Tools & Supplies','Storage & Organization'],'party-shop':['Balloons & Backdrops','Birthday Parties','Tableware & Table Decor','Weddings & Anniversaries','Baby Showers','Party Favors & Gift Wrap','DIY Party Supplies','Seasonal Celebrations']
 };
-const symbols={'author-bookstore':'📚','preloved-books':'📖','thrift-store':'🛍️','affiliate-marketing':'🔗','lala-merchants':'👕','global-shop':'🌐','diy-craft':'✂️'};
+const symbols={'author-bookstore':'📚','preloved-books':'📖','thrift-store':'🛍️','affiliate-marketing':'🔗','lala-merchants':'👕','global-shop':'🌐','diy-craft':'✂️','party-shop':'🎉'};
 const priceFormat = n => Number(n).toLocaleString('en-US',{style:'currency',currency:'USD'});
 const safe = v => String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const isHttp = u=>{try{const a=new URL(String(u));return a.protocol==='https:';}catch{return false;}};
