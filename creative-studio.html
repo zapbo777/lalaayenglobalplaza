@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Studio | LALA AYEN GLOBAL PLAZA MALL</title>
+<link rel="icon" type="image/png" href="assets/LALA_AYEN_OFFICIAL_LOGO.png">
+<meta name="description" content="Lala Ayen Creative Studio: promotional video packages from $75 (Starter), $150 (Professional) and Premium Campaign from $300.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#0a0a0a;color:#f0e6d3;overflow-x:hidden}
+header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#1a0a2e,#2d1b4e);border-radius:24px;margin:20px}
+header h1{font-size:2.5rem;color:#d4af37;letter-spacing:4px}
+header p{margin-top:10px;color:#c9b8e8;font-size:1.1rem}
+section{max-width:960px;margin:0 auto;padding:60px 20px}
+h2{color:#d4af37;font-size:1.6rem;margin-bottom:30px;text-align:center}
+.packages{display:grid;grid-template-columns:1fr 1fr 1fr;gap:25px}
+@media(max-width:700px){.packages{grid-template-columns:1fr}}
+.card{background:#1a1a2e;border:1px solid #d4af37;padding:25px;border-radius:8px;text-align:center;position:relative}
+.card.popular{border:2px solid #d4af37;box-shadow:0 0 20px rgba(212,175,55,0.3)}
+.badge{background:#d4af37;color:#0a0a0a;font-size:0.75rem;font-weight:bold;padding:4px 12px;border-radius:20px;position:absolute;top:-12px;left:50%;transform:translateX(-50%)}
+.card h3{color:#d4af37;font-size:1.3rem;margin-bottom:8px}
+.price{font-size:2rem;color:#f0e6d3;font-weight:bold;margin:10px 0}
+.price span{font-size:1rem;color:#c9b8e8}
+.card ul{list-style:none;text-align:left;margin:15px 0;color:#c9b8e8;font-size:0.9rem}
+.card ul li{padding:5px 0;border-bottom:1px solid #2d1b4e}
+.card ul li::before{content:"✓ ";color:#d4af37}
+.card button{background:#d4af37;color:#0a0a0a;border:none;padding:12px 30px;border-radius:4px;font-size:1rem;cursor:pointer;font-weight:bold;margin-top:15px;width:100%}
+.card button:hover{background:#f0d060}
+.mockups{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:700px){.mockups{grid-template-columns:1fr}}
+.mockup-card{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;text-align:center}
+.mockup-card .icon{font-size:2.5rem;margin-bottom:10px}
+.mockup-card h4{color:#d4af37;margin-bottom:8px}
+.mockup-card p{color:#c9b8e8;font-size:0.85rem}
+.mockup-card .demo-tag{background:#2d1b4e;color:#c9b8e8;font-size:0.7rem;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.what-you-get{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:15px;margin-top:20px}
+@media(max-width:700px){.what-you-get{grid-template-columns:1fr 1fr}}
+.get-card{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;text-align:center}
+.get-card .icon{font-size:2rem;margin-bottom:8px}
+.get-card p{color:#c9b8e8;font-size:0.9rem}
+.process-steps{counter-reset:step;margin-top:20px}
+.step{display:flex;align-items:center;gap:15px;padding:15px;margin-bottom:10px;background:#1a1a2e;border-radius:8px;border-left:3px solid #d4af37}
+.step-num{background:#d4af37;color:#0a0a0a;font-weight:bold;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step p{color:#c9b8e8}
+.faq{margin-top:20px}
+.faq-item{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;margin-bottom:10px}
+.faq-item h4{color:#d4af37;margin-bottom:8px}
+.faq-item p{color:#c9b8e8;font-size:0.9rem}
+.ai-section{background:#0f0f1e;padding:60px 20px}
+.ai-box{max-width:700px;margin:0 auto;text-align:center}
+.ai-box textarea{width:100%;background:#1a1a2e;border:1px solid #444;color:#f0e6d3;padding:15px;border-radius:4px;height:100px;font-size:1rem;margin:20px 0}
+.ai-box button{background:#2d1b4e;color:#d4af37;border:1px solid #d4af37;padding:12px 30px;border-radius:4px;cursor:pointer;margin:5px}
+#ai-result{margin-top:20px;background:#1a1a2e;padding:20px;border-radius:4px;display:none;text-align:left;line-height:1.7}
+form{background:#1a1a2e;padding:40px;border-radius:8px;border:1px solid #333}
+form input,form textarea,form select{width:100%;background:#0a0a0a;border:1px solid #444;color:#f0e6d3;padding:12px;margin-bottom:15px;border-radius:4px;font-size:1rem}
+form button{background:#d4af37;color:#0a0a0a;border:none;padding:14px 40px;border-radius:4px;font-size:1rem;cursor:pointer;font-weight:bold}
+#msg{margin-top:15px;padding:10px;border-radius:4px;display:none}
+footer{text-align:center;padding:30px;color:#666;font-size:0.9rem}
+.note{background:#1a1a2e;border-left:3px solid #d4af37;padding:15px;margin-top:20px;color:#c9b8e8;font-size:0.85rem;border-radius:4px}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal-box{background:#1a1a2e;border:2px solid #c9a84c;border-radius:16px;padding:2rem;width:90%;max-width:420px;color:#fff;box-shadow:0 0 40px rgba(201,168,76,.4);position:relative}
+.modal-box h3{color:#c9a84c;font-size:1.3rem;margin-bottom:.3rem}
+.modal-box .pkg-price{font-size:2rem;font-weight:900;color:#fff;margin-bottom:1.2rem}
+.modal-box label{display:block;font-size:.85rem;color:#aaa;margin-bottom:.3rem}
+.modal-box input{width:100%;padding:.7rem 1rem;border-radius:8px;border:1px solid #444;background:#0f0f1a;color:#fff;font-size:1rem;margin-bottom:1rem;box-sizing:border-box}
+.modal-box input:focus{outline:none;border-color:#c9a84c}
+.modal-pay-btn{width:100%;padding:.9rem;background:linear-gradient(135deg,#c9a84c,#a07828);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:.5rem}
+.modal-pay-btn:hover{background:linear-gradient(135deg,#e0bf6a,#c9a84c)}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#aaa;font-size:1.5rem;cursor:pointer}
+.modal-close:hover{color:#fff}
+.modal-msg{margin-top:.8rem;font-size:.9rem;min-height:1.2em}
+.modal-msg.error{color:#ff6b6b}
+.modal-msg.success{color:#6bff9e}
+#samples{padding:5rem 2rem;background:linear-gradient(180deg,#0a0a1a 0%,#13132b 100%)}
+#samples h2{text-align:center;font-size:2rem;color:#c9a84c;margin-bottom:.5rem}
+#samples .section-sub{text-align:center;color:#aaa;margin-bottom:3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.gallery-card{background:#1a1a2e;border:1px solid #333;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(201,168,76,.25);border-color:#c9a84c}
+.plaza-art-card{max-width:400px;margin:0 auto}
+.gallery-thumb-placeholder{width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0f1a,#1e1e3e);font-size:3rem;color:#c9a84c44}
+.gallery-info{padding:1rem}
+.gallery-info h4{color:#c9a84c;margin:0 0 .3rem;font-size:1rem}
+.gallery-info p{color:#aaa;font-size:.85rem;margin:0}
+.gallery-tag{display:inline-block;background:#c9a84c22;color:#c9a84c;font-size:.75rem;padding:.2rem .6rem;border-radius:20px;margin-top:.5rem;border:1px solid #c9a84c55}
+.gallery-demo-label{font-size:.7rem;color:#ff9900;background:#ff990022;border:1px solid #ff990055;padding:.15rem .5rem;border-radius:10px;margin-left:.5rem}
+.gallery-btn{display:inline-block;margin-top:.8rem;padding:.5rem 1rem;background:#c9a84c22;color:#c9a84c;border:1px solid #c9a84c;border-radius:8px;font-size:.85rem;cursor:pointer;text-decoration:none}
+.gallery-btn:hover{background:#c9a84c;color:#000}
+.gallery-upload-note{text-align:center;margin-top:2rem;color:#666;font-size:.85rem}
+
+</style>
+
+<link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="plaza-cart.css?v=20261030c">
+<style>/* site-wide account/cart bar + account dialog (same as the home page) */
+.studio-topbar{display:flex;justify-content:flex-end;padding:12px 20px 0}
+.site-account-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.site-account-actions button{background:#d4b477;color:#2c1748;border:0;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;cursor:pointer}
+.account-dialog{border:0;border-radius:16px;padding:28px;max-width:min(470px,95vw);width:100%;max-height:95vh;overflow:auto;background:#fff;color:#27153e;box-shadow:0 20px 80px #14072777}
+.account-dialog::backdrop{background:#180d2bc4}.account-dialog h2{font-size:25px;margin:0;color:#27153e;text-align:left}
+.dialog-heading{display:flex;justify-content:space-between;gap:10px;align-items:center}.dialog-close{background:none;border:0;font-size:24px;cursor:pointer}
+.account-dialog form{display:grid;gap:13px;margin-top:18px;background:#fff;padding:0;border:0}
+.account-dialog label{font-size:12px;font-weight:800;display:grid;gap:6px;color:#27153e}
+.account-dialog input{padding:12px;border:1px solid #cdbddd;border-radius:9px;font-size:15px;min-width:0;background:#fff;color:#27153e;margin:0}
+.account-actions{display:flex;gap:7px;flex-wrap:wrap}.account-actions button{padding:11px;border:1px solid #a694b8;background:#f6f0fa;color:#382053;border-radius:8px;cursor:pointer;font-weight:700;width:auto;margin:0;font-size:14px}
+.account-actions button:first-child{background:#372055;color:#fff}.account-dialog p{font-size:13px;line-height:1.6}
+.studio-chat-note{display:none;margin-top:15px;background:#1a1a2e;padding:15px;border-radius:4px;color:#c9b8e8;line-height:1.6}
+.studio-flyers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:10px 0 30px}
+.studio-flyers img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid #2d1b4e}
+.studio-attach-note{color:#c9b8e8;font-size:.9rem;margin-bottom:15px;background:#0a0a0a;border:1px dashed #d4af37;border-radius:8px;padding:12px}
+</style>
+</head>
+<body data-studio-page>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">LALA AYEN</div>
+  <nav class="sidebar-nav" aria-label="Plaza sidebar">
+    <a href="index.html#top" class="sidebar-link">Home</a>
+    <a href="index.html#music" class="sidebar-link">Lala Ayen Music</a>
+    <a href="index.html#vibes-title" class="sidebar-link">Lala Ayen Vibes</a>
+    <a href="creative-studio.html" class="sidebar-link active" aria-current="page">Creative Studio</a>
+    <a href="custom-portrait-studio.html" class="sidebar-link">Portrait Studio</a>
+    <a href="index.html#books" class="sidebar-link">Books</a>
+    <a href="index.html#marketplace" class="sidebar-link">Shop</a>
+    <a href="index.html#contact" class="sidebar-link">Contact</a>
+    <a href="LALA_AYEN_GLOBAL_SHOP_MARK1.html" class="sidebar-link">Global Shop</a>
+    <a href="LALA_LINGERIE_MARK1.html" class="sidebar-link">Lingerie Boutique</a>
+    <a href="LALA_GYM_SPORTS_MARK1.html" class="sidebar-link">Gym &amp; Sports</a>
+    <a href="LALA_TEMPLE_MARK1.html" class="sidebar-link">Lala Temple</a>
+    <a href="LALA_WONDERLAND_MARK1.html" class="sidebar-link">Lala Wonderland</a>
+    <a href="LALA_PET_PARADISE_MARK1.html" class="sidebar-link">Pet Paradise</a>
+    <a href="LALA_AYEN_DIY_CRAFT_MARK1.html" class="sidebar-link">DIY &amp; Craft</a>
+    <a href="LALA_AYEN_MERCHANTS_MARK1.html" class="sidebar-link">Merchants</a>
+    <a href="LALA_AYEN_AFFILIATE_MARKETING_MARK1.html" class="sidebar-link">Affiliate Marketing</a>
+    <a href="LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html" class="sidebar-link">Author Bookstore</a>
+    <a href="PRELOVED_BOOKSTORE_MARK1.html" class="sidebar-link">Preloved Bookstore</a>
+    <a href="LALA_IRON_THRIFT_STORE_MARK1.html" class="sidebar-link">Thrift Store</a>
+  </nav>
+  <div class="sidebar-footer">© 2026 Lala Ayen Global Plaza Mall</div>
+</div>
+<button class="sidebar-toggle" id="sidebarToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar">☰</button><div class="main-content">
+<div class="studio-topbar"><div class="site-account-actions"><button data-auth-open="" type="button">Sign in / Create account</button><button data-signout="" hidden="" type="button">Sign out</button></div></div>
+<header>
+<img src="assets/LALA_AYEN_OFFICIAL_LOGO.png" alt="Lala Ayen official logo" style="height:80px;margin:10px"><img src="assets/LALA_AYEN_VIBE_OFFICIAL_LOGO.png" alt="Lala Ayen Vibes logo" style="height:80px;margin:10px">
+<h1>Creative Studio</h1>
+<p>LALA AYEN Global Plaza Mall</p>
+</header>
+
+<section id="packages">
+<div class="packages">
+  <div class="card">
+    <h3>Starter</h3>
+    <div class="price" data-studio-price="video:starter">$75</div>
+    <ul>
+      <li>One 15–30 sec promotional video</li>
+      <li>Your photos, logo, or artwork</li>
+      <li>Music or voice-over</li>
+      <li>Captions included</li>
+      <li>One revision</li>
+      <li>Delivery: 3–5 business days</li>
+    </ul>
+    <button onclick="checkout('starter')">🛒 Pay $75 — Request Starter</button>
+  </div>
+  <div class="card popular">
+    <div class="badge">⭐ Most Popular</div>
+    <h3>Professional</h3>
+    <div class="price" data-studio-price="video:professional">$150</div>
+    <ul>
+      <li>One 30–60 sec promotional video</li>
+      <li>Music, voice-over &amp; captions</li>
+      <li>Branded graphics</li>
+      <li>Basic creative direction</li>
+      <li>Two revisions</li>
+      <li>Social-media-ready formats</li>
+      <li>Delivery: 3–5 business days</li>
+    </ul>
+    <button onclick="checkout('professional')">🛒 Pay $150 — Choose Professional</button>
+  </div>
+  <div class="card">
+    <h3>Premium Campaign</h3>
+    <div class="price">$300<span>+</span></div>
+    <ul>
+      <li>Three short promotional videos</li>
+      <li>Creative direction &amp; messaging</li>
+      <li>Custom voice-over &amp; music</li>
+      <li>Captions, thumbnails &amp; social copy</li>
+      <li>Two revisions per video</li>
+      <li>Priority delivery</li>
+      <li>Delivery: 5–7 business days</li>
+    </ul>
+    <button onclick="checkout('premium')">🛒 Request Premium Quote — $300+</button>
+  </div>
+</div>
+<p class="note">💡 Prices shown are starting rates. Final cost depends on project scope and production needs. Want a custom portrait instead? See the <a href="custom-portrait-studio.html" style="color:#d4af37">Custom Portrait Studio</a>.</p>
+</section>
+
+<section>
+<h2>Sample Concepts</h2>
+<div class="mockups">
+  <div class="mockup-card">
+    <div class="demo-tag">Sample Concept</div>
+    <div class="icon">🎵</div>
+    <h4>Music Release</h4>
+    <p>Album cover inside a phone screen with a "Listen Now" button — perfect for new singles and albums.</p>
+  </div>
+  <div class="mockup-card">
+    <div class="demo-tag">Sample Concept</div>
+    <div class="icon">🏢</div>
+    <h4>Business Promotion</h4>
+    <p>Logo, product image, headline, and short video thumbnail for your brand or event.</p>
+  </div>
+  <div class="mockup-card">
+    <div class="demo-tag">Sample Concept</div>
+    <div class="icon">📖</div>
+    <h4>Book Promotion</h4>
+    <p>Book cover, narrated quote, author name, and "Discover the Book" call to action.</p>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>What You Receive</h2>
+<div class="what-you-get">
+  <div class="get-card"><div class="icon">🎬</div><p>Promotional Video</p></div>
+  <div class="get-card"><div class="icon">🎙️</div><p>Voice-Over</p></div>
+  <div class="get-card"><div class="icon">🎵</div><p>Music</p></div>
+  <div class="get-card"><div class="icon">📱</div><p>Social Captions</p></div>
+</div>
+</section>
+
+<section>
+<h2>How It Works</h2>
+<div class="process-steps">
+  <div class="step"><div class="step-num">1</div><p>Tell us about your project</p></div>
+  <div class="step"><div class="step-num">2</div><p>Choose a package</p></div>
+  <div class="step"><div class="step-num">3</div><p>We create your first draft</p></div>
+  <div class="step"><div class="step-num">4</div><p>You request revisions</p></div>
+  <div class="step"><div class="step-num">5</div><p>Receive your finished files</p></div>
+</div>
+</section>
+
+<section>
+<h2>FAQ &amp; Terms</h2>
+<div class="faq">
+<div class="faq-item"><h4>Is a deposit required?</h4><p>A 30% deposit may be required after your project scope and quote are confirmed. Work begins after the deposit and all required materials are received.</p></div>
+<div class="faq-item"><h4>What is the refund policy?</h4><p>Cancellation and refund terms are confirmed in the project quote. Deposits may be non-refundable after customized work begins. If Lala Ayen LLC cannot deliver the agreed service, the customer will receive an appropriate refund for the undelivered portion.</p></div>
+<div class="faq-item"><h4>May I submit photos, music, logos, or artwork?</h4><p>Yes, but you must own them or have permission to use them commercially. You are responsible for permissions for materials you provide.</p></div>
+<div class="faq-item"><h4>Do you use AI-assisted tools?</h4><p>AI-assisted tools may be used in production for visuals, music, voice, or editing. Final deliverables and commercial-use rights depend on the tools, assets, and license terms used for the project.</p></div>
+<div class="faq-item"><h4>What will I receive?</h4><p>Deliverables may include MP4 video files, image files, captions, thumbnails, or social-media copy, depending on the selected package. Final formats are confirmed in the quote.</p></div>
+<div class="faq-item"><h4>What counts as a revision?</h4><p>An included revision means reasonable changes to the agreed concept. A new concept, new script, or substantial change in direction may require an additional fee.</p></div>
+</div>
+</section>
+
+<div class="ai-section">
+<div class="ai-box">
+<h2>Questions? Ask our Plaza Guide</h2>
+<p style="color:#c9b8e8;margin-bottom:10px">Styles, packages, timing and how to book.</p>
+<button type="button" data-open-chat onclick="openPlazaChat('videos','cs-chat-note')">✦ Open the Plaza Guide chat</button>
+<div class="studio-chat-note" id="cs-chat-note" role="status"></div>
+</div>
+</div>
+
+
+</div>
+
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <h3 id="modal-pkg-name">Package</h3>
+    <div class="pkg-price" id="modal-pkg-price"></div>
+      <div id="portrait-type-wrap" style="display:none;margin-bottom:15px;"><label>Choose Style</label><select id="modal-portrait-type" data-studio-select></select></div>
+    <label>Your Name</label>
+    <input type="text" id="modal-name" placeholder="e.g. Maria Santos" />
+    <label>Email Address</label>
+    <input type="email" id="modal-email" placeholder="you@example.com" />
+    <button class="modal-pay-btn" id="modal-pay-btn" onclick="submitPayment()">&#x2709; Email to book</button>
+<div style="text-align:center;margin:10px 0;color:#9fd8a0;font-size:0.8rem">🔒 Secure payments powered by Square</div>
+<div style="text-align:center;color:#888;font-size:0.75rem;margin-top:4px">Visa &bull; Mastercard &bull; Amex &bull; Discover</div>
+    <div class="modal-msg" id="modal-msg"></div>
+  </div>
+</div>
+
+
+<dialog aria-labelledby="account-title" class="account-dialog" id="account-dialog"><div class="dialog-heading"><h2 id="account-title">Customer account</h2><button aria-label="Close" class="dialog-close" data-auth-close="" type="button">×</button></div><p id="account-intro">Create an account, sign in, or reset a password securely.</p><form id="account-form"><label>Email<input autocomplete="email" id="account-email" maxlength="254" placeholder="you@example.com" required="" type="email"/></label><label>Password<input autocomplete="current-password" id="account-password" minlength="6" required="" type="password"/></label><div class="account-actions"><button id="account-submit" type="submit">Sign in</button><button id="account-create" type="button">Create account</button><button id="account-reset" type="button">Forgot password?</button></div><p id="account-status" role="status">Loading your account…</p></form></dialog>
+<script defer src="plaza-translate.js?v=20261030a"></script><script defer src="plaza-auth.js?v=20261030a"></script><script defer src="plaza-cart.js?v=20261030c"></script><script defer src="plaza-studio.js?v=20261030a"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Portrait Studio | LALA AYEN GLOBAL PLAZA MALL</title>
+<link rel="icon" type="image/png" href="assets/LALA_AYEN_OFFICIAL_LOGO.png">
+<meta name="description" content="Lala Ayen Custom Portrait Studio: AI-assisted digital portraits and cinematic posters, single, couple, family, pet and themed styles.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#0a0a0a;color:#f0e6d3;overflow-x:hidden}
+header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#1a0a2e,#2d1b4e);border-radius:24px;margin:20px}
+header h1{font-size:2.5rem;color:#d4af37;letter-spacing:4px}
+header p{margin-top:10px;color:#c9b8e8;font-size:1.1rem}
+section{max-width:960px;margin:0 auto;padding:60px 20px}
+h2{color:#d4af37;font-size:1.6rem;margin-bottom:30px;text-align:center}
+.packages{display:grid;grid-template-columns:1fr 1fr 1fr;gap:25px}
+@media(max-width:700px){.packages{grid-template-columns:1fr}}
+.card{background:#1a1a2e;border:1px solid #d4af37;padding:25px;border-radius:8px;text-align:center;position:relative}
+.card.popular{border:2px solid #d4af37;box-shadow:0 0 20px rgba(212,175,55,0.3)}
+.badge{background:#d4af37;color:#0a0a0a;font-size:0.75rem;font-weight:bold;padding:4px 12px;border-radius:20px;position:absolute;top:-12px;left:50%;transform:translateX(-50%)}
+.card h3{color:#d4af37;font-size:1.3rem;margin-bottom:8px}
+.price{font-size:2rem;color:#f0e6d3;font-weight:bold;margin:10px 0}
+.price span{font-size:1rem;color:#c9b8e8}
+.card ul{list-style:none;text-align:left;margin:15px 0;color:#c9b8e8;font-size:0.9rem}
+.card ul li{padding:5px 0;border-bottom:1px solid #2d1b4e}
+.card ul li::before{content:"✓ ";color:#d4af37}
+.card button{background:#d4af37;color:#0a0a0a;border:none;padding:12px 30px;border-radius:4px;font-size:1rem;cursor:pointer;font-weight:bold;margin-top:15px;width:100%}
+.card button:hover{background:#f0d060}
+.mockups{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:700px){.mockups{grid-template-columns:1fr}}
+.mockup-card{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;text-align:center}
+.mockup-card .icon{font-size:2.5rem;margin-bottom:10px}
+.mockup-card h4{color:#d4af37;margin-bottom:8px}
+.mockup-card p{color:#c9b8e8;font-size:0.85rem}
+.mockup-card .demo-tag{background:#2d1b4e;color:#c9b8e8;font-size:0.7rem;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.what-you-get{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:15px;margin-top:20px}
+@media(max-width:700px){.what-you-get{grid-template-columns:1fr 1fr}}
+.get-card{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;text-align:center}
+.get-card .icon{font-size:2rem;margin-bottom:8px}
+.get-card p{color:#c9b8e8;font-size:0.9rem}
+.process-steps{counter-reset:step;margin-top:20px}
+.step{display:flex;align-items:center;gap:15px;padding:15px;margin-bottom:10px;background:#1a1a2e;border-radius:8px;border-left:3px solid #d4af37}
+.step-num{background:#d4af37;color:#0a0a0a;font-weight:bold;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step p{color:#c9b8e8}
+.faq{margin-top:20px}
+.faq-item{background:#1a1a2e;border:1px solid #2d1b4e;border-radius:8px;padding:20px;margin-bottom:10px}
+.faq-item h4{color:#d4af37;margin-bottom:8px}
+.faq-item p{color:#c9b8e8;font-size:0.9rem}
+.ai-section{background:#0f0f1e;padding:60px 20px}
+.ai-box{max-width:700px;margin:0 auto;text-align:center}
+.ai-box textarea{width:100%;background:#1a1a2e;border:1px solid #444;color:#f0e6d3;padding:15px;border-radius:4px;height:100px;font-size:1rem;margin:20px 0}
+.ai-box button{background:#2d1b4e;color:#d4af37;border:1px solid #d4af37;padding:12px 30px;border-radius:4px;cursor:pointer;margin:5px}
+#ai-result{margin-top:20px;background:#1a1a2e;padding:20px;border-radius:4px;display:none;text-align:left;line-height:1.7}
+form{background:#1a1a2e;padding:40px;border-radius:8px;border:1px solid #333}
+form input,form textarea,form select{width:100%;background:#0a0a0a;border:1px solid #444;color:#f0e6d3;padding:12px;margin-bottom:15px;border-radius:4px;font-size:1rem}
+form button{background:#d4af37;color:#0a0a0a;border:none;padding:14px 40px;border-radius:4px;font-size:1rem;cursor:pointer;font-weight:bold}
+#msg{margin-top:15px;padding:10px;border-radius:4px;display:none}
+footer{text-align:center;padding:30px;color:#666;font-size:0.9rem}
+.note{background:#1a1a2e;border-left:3px solid #d4af37;padding:15px;margin-top:20px;color:#c9b8e8;font-size:0.85rem;border-radius:4px}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal-box{background:#1a1a2e;border:2px solid #c9a84c;border-radius:16px;padding:2rem;width:90%;max-width:420px;color:#fff;box-shadow:0 0 40px rgba(201,168,76,.4);position:relative}
+.modal-box h3{color:#c9a84c;font-size:1.3rem;margin-bottom:.3rem}
+.modal-box .pkg-price{font-size:2rem;font-weight:900;color:#fff;margin-bottom:1.2rem}
+.modal-box label{display:block;font-size:.85rem;color:#aaa;margin-bottom:.3rem}
+.modal-box input{width:100%;padding:.7rem 1rem;border-radius:8px;border:1px solid #444;background:#0f0f1a;color:#fff;font-size:1rem;margin-bottom:1rem;box-sizing:border-box}
+.modal-box input:focus{outline:none;border-color:#c9a84c}
+.modal-pay-btn{width:100%;padding:.9rem;background:linear-gradient(135deg,#c9a84c,#a07828);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:.5rem}
+.modal-pay-btn:hover{background:linear-gradient(135deg,#e0bf6a,#c9a84c)}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#aaa;font-size:1.5rem;cursor:pointer}
+.modal-close:hover{color:#fff}
+.modal-msg{margin-top:.8rem;font-size:.9rem;min-height:1.2em}
+.modal-msg.error{color:#ff6b6b}
+.modal-msg.success{color:#6bff9e}
+#samples{padding:5rem 2rem;background:linear-gradient(180deg,#0a0a1a 0%,#13132b 100%)}
+#samples h2{text-align:center;font-size:2rem;color:#c9a84c;margin-bottom:.5rem}
+#samples .section-sub{text-align:center;color:#aaa;margin-bottom:3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.gallery-card{background:#1a1a2e;border:1px solid #333;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(201,168,76,.25);border-color:#c9a84c}
+.plaza-art-card{max-width:400px;margin:0 auto}
+.gallery-thumb-placeholder{width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0f1a,#1e1e3e);font-size:3rem;color:#c9a84c44}
+.gallery-info{padding:1rem}
+.gallery-info h4{color:#c9a84c;margin:0 0 .3rem;font-size:1rem}
+.gallery-info p{color:#aaa;font-size:.85rem;margin:0}
+.gallery-tag{display:inline-block;background:#c9a84c22;color:#c9a84c;font-size:.75rem;padding:.2rem .6rem;border-radius:20px;margin-top:.5rem;border:1px solid #c9a84c55}
+.gallery-demo-label{font-size:.7rem;color:#ff9900;background:#ff990022;border:1px solid #ff990055;padding:.15rem .5rem;border-radius:10px;margin-left:.5rem}
+.gallery-btn{display:inline-block;margin-top:.8rem;padding:.5rem 1rem;background:#c9a84c22;color:#c9a84c;border:1px solid #c9a84c;border-radius:8px;font-size:.85rem;cursor:pointer;text-decoration:none}
+.gallery-btn:hover{background:#c9a84c;color:#000}
+.gallery-upload-note{text-align:center;margin-top:2rem;color:#666;font-size:.85rem}
+
+</style>
+
+<link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="plaza-cart.css?v=20261030c">
+<style>/* site-wide account/cart bar + account dialog (same as the home page) */
+.studio-topbar{display:flex;justify-content:flex-end;padding:12px 20px 0}
+.site-account-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.site-account-actions button{background:#d4b477;color:#2c1748;border:0;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;cursor:pointer}
+.account-dialog{border:0;border-radius:16px;padding:28px;max-width:min(470px,95vw);width:100%;max-height:95vh;overflow:auto;background:#fff;color:#27153e;box-shadow:0 20px 80px #14072777}
+.account-dialog::backdrop{background:#180d2bc4}.account-dialog h2{font-size:25px;margin:0;color:#27153e;text-align:left}
+.dialog-heading{display:flex;justify-content:space-between;gap:10px;align-items:center}.dialog-close{background:none;border:0;font-size:24px;cursor:pointer}
+.account-dialog form{display:grid;gap:13px;margin-top:18px;background:#fff;padding:0;border:0}
+.account-dialog label{font-size:12px;font-weight:800;display:grid;gap:6px;color:#27153e}
+.account-dialog input{padding:12px;border:1px solid #cdbddd;border-radius:9px;font-size:15px;min-width:0;background:#fff;color:#27153e;margin:0}
+.account-actions{display:flex;gap:7px;flex-wrap:wrap}.account-actions button{padding:11px;border:1px solid #a694b8;background:#f6f0fa;color:#382053;border-radius:8px;cursor:pointer;font-weight:700;width:auto;margin:0;font-size:14px}
+.account-actions button:first-child{background:#372055;color:#fff}.account-dialog p{font-size:13px;line-height:1.6}
+.studio-chat-note{display:none;margin-top:15px;background:#1a1a2e;padding:15px;border-radius:4px;color:#c9b8e8;line-height:1.6}
+.studio-flyers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:10px 0 30px}
+.studio-flyers img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid #2d1b4e}
+.studio-attach-note{color:#c9b8e8;font-size:.9rem;margin-bottom:15px;background:#0a0a0a;border:1px dashed #d4af37;border-radius:8px;padding:12px}
+</style>
+</head>
+<body data-studio-page>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">LALA AYEN</div>
+  <nav class="sidebar-nav" aria-label="Plaza sidebar">
+    <a href="index.html#top" class="sidebar-link">Home</a>
+    <a href="index.html#music" class="sidebar-link">Lala Ayen Music</a>
+    <a href="index.html#vibes-title" class="sidebar-link">Lala Ayen Vibes</a>
+    <a href="creative-studio.html" class="sidebar-link">Creative Studio</a>
+    <a href="custom-portrait-studio.html" class="sidebar-link active" aria-current="page">Portrait Studio</a>
+    <a href="index.html#books" class="sidebar-link">Books</a>
+    <a href="index.html#marketplace" class="sidebar-link">Shop</a>
+    <a href="index.html#contact" class="sidebar-link">Contact</a>
+    <a href="LALA_AYEN_GLOBAL_SHOP_MARK1.html" class="sidebar-link">Global Shop</a>
+    <a href="LALA_LINGERIE_MARK1.html" class="sidebar-link">Lingerie Boutique</a>
+    <a href="LALA_GYM_SPORTS_MARK1.html" class="sidebar-link">Gym &amp; Sports</a>
+    <a href="LALA_TEMPLE_MARK1.html" class="sidebar-link">Lala Temple</a>
+    <a href="LALA_WONDERLAND_MARK1.html" class="sidebar-link">Lala Wonderland</a>
+    <a href="LALA_PET_PARADISE_MARK1.html" class="sidebar-link">Pet Paradise</a>
+    <a href="LALA_AYEN_DIY_CRAFT_MARK1.html" class="sidebar-link">DIY &amp; Craft</a>
+    <a href="LALA_AYEN_MERCHANTS_MARK1.html" class="sidebar-link">Merchants</a>
+    <a href="LALA_AYEN_AFFILIATE_MARKETING_MARK1.html" class="sidebar-link">Affiliate Marketing</a>
+    <a href="LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html" class="sidebar-link">Author Bookstore</a>
+    <a href="PRELOVED_BOOKSTORE_MARK1.html" class="sidebar-link">Preloved Bookstore</a>
+    <a href="LALA_IRON_THRIFT_STORE_MARK1.html" class="sidebar-link">Thrift Store</a>
+  </nav>
+  <div class="sidebar-footer">© 2026 Lala Ayen Global Plaza Mall</div>
+</div>
+<button class="sidebar-toggle" id="sidebarToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open sidebar">☰</button><div class="main-content">
+<div class="studio-topbar"><div class="site-account-actions"><button data-auth-open="" type="button">Sign in / Create account</button><button data-signout="" hidden="" type="button">Sign out</button></div></div>
+<header>
+<img src="assets/LALA_AYEN_OFFICIAL_LOGO.png" alt="Lala Ayen official logo" style="height:80px;margin:10px"><img src="assets/LALA_AYEN_VIBE_OFFICIAL_LOGO.png" alt="Lala Ayen Vibes logo" style="height:80px;margin:10px">
+<h1>Custom Portrait Studio</h1>
+<p>LALA AYEN Global Plaza Mall</p>
+</header>
+
+<section id="custom-portrait-studio">
+<div class="ai-section">
+<div class="ai-box">
+<h2>Questions? Ask our Plaza Guide</h2>
+<p style="color:#c9b8e8;margin-bottom:10px">Styles, packages, timing and how to book.</p>
+<button type="button" data-open-chat onclick="openPlazaChat('portraits','ps-chat-note')">✦ Open the Plaza Guide chat</button>
+<div class="studio-chat-note" id="ps-chat-note" role="status"></div>
+</div>
+</div>
+<h2>Custom Portraits &amp; Cinematic Posters</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card plaza-art-card">
+      <img src="assets/portrait-gallery.webp" alt="Custom Portraits and Cinematic Posters sample concepts" style="width:100%;height:auto;display:block;border-radius:8px;">
+      <div class="gallery-info">
+        <p style="font-size:0.85rem;color:#c9b8e8;margin-top:10px;">Sample Concept — AI-assisted artwork. High-resolution digital files only; printing and shipping not included.</p>
+          <a class="gallery-btn" href="#portrait-order-form" onclick="checkout('portrait');return false;">Request This Style</a>
+      <h4 style="color:#d4af37;margin-bottom:10px;">Pricing</h4>
+  <ul data-studio-list="portraits" style="list-style:none;color:#c9b8e8;font-size:0.9rem;"></ul>
+  <div data-studio-bundles hidden><h4 style="color:#d4af37;margin:15px 0 10px;">Bundles</h4>
+  <ul data-studio-list="bundles" style="list-style:none;color:#c9b8e8;font-size:0.9rem;"></ul></div></div>
+    </div>
+  </div>
+<h3 style="color:#d4af37;margin:30px 0 15px;text-align:center;">See What You'll Receive</h3>
+<p style="text-align:center;color:#c9b8e8;margin-bottom:30px;">Sample concepts from our portrait flyers. AI-assisted artwork; digital files only.</p>
+<div class="studio-flyers">
+<img src="assets/portrait-flyer-prices.webp" alt="Lala Ayen Digital Custom Portrait Studio flyer: individual, couple, family, pet and special theme portraits" width="1000" height="1500" loading="lazy">
+<img src="assets/portrait-flyer-samples.webp" alt="Lala Ayen custom fantasy portraits and movie-style poster samples" width="1000" height="1250" loading="lazy">
+</div>
+<!-- Arlene's original sample images/videos (media/sample-royal-queen.png, sample-action-hero.png, sample-fantasy-angel.png,
+     sample-family-portrait.png, sample-video-royal.mp4, sample-video-biker.mp4) are not in the repo or git history.
+     Re-enable this block after the files are added to /media.
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:30px;">
+<div class="faq-item" style="text-align:center;padding:0;overflow:hidden;">
+<img src="media/sample-royal-queen.png" alt="Royal Queen custom portrait sample" style="width:100%;display:block;">
+<p style="padding:15px;color:#c9a84c;font-weight:700;">Royal / Queen</p>
+</div>
+<div class="faq-item" style="text-align:center;padding:0;overflow:hidden;">
+<img src="media/sample-action-hero.png" alt="Action Hero custom portrait sample" style="width:100%;display:block;">
+<p style="padding:15px;color:#c9a84c;font-weight:700;">Action Hero</p>
+</div>
+<div class="faq-item" style="text-align:center;padding:0;overflow:hidden;">
+<img src="media/sample-fantasy-angel.png" alt="Fantasy Angel custom portrait sample" style="width:100%;display:block;">
+<p style="padding:15px;color:#c9a84c;font-weight:700;">Fantasy / Angel</p>
+</div>
+<div class="faq-item" style="text-align:center;padding:0;overflow:hidden;">
+<img src="media/sample-family-portrait.png" alt="Family Portrait custom portrait sample" style="width:100%;display:block;">
+<p style="padding:15px;color:#c9a84c;font-weight:700;">Family Portrait</p>
+</div>
+</div>
+<p style="text-align:center;color:#c9b8e8;margin-bottom:15px;">See it in motion:</p>
+<div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;">
+<div style="max-width:400px;">
+<video controls style="width:100%;border-radius:12px;" src="media/sample-video-royal.mp4"></video>
+</div>
+<div style="max-width:400px;">
+<video controls style="width:100%;border-radius:12px;" src="media/sample-video-biker.mp4"></video>
+</div>
+
+-->
+</section>
+
+
+<section id="portrait-order-form">
+<h2>Request Your Portrait</h2>
+<p style="text-align:center;color:#c9b8e8;margin-bottom:30px">Tell us what you'd like and we'll follow up by email. Your email app opens with your request so you can attach your reference photo.</p>
+<form onsubmit="return false;" id="portraitOrderForm">
+<input type="text" id="portrait-name" placeholder="Your Name *" required style="width:100%;padding:.9rem 1rem;border-radius:8px;border:1px solid #444;background:#1a1a2e;color:#fff;margin-bottom:12px;box-sizing:border-box">
+<input type="email" id="portrait-email" placeholder="Your Email *" required style="width:100%;padding:.9rem 1rem;border-radius:8px;border:1px solid #444;background:#1a1a2e;color:#fff;margin-bottom:12px;box-sizing:border-box">
+<select id="portrait-style" required data-studio-select style="width:100%;padding:.9rem 1rem;border-radius:8px;border:1px solid #444;background:#1a1a2e;color:#fff;margin-bottom:12px;box-sizing:border-box"><option value="">Select a portrait style... *</option></select>
+<p class="studio-attach-note">📎 <strong>Reference photo(s):</strong> after you press “Send Portrait Request”, your email app opens with your details filled in. Please <strong>attach your photo(s) to that email</strong> before sending it to lalaayenglobalplaza@gmail.com.</p>
+<textarea id="portrait-instructions" placeholder="Special instructions (names, styling, background, occasion, etc.)" rows="5" style="width:100%;padding:.9rem 1rem;border-radius:8px;border:1px solid #444;background:#1a1a2e;color:#fff;margin-bottom:15px;box-sizing:border-box"></textarea>
+<button type="button" class="modal-pay-btn" onclick="submitPortraitOrder()">✉ Send Portrait Request</button>
+<div id="portrait-order-msg" style="margin-top:.8rem;font-size:.9rem;color:#9fd8a0"></div>
+</form>
+</section>
+
+<section id="portrait-reviews">
+<h2>Customer Reviews</h2>
+<p style="text-align:center;color:#c9b8e8;margin-bottom:30px">Real reviews from customers who ordered a portrait.</p>
+<div id="portrait-reviews-list" style="max-width:700px;margin:0 auto 30px;">
+<p style="text-align:center;color:#888">Reviews will appear here once the review system is connected.</p>
+</div>
+</section>
+
+</div>
+
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <h3 id="modal-pkg-name">Package</h3>
+    <div class="pkg-price" id="modal-pkg-price"></div>
+      <div id="portrait-type-wrap" style="display:none;margin-bottom:15px;"><label>Choose Style</label><select id="modal-portrait-type" data-studio-select></select></div>
+    <label>Your Name</label>
+    <input type="text" id="modal-name" placeholder="e.g. Maria Santos" />
+    <label>Email Address</label>
+    <input type="email" id="modal-email" placeholder="you@example.com" />
+    <button class="modal-pay-btn" id="modal-pay-btn" onclick="submitPayment()">&#x2709; Email to book</button>
+<div style="text-align:center;margin:10px 0;color:#9fd8a0;font-size:0.8rem">🔒 Secure payments powered by Square</div>
+<div style="text-align:center;color:#888;font-size:0.75rem;margin-top:4px">Visa &bull; Mastercard &bull; Amex &bull; Discover</div>
+    <div class="modal-msg" id="modal-msg"></div>
+  </div>
+</div>
+
+
+<dialog aria-labelledby="account-title" class="account-dialog" id="account-dialog"><div class="dialog-heading"><h2 id="account-title">Customer account</h2><button aria-label="Close" class="dialog-close" data-auth-close="" type="button">×</button></div><p id="account-intro">Create an account, sign in, or reset a password securely.</p><form id="account-form"><label>Email<input autocomplete="email" id="account-email" maxlength="254" placeholder="you@example.com" required="" type="email"/></label><label>Password<input autocomplete="current-password" id="account-password" minlength="6" required="" type="password"/></label><div class="account-actions"><button id="account-submit" type="submit">Sign in</button><button id="account-create" type="button">Create account</button><button id="account-reset" type="button">Forgot password?</button></div><p id="account-status" role="status">Loading your account…</p></form></dialog>
+<script defer src="plaza-translate.js?v=20261030a"></script><script defer src="plaza-auth.js?v=20261030a"></script><script defer src="plaza-cart.js?v=20261030c"></script><script defer src="plaza-studio.js?v=20261030a"></script>
+</body>
+</html>

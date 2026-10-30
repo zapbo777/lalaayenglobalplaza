@@ -19,10 +19,18 @@
 .cs-btn--line{color:var(--gold-100);background:transparent}
 .cs-btn--line:hover{background:rgba(239,216,142,.12)}
 .cs-portraits{margin-top:2.4rem;display:grid;grid-template-columns:1fr;gap:1rem}
-@media(min-width:760px){.cs-portraits{grid-template-columns:2fr 1fr}}
+@media(min-width:760px){.cs-portraits{grid-template-columns:2fr 1fr}.cs-portraits:has(> [data-studio-bundles][hidden]){grid-template-columns:1fr}}
 .cs-list{list-style:none;margin:.6rem 0 0;padding:0;columns:1;color:var(--muted);font-size:.92rem}
 @media(min-width:560px){.cs-list{columns:2}}
 .cs-list li{display:flex;justify-content:space-between;gap:.6rem;padding:.35rem 0;border-bottom:1px dashed var(--line-dark);break-inside:avoid}
 .cs-list b{color:var(--gold-100);font-weight:700}
 .cs-steps{margin:2.2rem 0 0;padding-left:1.2rem;color:var(--muted);line-height:1.7}
 .cs-note{margin-top:1.4rem;font-size:.82rem;color:var(--muted)}
+.cs-card[hidden],[data-studio-bundles][hidden]{display:none!important}
+/* Homepage music video (The Wheel of Life) inside the Music section */
+.mv-feature{margin:2rem 0 0;display:grid;grid-template-columns:1fr;gap:1.2rem;align-items:center;border:1px solid var(--line-dark);padding:1.4rem}
+@media(min-width:900px){.mv-feature{grid-template-columns:.8fr 1.4fr;padding:1.8rem}}
+.mv-feature__meta h3{font-family:var(--serif);font-weight:400;font-size:2rem;margin:.2rem 0 .5rem;color:var(--gold-100)}
+.mv-feature__meta h3 em{color:var(--gold-300)}
+.mv-feature__meta p{color:var(--muted);margin:0}
+.mv-feature__video{width:100%;height:auto;display:block;background:#000;border:1px solid var(--line-dark)}
