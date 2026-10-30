@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030a';
+  var VERSION = '20261030b';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -29,9 +29,11 @@
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'toby', 'lingerie': 'gemini', 'gym-sports': 'echo', 'temple': 'mira', 'wonderland': 'peter',
     'pet-paradise': 'ethan', 'author-bookstore': 'toby', 'preloved-books': 'gemini', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'toby', 'creative-studio': 'gemini', 'portrait-studio': 'echo',
+    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'toby', 'creative-studio': 'echo', 'portrait-studio': 'gemini',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'toby'
   };
+  // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
+  var PAGE_INTRO = { 'creative-studio': ' I help with the Creative Studio.' };
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -135,7 +137,7 @@
     var p = el('p', 'lala-chat-msg ' + (from === 'you' ? 'from-you' : 'from-bot')); var b = el('strong', null, from === 'you' ? 'You' : persona.name);
     var t = el('span', null, text); p.append(b, t); log.append(p); log.scrollTop = log.scrollHeight; return t;
   }
-  function greet() { return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human). Tap a question below or type your own." : ', your Lala Plaza helper. Tap a question below.'); }
+  function greet() { var intro = PAGE_INTRO[pageId] || ''; return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human)." + intro + ' Tap a question below or type your own.' : ', your Lala Plaza helper.' + intro + ' Tap a question below.'); }
   var lastFocus = null;
   function open(o) {
     var topic = o && o.topic && TOPICS[o.topic] ? o.topic : PAGE_TOPIC[pageId];
