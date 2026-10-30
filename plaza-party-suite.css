@@ -1,0 +1,30 @@
+/* Party Creative Suite section (Lala Party Shop). Uses the shelf page colors: purple, violet, gold. */
+.party-suite{margin:26px 0 30px;padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,#fff 0%,#fbf7ff 55%,#fff8ea 100%);box-shadow:var(--shadow)}
+.party-suite .eyebrow{color:var(--gold-dark)}
+.party-suite h2{margin:6px 0 4px;font-family:Georgia,serif;font-weight:400;font-size:34px;color:var(--purple)}
+.ps-tagline{margin:0 0 6px;font-family:Georgia,serif;font-style:italic;font-size:19px;color:var(--gold-dark)}
+.ps-lead{margin:0 0 16px;color:var(--muted);max-width:720px}
+.ps-badge{display:inline-block;margin:0 0 14px;padding:5px 11px;border-radius:99px;background:#ecfbef;color:#1d6b33;font-size:12px;font-weight:800}
+.ps-top{display:grid;grid-template-columns:minmax(220px,330px) 1fr;gap:24px;align-items:start}
+.ps-flyer img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.ps-flyer small{display:block;margin-top:6px;font-size:12px}.ps-flyer a{color:var(--violet);font-weight:700}
+.party-suite h3{margin:22px 0 10px;font-family:Georgia,serif;font-weight:400;font-size:23px;color:var(--purple)}
+.ps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px}
+.ps-card{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.ps-card h4{margin:0;font-size:13.5px;line-height:1.3;color:var(--ink)}
+.ps-icon{font-size:22px}
+.ps-price{font-size:20px;color:var(--purple)}
+.ps-card ul{margin:2px 0 4px;padding-left:18px;font-size:12.5px;color:var(--muted)}
+.ps-card .ps-req{margin-top:auto;padding:9px 10px;font-size:12px}
+.ps-card--bundle{background:linear-gradient(170deg,#fff,#fbf3ff);border-color:#dccbf0}
+.ps-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.ps-steps li{counter-increment:s;padding:12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:13px}
+.ps-steps li::before{content:counter(s);display:grid;place-items:center;width:26px;height:26px;margin-bottom:6px;border-radius:50%;background:var(--purple);color:#f4db9d;font-weight:800}
+.ps-steps small{display:block;color:var(--muted);margin-top:3px}
+.ps-formats{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.ps-formats li{padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:#fff;font-size:12.5px;font-weight:700;color:var(--purple)}
+.ps-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.ps-actions .button{cursor:pointer}
+.ps-note{margin:10px 0 0;font-size:12.5px;color:var(--muted)}
+@media(max-width:850px){.ps-top{grid-template-columns:1fr}}
+@media(max-width:580px){.party-suite{padding:19px}.party-suite h2{font-size:27px}.ps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030c';
+  var VERSION = '20261030d';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -19,7 +19,10 @@
     // Echo is also a real Core HQ bot. Until its link is connected, this page helper uses the shared Plaza AI.
     echo:   { name: 'Echo',   greeting: "Hi, I'm Echo", coreHqEndpoint: null /* TODO: Echo's Core HQ endpoint from Peter */ },
     mira:   { name: 'Mira',   greeting: "Hi, I'm Mira", coreHqEndpoint: null },
-    peter:  { name: 'Peter',  greeting: "Hi, I'm Peter", coreHqEndpoint: null }
+    peter:  { name: 'Peter',  greeting: "Hi, I'm Peter", coreHqEndpoint: null },
+    // Party Shop helpers: Gerio hosts the Party Shop page, Verio answers from the Party Creative Suite button.
+    gerio:  { name: 'Gerio',  greeting: "Hi, I'm Gerio", coreHqEndpoint: null },
+    verio:  { name: 'Verio',  greeting: "Hi, I'm Verio", coreHqEndpoint: null }
   };
   // Other Core HQ bots that are not page helpers yet.
   var CORE_HQ = { ara: { name: 'Ara', endpoint: null /* TODO: Ara's Core HQ endpoint from Peter */ } };
@@ -29,11 +32,12 @@
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'toby', 'lingerie': 'gemini', 'gym-sports': 'echo', 'temple': 'mira', 'wonderland': 'peter',
     'pet-paradise': 'ethan', 'author-bookstore': 'toby', 'preloved-books': 'gemini', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'toby', 'creative-studio': 'echo', 'portrait-studio': 'ethan',
+    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ethan',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'toby'
   };
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
   var PAGE_INTRO = { 'creative-studio': ' I help with the Creative Studio.' };
+  var PERSONA_INTRO = { verio: ' I help with the Party Creative Suite.' };
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -73,14 +77,21 @@
       ['Are the sample clips finished orders?', 'No. The sample clips show styles, not a finished customer video.']],
     books: [['Can I buy a book here?', 'The Author Bookstore and Preloved Bookstore are coming soon. Email ' + EMAIL + ' to ask about titles.'],
       ['Can I get a book trailer?', 'Yes. Ask about a promotional video in the Creative Studio or by email.']],
+    party: [['How much are custom invitations?', 'Party Creative Suite (digital designs): Birthday Invitation $7.99, Baby Shower $9.99, Graduation $9.99, Anniversary $9.99, Christening/Baptism $9.99, Quinceañera/Sweet 16 $12.99, Wedding Invitation $14.99.'],
+      ['How much are cards and posters?', "Valentine's Card $5.99, Thank You Card $5.99, Holiday Card $5.99, Party Poster $14.99, Movie-Style Poster $19.99, Memorial Tribute $19.99, Fantasy Portrait (Party Suite) $9.99."],
+      ['What bundles do you have?', 'Party Essentials $19.99, Birthday Deluxe $29.99, Wedding Memories $39.99, Family Celebration $39.99, Ultimate Creative $59.99 (5 custom designs). See each bundle on the Party Shop page.'],
+      ['How do I order a design?', 'Tap "Email to request" on the design you want and attach your photos to the email. We confirm your design and total by email, then you pay the agreed amount (signed-in customers) and receive your files.'],
+      ['What formats do I get?', 'Digital file (hi-res), print-ready PDF, video file (MP4) and multiple sizes for social media. All are digital: nothing is shipped.'],
+      ['Do you sell balloons and party supplies?', 'Our physical party collections are coming soon. The Party Creative Suite (digital designs) is available to order now.']],
     contact: [['How do I contact the Plaza?', 'Email ' + EMAIL + '. You can also prepare an email with the contact form on the Plaza Home page.']]
   };
-  var PAGE_TOPIC = { 'creative-studio': 'videos', 'portrait-studio': 'portraits', 'author-bookstore': 'books', 'preloved-books': 'books' };
+  var PAGE_TOPIC = { 'party-shop': 'party', 'creative-studio': 'videos', 'portrait-studio': 'portraits', 'author-bookstore': 'books', 'preloved-books': 'books' };
 
   function fallback(q) {
     for (var i = 0; i < KEYS.length; i++) if (KEYS[i][0].test(q)) return SHOP[KEYS[i][1]][1];
     if (/(portrait|larawan|retrato)/i.test(q)) return TOPICS.portraits[0][1];
     if (/(video|vid)/i.test(q)) return TOPICS.videos[0][1];
+    if (/(invitation|invite|card|poster|bundle|imbitasyon|invitaci|tarjeta|banner)/i.test(q)) return TOPICS.party[0][1];
     return 'Each product card shows its price, sizes and colors. For anything else, please email ' + EMAIL + ' (include your order number if you have one) and we will help you.';
   }
 
@@ -114,7 +125,7 @@
   var head = el('div', 'lala-chat-head'), who = el('div'), kicker = el('small', null, 'LALA PLAZA AI HELPER'), name = el('h2', null, persona.name);
   name.id = 'lala-chat-name'; var sub = el('span', 'lala-chat-sub', page[1] + ' helper');
   var x = el('button', 'lala-chat-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Close chat');
-  who.append(kicker, name, sub); head.append(el('span', 'lala-chat-avatar', persona.name.charAt(0)), who, x);
+  who.append(kicker, name, sub); var avatar = el('span', 'lala-chat-avatar', persona.name.charAt(0)); head.append(avatar, who, x);
   var log = el('div', 'lala-chat-log'); log.setAttribute('role', 'log'); log.setAttribute('aria-live', 'polite');
   var opts = el('div', 'lala-chat-options'); opts.setAttribute('aria-label', 'Quick questions');
   var form = el('form', 'lala-chat-form'); form.hidden = true;
@@ -137,10 +148,16 @@
     var p = el('p', 'lala-chat-msg ' + (from === 'you' ? 'from-you' : 'from-bot')); var b = el('strong', null, from === 'you' ? 'You' : persona.name);
     var t = el('span', null, text); p.append(b, t); log.append(p); log.scrollTop = log.scrollHeight; return t;
   }
-  function greet() { var intro = PAGE_INTRO[pageId] || ''; return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human)." + intro + ' Tap a question below or type your own.' : ', your Lala Plaza helper.' + intro + ' Tap a question below.'); }
+  function greet() { var intro = PERSONA_INTRO[personaId] || PAGE_INTRO[pageId] || ''; return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human)." + intro + ' Tap a question below or type your own.' : ', your Lala Plaza helper.' + intro + ' Tap a question below.'); }
+  var pagePersonaId = personaId;
+  function setPersona(id) { // a button can open the chat with another helper (e.g. Verio for the Party Creative Suite)
+    if (id === personaId) return; personaId = id; persona = PERSONAS[id]; hist = [];
+    name.textContent = persona.name; avatar.textContent = persona.name.charAt(0); input.placeholder = 'Ask ' + persona.name + ' a question…';
+  }
   var lastFocus = null;
   function open(o) {
     var topic = o && o.topic && TOPICS[o.topic] ? o.topic : PAGE_TOPIC[pageId];
+    setPersona(o && o.persona && PERSONAS[o.persona] ? o.persona : pagePersonaId);
     lastFocus = document.activeElement; log.replaceChildren(); opts.replaceChildren(); hist = [];
     setNote();
     line('bot', greet());
