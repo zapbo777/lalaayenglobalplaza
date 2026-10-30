@@ -1,0 +1,28 @@
+/* Creative Studio section (restored from the Oct 19 original site). Scoped to .cs- classes. */
+.cs-section{background:var(--plum-950);color:var(--gold-100)}
+.cs-section .kicker{color:var(--gold-300)}
+.cs-section h2,.cs-section h3{color:var(--gold-100)}
+.cs-lead{max-width:62ch;color:var(--muted);margin:.6rem 0 0}
+.cs-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2rem}
+@media(min-width:760px){.cs-grid{grid-template-columns:repeat(3,1fr)}}
+.cs-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line-dark);border-radius:14px;padding:1.4rem 1.3rem;background:var(--plum-900)}
+.cs-card--popular{border-color:var(--gold-400);box-shadow:0 0 0 1px var(--gold-400) inset}
+.cs-badge{position:absolute;top:-.75rem;left:1.2rem;background:var(--gold-300);color:var(--ink);border-radius:999px;padding:.15rem .7rem;font-size:.72rem;font-weight:800}
+.cs-tier{margin:0;color:var(--gold-300);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.cs-price{display:block;font-family:var(--serif);font-size:2.4rem;font-weight:400;line-height:1.15;color:var(--gold-100);margin:.3rem 0 .6rem}
+.cs-price small{font-family:var(--sans);font-size:.65rem;font-weight:800;letter-spacing:.1em;color:var(--gold-400)}
+.cs-card ul{margin:.4rem 0 1.1rem;padding-left:1.1rem;color:var(--muted);font-size:.9rem;line-height:1.55;flex:1}
+.cs-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.cs-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.55rem .9rem;border-radius:8px;font-weight:800;font-size:.85rem;text-decoration:none;border:1px solid var(--gold-300)}
+.cs-btn--gold{background:var(--gold-300);color:var(--ink)}
+.cs-btn--gold:hover{background:var(--gold-100)}
+.cs-btn--line{color:var(--gold-100);background:transparent}
+.cs-btn--line:hover{background:rgba(239,216,142,.12)}
+.cs-portraits{margin-top:2.4rem;display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:760px){.cs-portraits{grid-template-columns:2fr 1fr}}
+.cs-list{list-style:none;margin:.6rem 0 0;padding:0;columns:1;color:var(--muted);font-size:.92rem}
+@media(min-width:560px){.cs-list{columns:2}}
+.cs-list li{display:flex;justify-content:space-between;gap:.6rem;padding:.35rem 0;border-bottom:1px dashed var(--line-dark);break-inside:avoid}
+.cs-list b{color:var(--gold-100);font-weight:700}
+.cs-steps{margin:2.2rem 0 0;padding-left:1.2rem;color:var(--muted);line-height:1.7}
+.cs-note{margin-top:1.4rem;font-size:.82rem;color:var(--muted)}
