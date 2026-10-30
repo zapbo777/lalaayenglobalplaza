@@ -1,0 +1,46 @@
+/* Shared cart, currency and language controls (scoped lc-/lt- classes; does not change existing layout) */
+.lc-cart-button{border:1px solid #d8b781;border-radius:8px;background:#fff;color:#4a276e;padding:8px 11px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}
+.lc-cart-button b{background:#29115f;color:#fff;border-radius:99px;min-width:18px;display:inline-block;padding:2px 5px;margin-left:3px;font-size:11px;text-align:center}
+.lc-currency,.lt-lang{border:1px solid #d8b781;border-radius:8px;background:#fff;color:#4a276e;padding:7px 6px;font-weight:700;font-size:12px;max-width:150px;cursor:pointer}
+.site-account-actions .lc-cart-button,.site-account-actions .lc-currency,.site-account-actions .lt-lang{background:#fff;color:#2c1748;border:0}
+.lc-approx{display:block;font-size:11px;font-weight:600;color:#776e84;margin-top:2px}
+.lc-drawer{margin:0 0 0 auto;height:100vh;max-height:100vh;width:min(420px,100vw);border:0;padding:0;border-radius:0;box-shadow:-10px 0 40px rgba(29,14,58,.18);display:none;flex-direction:column;font-family:inherit;color:#251c37}
+.lc-drawer[open]{display:flex}
+.lc-drawer::backdrop,.lc-details::backdrop{background:rgba(20,11,39,.45)}
+.lc-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #e7e0ef}
+.lc-head h2{margin:0;font-size:18px}
+.lc-close{border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:#4a276e}
+.lc-lines{flex:1;overflow:auto;padding:10px 18px}
+.lc-empty{color:#776e84;text-align:center;margin:40px 0}
+.lc-line{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f0ebf6}
+.lc-line img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex:none}
+.lc-line-info{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;font-size:13px}
+.lc-line-info strong{font-size:13px;line-height:1.3}
+.lc-line-info small{color:#776e84}
+.lc-qty{display:flex;align-items:center;gap:6px;margin-top:4px}
+.lc-qty button{border:1px solid #e7e0ef;background:#fff;border-radius:6px;min-width:28px;height:28px;cursor:pointer;font-weight:700}
+.lc-qty .lc-remove{margin-left:auto;border:0;color:#a3324a;font-size:12px}
+.lc-foot{border-top:1px solid #e7e0ef;padding:14px 18px;display:flex;flex-direction:column;gap:8px}
+.lc-subtotal-row{display:flex;justify-content:space-between;align-items:flex-start;font-size:15px}
+.lc-subtotal-row strong{text-align:right}
+.lc-note{font-size:11px;color:#776e84;margin:0}
+.lc-primary{background:#29115f;color:#fff;border:0;border-radius:9px;padding:12px;font-weight:800;cursor:pointer;font-size:14px}
+.lc-primary:disabled,.lc-secondary:disabled{opacity:.45;cursor:not-allowed}
+.lc-secondary{background:#fff;color:#29115f;border:1px solid #d8b781;border-radius:9px;padding:10px;font-weight:700;cursor:pointer}
+.lc-test{display:inline-block;background:#dfbd77;color:#29115f;border-radius:5px;font-size:10px;padding:2px 5px;margin-left:6px;vertical-align:middle}
+.lc-status{font-size:12px;color:#4a276e;margin:0;min-height:1em}
+.lc-details{border:0;border-radius:14px;padding:18px;width:min(440px,94vw);max-height:90vh;overflow:auto;position:relative;color:#251c37;font-family:inherit}
+.lc-details .lc-close{position:absolute;right:10px;top:6px}
+.lc-details-img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px}
+.lc-details h3{margin:10px 0 4px;font-size:16px}
+.lc-details-price{font-weight:800;font-size:17px;margin:4px 0}
+.lc-details-desc{font-size:13px;color:#4c4459;white-space:pre-line}
+.lc-details-form{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;font-size:13px}
+.lc-details-form select,.lc-details-form input{margin-left:4px;padding:6px;border:1px solid #e7e0ef;border-radius:7px}
+.lc-qty-input{width:64px}
+.lc-details .lc-primary{width:100%}
+/* hide the Google Translate top bar so the header is not pushed down */
+.goog-te-banner-frame,iframe.skiptranslate,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+body{top:0!important}
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+@media (max-width:700px){.lc-currency,.lt-lang{max-width:92px;font-size:11px;padding:6px 3px}.lc-cart-button{padding:7px 8px;font-size:11px}.topbar-actions,.site-account-actions{flex-wrap:wrap;justify-content:flex-end;row-gap:6px}}
