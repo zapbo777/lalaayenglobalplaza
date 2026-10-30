@@ -1,0 +1,66 @@
+
+/* Styles for secure public shops, account UI, ratings and guide */
+.owner-only[hidden],[hidden]{display:none!important}.shop-head-account{border:1px solid #d8b781;border-radius:8px;padding:9px 12px;color:#4a276e;background:#fff;font-weight:700;cursor:pointer}
+.store-dialog,.account-dialog{border:0;border-radius:16px;max-width:min(520px,92vw);width:100%;padding:24px;color:#29223d;box-shadow:0 10px 90px #170b357a}
+.store-dialog::backdrop,.account-dialog::backdrop{background:#150e2caf}
+.store-dialog-top,.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.store-dialog-top h2,.dialog-heading h2{font:normal 26px Georgia,serif;margin:0 0 15px}
+.store-dialog-top button,.dialog-close{border:0;background:none;font-size:26px;cursor:pointer}
+.store-dialog label,.account-dialog label{display:grid;gap:7px;margin:12px 0;font-size:13px;font-weight:bold}
+.store-dialog input,.store-dialog textarea,.store-dialog select,.account-dialog input{width:100%;padding:12px;border:1px solid #d1c4dc;border-radius:8px}
+.account-actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.account-actions button,.shop-chat-questions button{padding:9px 12px;border:1px solid #d7c7e6;border-radius:8px;color:#391b66;background:#fff;font-weight:700;cursor:pointer}
+.account-actions button:first-child{background:#421e7d;color:white}
+#store-chat-launch{position:fixed;bottom:20px;right:18px;z-index:8;border:0;border-radius:99px;padding:13px 17px;background:#34165d;color:white;box-shadow:0 6px 21px #240b448a;font-weight:800;cursor:pointer}
+.shop-chat-questions{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}.shop-chat-log{padding:12px;background:#f4effc;border-radius:10px;min-height:72px;line-height:1.55;font-size:14px;max-height:280px;overflow:auto}.shop-chat-hint{font-size:12px;color:#766883}
+.reviews-trigger{border:1px solid #e4daef;background:white;padding:9px 7px;border-radius:9px;color:#603e7b;text-align:left;cursor:pointer;font-size:12px;font-weight:700}.rating-icon{color:#ba8b28;font-size:15px}.review-entry{padding:12px 2px;border-bottom:1px solid #e7dfef}.review-entry p{white-space:pre-wrap;font-size:13px;margin:5px 0}.review-entry small{color:#6d6377}.store-side-links{display:flex;flex-wrap:wrap;gap:10px;margin:7px 0 15px}.store-side-links a{color:#efd5a2;text-decoration:underline}.empty-state a{color:#371265}
+.manager-modal .owner-only{display:none}.product-image img{object-fit:cover;width:100%;height:100%}.product-actions a{flex:1;padding:10px;border-radius:8px;text-align:center;font-size:12px;font-weight:800;border:1px solid #e7ddef;background:#341660;color:#fff}.product-grid .product-meta{word-break:break-word}
+@media(max-width:580px){.shop-head-account{font-size:11px;padding:7px}.store-dialog,.account-dialog{padding:17px}#store-chat-launch{bottom:14px;right:11px}}
+
+/* Final UI rules: owner controls hidden until verified Firebase user */
+.owner-only[hidden], #manager-modal[hidden], [hidden] {display:none !important}
+#manager-modal:not([hidden]) {display:block}
+#manager-modal[hidden] {visibility:hidden}
+#manager-modal{z-index:30}
+.product-actions{display:flex;align-items:center;flex-wrap:wrap}
+.product-actions button, .product-actions a{flex:1;min-width:95px;line-height:1.4}
+.product-actions button.owner-only[hidden]{display:none}
+.review-hint{font-size:12px;color:#7b638b}
+#review-form[hidden]{display:none}
+#review-list{max-height:240px;overflow:auto;margin:12px 0;padding:4px 0}
+#review-list .review-entry{padding:8px 0;border-bottom:1px solid #eee}
+#review-list .review-stars{color:#a27a1b;font-size:16px}
+#review-list p{white-space:pre-wrap;margin:6px 0}
+.owner-status{font-size:12px;color:#806f8b}
+#manager-modal .modal-head{background:#fff}
+
+/* Authentic customer ratings with optional user-submitted images or videos */
+.customer-review-snippet{margin-top:9px;padding:10px 0;border-top:1px solid #eee4f3}
+.review-section-title{font-size:11px;font-weight:800;color:#4d2c74;margin-bottom:6px;letter-spacing:.2px}
+.customer-review-snippet .reviews-trigger{display:flex;flex-direction:column;gap:4px;width:100%;border-radius:8px;text-align:left;line-height:1.5}
+.review-open-label{color:#5b3285;font-size:11px;font-weight:600}
+.review-snippet-text{font-size:12px;color:#71617d;margin:7px 1px 0;overflow-wrap:anywhere}
+.customer-reviews-dialog{max-width:min(670px,96vw)!important;max-height:90vh;overflow-y:auto}
+.comments-heading{font-size:16px;color:#452368;margin:22px 0 8px}
+.review-upload-hint{font-size:11px;line-height:1.5;color:#6e6478;font-weight:400}
+.review-entry-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.review-entry .review-stars{color:#b38927;letter-spacing:1px;font-size:18px}
+.review-entry p{overflow-wrap:anywhere;white-space:pre-wrap}
+.customer-media img,.customer-media video{max-width:100%;width:auto;max-height:290px;border-radius:10px;display:block;margin-top:9px;background:#f4eff6}
+.customer-media video{width:min(100%,430px)}
+.review-remove{border:1px solid #d0b4b4;background:transparent;border-radius:6px;font-size:11px;padding:6px;margin-top:8px;color:#8e3345;cursor:pointer}
+
+
+/* Shared gratitude card below the catalog / customer reviews */
+.store-gratitude{margin:42px 0 28px;padding:clamp(20px,4vw,38px);border:1px solid #dfc99d;border-radius:18px;background:linear-gradient(145deg,#fffcf5,#f7f0fd);box-shadow:0 10px 30px rgba(41,17,95,.07);text-align:center;color:#48375d}
+.store-gratitude h2{font:500 clamp(24px,3vw,32px)/1.3 Georgia,serif;color:#31185c;margin:9px auto 15px}
+.store-gratitude>p:not(.store-gratitude-eyebrow){line-height:1.75;max-width:730px;margin:12px auto}
+.store-gratitude-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:#906322}
+.store-gratitude-quote{font:italic 18px/1.6 Georgia,serif;color:#88602d;margin:20px auto!important}
+.store-gratitude-prayer{border-top:1px solid #dfcfb6;margin-top:20px;padding-top:23px;line-height:1.85}
+.store-gratitude-prayer strong{font:500 21px Georgia,serif;color:#381e61}
+.store-gratitude-prayer p{max-width:730px;margin:14px auto}
+.store-gratitude-signoff{font-size:13px;color:#70518a}
+
+/* Partner links and paused departments */
+.affiliate-partners{padding:26px 0 18px}.affiliate-partners h2{font:500 30px Georgia,serif;margin:0 0 8px}.affiliate-partners .affiliate-intro{color:#6d6079;font-size:13px;line-height:1.6;max-width:740px}.partner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}.partner-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:23px;border:1px solid #ded5ed;border-radius:16px;background:#fff}.partner-card .partner-icon{font-size:35px}.partner-card strong{font-size:18px}.partner-card p{font-size:13px;color:#685f74;line-height:1.5;flex:1}.partner-card a{border-radius:9px;background:#29115f;color:white;font-size:13px;font-weight:700;padding:11px 15px}.affiliate-disclosure{padding:16px 19px;background:#fff8e9;border:1px solid #edd9ab;border-radius:11px;font-size:12px;line-height:1.6;color:#665025}.coming-soon-panel{background:#fff;border:1px solid #e0d6ec;border-radius:17px;margin:27px 0;padding:32px;text-align:center}.coming-soon-panel h2{font:500 38px Georgia,serif;color:#29115f;margin:8px 0 13px}.coming-soon-panel p{font-size:14px;line-height:1.7;max-width:580px;margin:0 auto 22px}.coming-soon-panel a{display:inline-block;background:#29115f;color:#fff;padding:12px 20px;border-radius:10px;font-weight:700}.store-soon .catalog-shell{display:none!important}@media(max-width:850px){.partner-grid{grid-template-columns:1fr}}
