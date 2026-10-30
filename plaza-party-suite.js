@@ -1,4 +1,4 @@
-/* Lala Party Shop: Party Creative Suite (Arlene's "LALA AYEN LLC Party Creative Suite" flyer, Oct 30).
+/* Lala Party Shop: Party Creative Suite (Arlene's "LALA AYEN LLC Party Creative Suite" flyer, updated version Oct 30).
    ONE place for these prices: PARTY_SUITE below. The Worker chat (lala-auth-worker/src/chat.js) quotes the same prices,
    so change both when prices change. All items are digital designs (nothing is shipped).
    Ordering = same flow as Creative/Portrait Studio: "Email to request" (prefilled email; customer attaches photos) and,
@@ -22,9 +22,14 @@
       { name: 'Custom Movie-Style Poster', price: 19.99, icon: '🎬' },
       { name: 'Custom Memorial Tribute', price: 19.99, icon: '🤍' },
       // Flyer price for a single fantasy-style personal portrait. Different from the Custom Portrait Studio list (Individual $25).
-      { name: 'Custom Fantasy Portrait (Party Suite)', price: 9.99, icon: '✨' }
+      { name: 'Custom Fantasy Portrait (Party Suite)', price: 9.99, icon: '✨' },
+      // New on the updated flyer:
+      { name: 'Custom Social Media Design', price: 9.99, icon: '📱' },
+      { name: 'Custom Video Greeting (30s)', price: 24.99, icon: '🎥', video: true, note: 'Birthday videos, holiday greetings, personalized messages, slideshow videos' }
     ],
     bundles: [
+      { name: 'Complete Party Design Bundle', price: 39.99, best: true, video: true, items: ['Invitation', 'Poster', 'Cards', 'Video'] },
+      // The 5 bundles below are from the FIRST flyer and are not on the updated one: kept for now, Arlene to confirm.
       { name: 'Party Essentials Bundle', price: 19.99, items: ['Invitation', 'Matching Poster', 'Thank You Card'] },
       { name: 'Birthday Deluxe Bundle', price: 29.99, items: ['Invitation', 'Birthday Poster', '2 Matching Cards', 'Photo Collage'] },
       { name: 'Wedding Memories Bundle', price: 39.99, items: ['Save the Date', 'Wedding Invitation', 'Wedding Poster', 'Thank You Card'] },
@@ -44,10 +49,13 @@
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function card(x, bundle) {
     var c = el('article', 'ps-card' + (bundle ? ' ps-card--bundle' : ''));
+    if (x.best) c.append(el('span', 'ps-best', 'Best value'));
     if (!bundle) c.append(el('span', 'ps-icon', x.icon));
     c.append(el('h4', null, x.name), el('strong', 'ps-price', money(x.price)));
+    if (x.note) c.append(el('p', 'ps-small', x.note));
     if (bundle) { var ul = el('ul'); x.items.forEach(function (i) { ul.append(el('li', null, i)); }); c.append(ul); }
     var a = el('a', 'button outline ps-req', '✉ Email to request'); a.href = mailto(x); c.append(a);
+    if (x.video) { var v = el('button', 'ps-ask', '🎬 Ask Verio (AI Video Creator)'); v.type = 'button'; v.setAttribute('data-suite-chat', 'verio'); c.append(v); }
     return c;
   }
   function render() {
@@ -79,9 +87,11 @@
     document.querySelectorAll('#creative-suite [data-pay-signin]').forEach(function (b) { b.addEventListener('click', openSignIn); });
     document.addEventListener('lala-auth', function (e) { refreshPayLink(e.detail && e.detail.user ? e.detail.user : null); });
     if (window.LalaAuth && window.LalaAuth.user) refreshPayLink(window.LalaAuth.user);
-    // Creative Suite chat button: Verio (the Party Shop page helper is Gerio).
-    document.querySelectorAll('[data-suite-chat]').forEach(function (b) {
-      b.addEventListener('click', function () { if (window.LalaChat) window.LalaChat.open({ topic: 'party', persona: 'verio' }); else location.href = 'mailto:' + EMAIL; });
+    // Suite chat buttons: data-suite-chat="gerio" (AI Creative Artist) or "verio" (AI Video Creator, video items).
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-suite-chat]'); if (!b) return;
+      var who = b.getAttribute('data-suite-chat') === 'verio' ? 'verio' : 'gerio';
+      if (window.LalaChat) window.LalaChat.open({ topic: who === 'verio' ? 'party-video' : 'party', persona: who }); else location.href = 'mailto:' + EMAIL;
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

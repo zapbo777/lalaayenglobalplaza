@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030d';
+  var VERSION = '20261030e';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -20,7 +20,7 @@
     echo:   { name: 'Echo',   greeting: "Hi, I'm Echo", coreHqEndpoint: null /* TODO: Echo's Core HQ endpoint from Peter */ },
     mira:   { name: 'Mira',   greeting: "Hi, I'm Mira", coreHqEndpoint: null },
     peter:  { name: 'Peter',  greeting: "Hi, I'm Peter", coreHqEndpoint: null },
-    // Party Shop helpers: Gerio hosts the Party Shop page, Verio answers from the Party Creative Suite button.
+    // Party Shop helpers (updated flyer): Gerio = AI Creative Artist, hosts the Party Shop page; Verio = AI Video Creator (video items).
     gerio:  { name: 'Gerio',  greeting: "Hi, I'm Gerio", coreHqEndpoint: null },
     verio:  { name: 'Verio',  greeting: "Hi, I'm Verio", coreHqEndpoint: null }
   };
@@ -37,7 +37,7 @@
   };
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
   var PAGE_INTRO = { 'creative-studio': ' I help with the Creative Studio.' };
-  var PERSONA_INTRO = { verio: ' I help with the Party Creative Suite.' };
+  var PERSONA_INTRO = { gerio: " I'm the Party Shop's AI Creative Artist: invitations, posters, cards, portraits and photo edits.", verio: " I'm the AI Video Creator: video greetings, animated greetings, slideshows and social media videos." };
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -77,9 +77,12 @@
       ['Are the sample clips finished orders?', 'No. The sample clips show styles, not a finished customer video.']],
     books: [['Can I buy a book here?', 'The Author Bookstore and Preloved Bookstore are coming soon. Email ' + EMAIL + ' to ask about titles.'],
       ['Can I get a book trailer?', 'Yes. Ask about a promotional video in the Creative Studio or by email.']],
+    'party-video': [['How much is a video greeting?', 'Custom Video Greeting (30s) is $24.99: birthday videos, holiday greetings, personalized messages or slideshow videos, delivered as a digital MP4 file.'],
+      ['Is there a bundle with a video?', 'Yes. The Complete Party Design Bundle is $39.99: invitation, poster, cards and video.'],
+      ['How do I order a video?', 'Tap "Email to request" on the video greeting and attach your photos and message to the email. We confirm the details and total by email, then you pay the agreed amount (signed-in customers) and receive your file.']],
     party: [['How much are custom invitations?', 'Party Creative Suite (digital designs): Birthday Invitation $7.99, Baby Shower $9.99, Graduation $9.99, Anniversary $9.99, Christening/Baptism $9.99, Quinceañera/Sweet 16 $12.99, Wedding Invitation $14.99.'],
-      ['How much are cards and posters?', "Valentine's Card $5.99, Thank You Card $5.99, Holiday Card $5.99, Party Poster $14.99, Movie-Style Poster $19.99, Memorial Tribute $19.99, Fantasy Portrait (Party Suite) $9.99."],
-      ['What bundles do you have?', 'Party Essentials $19.99, Birthday Deluxe $29.99, Wedding Memories $39.99, Family Celebration $39.99, Ultimate Creative $59.99 (5 custom designs). See each bundle on the Party Shop page.'],
+      ['How much are cards and posters?', "Valentine's Card $5.99, Thank You Card $5.99, Holiday Card $5.99, Party Poster $14.99, Movie-Style Poster $19.99, Memorial Tribute $19.99, Fantasy Portrait (Party Suite) $9.99, Social Media Design $9.99, Video Greeting (30s) $24.99."],
+      ['What bundles do you have?', 'Complete Party Design Bundle $39.99 (invitation, poster, cards and video). Also: Party Essentials $19.99, Birthday Deluxe $29.99, Wedding Memories $39.99, Family Celebration $39.99, Ultimate Creative $59.99. See each bundle on the Party Shop page.'],
       ['How do I order a design?', 'Tap "Email to request" on the design you want and attach your photos to the email. We confirm your design and total by email, then you pay the agreed amount (signed-in customers) and receive your files.'],
       ['What formats do I get?', 'Digital file (hi-res), print-ready PDF, video file (MP4) and multiple sizes for social media. All are digital: nothing is shipped.'],
       ['Do you sell balloons and party supplies?', 'Our physical party collections are coming soon. The Party Creative Suite (digital designs) is available to order now.']],
@@ -91,6 +94,7 @@
     for (var i = 0; i < KEYS.length; i++) if (KEYS[i][0].test(q)) return SHOP[KEYS[i][1]][1];
     if (/(portrait|larawan|retrato)/i.test(q)) return TOPICS.portraits[0][1];
     if (/(video|vid)/i.test(q)) return TOPICS.videos[0][1];
+    if (/(video greeting|slideshow|greeting video|animated)/i.test(q)) return TOPICS['party-video'][0][1];
     if (/(invitation|invite|card|poster|bundle|imbitasyon|invitaci|tarjeta|banner)/i.test(q)) return TOPICS.party[0][1];
     return 'Each product card shows its price, sizes and colors. For anything else, please email ' + EMAIL + ' (include your order number if you have one) and we will help you.';
   }
