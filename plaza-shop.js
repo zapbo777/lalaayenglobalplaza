@@ -5,6 +5,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstati
 const $ = (selector,root=document)=>root.querySelector(selector);
 const $$ = (selector,root=document)=>Array.from(root.querySelectorAll(selector));
 const catalog = document.body.dataset.store || '';
+const storeGroup = String(document.body.dataset.storeGroup || ''); // department shelf pages (e.g. LALA AYEN TEMPLE) filter Global Shop items by category prefix
 const byId = id => document.getElementById(id);
 const mail='lalaayenglobalplaza@gmail.com';
 const ownerUid=String(window.LALA_OWNER_UID||'').trim();
@@ -47,14 +48,15 @@ function setupAuth(){
  byId('account-create')?.addEventListener('click',async()=>{if(!auth)return authText('Create-account is waiting for account setup.');if(pass().length<6)return authText('Password must be 6+ characters.');try{await createUserWithEmailAndPassword(auth,email(),pass());closeModal(dlg);}catch(e){authText('Unable to create account: '+(e.code||'Please try again.'));}});
  byId('account-reset')?.addEventListener('click',async()=>{if(!auth)return authText('Password reset is waiting for account setup.');if(!email())return authText('Enter your email first.');try{await sendPasswordResetEmail(auth,email());authText('If the address is registered, check your inbox for a password reset email.');}catch(e){authText('Unable to send reset: '+(e.code||'Try again.'));}});
 }
-async function loadPrepared(){try{const res=await fetch('products.json',{cache:'no-store'});if(res.ok){const data=await res.json();if(Array.isArray(data))inventory=data.map(clean).filter(x=>x.status==='ready'&&x.title&&x.price>=0);}}catch(e){inventory=[];}renderCatalog();}
+async function loadPrepared(){try{const res=await fetch('products.json',{cache:'no-store'});if(res.ok){const data=await res.json();if(Array.isArray(data))inventory=data.map(clean).filter(x=>x.status==='ready'&&x.title&&x.price>=0);}}catch(e){inventory=[];}renderCategories();renderCatalog();}
 function subscribeProducts(){if(!db)return loadPrepared();
  if(window.__catalogUnsub)window.__catalogUnsub();
  const q=owner?query(collection(db,'products'),where('store','==',catalog)):query(collection(db,'products'),where('store','==',catalog),where('status','==','ready'));
  window.__catalogUnsub=onSnapshot(q,s=>{inventory=s.docs.map(d=>clean({...d.data(),id:d.id}));renderCatalog();renderManager();renderBasket();},()=>notify('Unable to read products. Verify Firestore rules and settings.'));
 }
-function renderCategories(){const box=byId('category-row');if(!box)return;box.replaceChildren();for(const x of ['All',...(categories[catalog]||[])]){const button=document.createElement('button');button.type='button';button.className='category-chip'+(active===x?' active':'');button.textContent=x;button.addEventListener('click',()=>{active=x;renderCategories();renderCatalog();});box.append(button);}}
-function matching(){const x=inventory.filter(p=>(p.store===catalog||!p.store)&&((p.status==='ready')||owner)&& (active==='All'||p.category===active) &&([p.title,p.category,p.description,p.sizes].join(' ').toLowerCase().includes(term.toLowerCase())));
+function renderCategories(){const box=byId('category-row');if(!box)return;box.replaceChildren();const shelfCats=(storeGroup||!categories[catalog])?[...new Set(inventory.filter(p=>p.store===catalog&&(!storeGroup||p.category.startsWith(storeGroup))&&(p.status==='ready'||owner)).map(p=>p.category))]:null;
+ for(const x of ['All',...(shelfCats||categories[catalog]||[])]){const button=document.createElement('button');button.type='button';button.className='category-chip'+(active===x?' active':'');button.textContent=storeGroup?x.replace(storeGroup+' · ',''):x;button.addEventListener('click',()=>{active=x;renderCategories();renderCatalog();});box.append(button);}}
+function matching(){const x=inventory.filter(p=>(p.store===catalog||!p.store)&&(!storeGroup||p.category.startsWith(storeGroup))&&((p.status==='ready')||owner)&& (active==='All'||p.category===active) &&([p.title,p.category,p.description,p.sizes].join(' ').toLowerCase().includes(term.toLowerCase())));
  if(order==='low')x.sort((a,b)=>a.price-b.price);if(order==='high')x.sort((a,b)=>b.price-a.price);if(order==='title')x.sort((a,b)=>a.title.localeCompare(b.title));return x;}
 const displayStars=(r)=>r?.count>0?`<span class="rating-icon">${'★'.repeat(Math.round(r.avg))}${'☆'.repeat(5-Math.round(r.avg))}</span> ${r.avg.toFixed(1)} (${r.count})`:'☆☆☆☆☆ No reviews yet';
 let ratingCache={};
@@ -63,7 +65,7 @@ const reviewMediaTypes={ 'image/jpeg':'jpg','image/png':'png','image/webp':'webp
 
 async function pullRatings(ids){if(!db||ids.length===0)return;await Promise.all(ids.map(async id=>{try{const data=await getDocs(collection(db,'products',id,'reviews'));const rows=data.docs.map(x=>x.data());if(rows.length){ratingCache[id]={avg:rows.reduce((n,x)=>n+Number(x.stars||0),0)/rows.length,count:rows.length};reviewPreviews[id]=rows.find(r=>String(r.text||'').trim())?.text||'';}else{ratingCache[id]={avg:0,count:0};reviewPreviews[id]='';}}catch{ratingCache[id]={avg:0,count:0};}}));if(catalog)renderCatalog(true);}
 function renderCatalog(noFetch=false){const grid=byId('product-grid');if(!grid)return;const items=matching();const count=byId('results-count');if(count)count.textContent=`${items.length} ${items.length===1?'item':'items'} in this department`;
- if(items.length===0){grid.innerHTML='<div class="empty-state"><h3>No items listed yet</h3><p>Our shop is preparing real products. Check back soon, or ask about availability.</p><a href="index.html#contact">Contact the Plaza →</a></div>';return;}
+ if(items.length===0){grid.innerHTML='<div class="empty-state"><h3>'+safe(document.body.dataset.emptyTitle||'No items listed yet')+'</h3><p>Our shop is preparing real products. Check back soon, or ask about availability.</p><a href="index.html#contact">Contact the Plaza →</a></div>';return;}
  grid.innerHTML=items.map(p=>{const buyable=p.status==='ready'&&p.stock>0;const affiliate=catalog==='affiliate-marketing';const img=isHttp(p.image)||p.image.startsWith('data:image/')?`<img loading="lazy" src="${safe(p.image)}" alt="${safe(p.title)}">`:`<span class="image-placeholder"><span class="emoji">${symbols[catalog]||'🛍️'}</span><small>Photo coming soon</small></span>`;
  const edit=owner?`<button data-action="edit" data-id="${safe(p.id)}">Edit</button>`:'';
  const action=affiliate&&isHttp(p.merchantUrl)?`<a href="${safe(p.merchantUrl)}" rel="noopener noreferrer sponsored" target="_blank">Visit merchant ↗</a>`:affiliate?'<button disabled>Not available</button>':`<button type="button" class="add" data-action="add" data-id="${safe(p.id)}" ${buyable?'':'disabled'}>${buyable?'＋ Add to Quote Basket':'Unavailable'}</button>`;
