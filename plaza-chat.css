@@ -1,0 +1,29 @@
+/* Lala Plaza shared chat widget (plaza-chat.js). Same look as the homepage Plaza Guide: purple header, cream panel, gold accents. */
+.lala-chat-launch{position:fixed;z-index:58;bottom:20px;right:18px;border:2px solid #fbe2a5;border-radius:99px;padding:12px 17px;background:#f6c967;color:#211333;font:800 14px/1.2 system-ui,-apple-system,Segoe UI,Arial,sans-serif;box-shadow:0 6px 21px #240b448a;cursor:pointer}
+.lala-chat-shade{position:fixed;z-index:60;inset:0;background:rgba(0,0,0,.45)}
+.lala-chat-panel{position:fixed;z-index:61;bottom:0;right:0;width:min(440px,100%);height:min(640px,94dvh);display:flex;flex-direction:column;background:#fffaf1;color:#221332;box-shadow:0 0 40px #08030b88;border-radius:18px 18px 0 0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif;text-align:left}
+.lala-chat-shade[hidden],.lala-chat-panel[hidden],.lala-chat-form[hidden]{display:none}
+.lala-chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#2b1554;color:#fff;border-radius:18px 18px 0 0}
+.lala-chat-head>div{flex:1;min-width:0}
+.lala-chat-head small{display:block;letter-spacing:.1em;color:#f3d590;font-weight:700;font-size:10.5px}
+.lala-chat-head h2{margin:2px 0 0;font:400 22px/1.1 Georgia,'Times New Roman',serif;color:#fff}
+.lala-chat-sub{display:block;font-size:12px;color:#d9cdf0}
+.lala-chat-avatar{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#f6c967;color:#2b1554;font:700 19px Georgia,serif;border:2px solid #fbe2a5}
+.lala-chat-x{background:transparent;border:0;color:#fff;font-size:30px;line-height:1;padding:2px 8px;cursor:pointer}
+.lala-chat-log{flex:1;overflow:auto;padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.lala-chat-msg{margin:0;max-width:92%;padding:10px 12px;border-radius:12px;background:#f0e6ff;color:#281741;font-size:14.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.lala-chat-msg strong{display:block;font-size:11.5px;letter-spacing:.04em;color:#5a3d8a;margin-bottom:2px}
+.lala-chat-msg.from-you{align-self:flex-end;background:#312056;color:#fff}
+.lala-chat-msg.from-you strong{color:#f3d590}
+.lala-chat-options{display:flex;flex-wrap:wrap;gap:7px;padding:10px 14px;max-height:150px;overflow:auto;border-top:1px solid #e1d5ec}
+.lala-chat-options button{border:1px solid #bba2d8;background:#fff;color:#37235a;border-radius:12px;padding:7px 10px;font:700 12.5px/1.3 inherit;cursor:pointer}
+.lala-chat-options button:hover{background:#f1e8fd}
+.lala-chat-form{display:flex;gap:7px;padding:8px 14px 0}
+.lala-chat-form input{flex:1;min-width:0;padding:9px 12px;border:1px solid #d7c7e6;border-radius:8px;font:inherit;font-size:14px;background:#fff;color:#221332}
+.lala-chat-form button{padding:9px 14px;border:0;border-radius:8px;background:#391b66;color:#fff;font-weight:700;cursor:pointer}
+.lala-chat-form :disabled{opacity:.6}
+.lala-chat-foot{padding:8px 16px 14px;font-size:12px;color:#5b4a70}
+.lala-chat-foot p{margin:4px 0}
+.lala-chat-foot a{color:#391b66;font-weight:700}
+@media (min-width:680px){.lala-chat-panel{bottom:16px;right:16px;border-radius:18px;height:min(620px,calc(100dvh - 32px))}}
+@media (max-width:580px){.lala-chat-launch{bottom:14px;right:11px;font-size:13px;padding:10px 14px}}
