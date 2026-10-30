@@ -581,8 +581,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15314112/463966887666.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15314112/463966887666.jpg"
@@ -602,8 +602,8 @@
   "colors": "2 Black + 2 Beige",
   "price": 13.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/88e08204-262c-4780-bb4d-365693d17b10.jpg",
   "images": [
    "https://cf.cjdropshipping.com/88e08204-262c-4780-bb4d-365693d17b10.jpg"
@@ -629,8 +629,8 @@
   "colors": "Black",
   "price": 13.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/5b8daae3-6c5e-4676-8d72-621fa57ebb0c.jpg",
   "images": [
    "https://cf.cjdropshipping.com/5b8daae3-6c5e-4676-8d72-621fa57ebb0c.jpg",
@@ -657,8 +657,8 @@
   "colors": "Black",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/706da4bc-d7cd-4dfa-98cd-4257636103d6.jpg",
   "images": [
    "https://cf.cjdropshipping.com/706da4bc-d7cd-4dfa-98cd-4257636103d6.jpg"
@@ -678,8 +678,8 @@
   "colors": "Apricot",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15673536/504062081257.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15673536/504062081257.jpg",
@@ -700,8 +700,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20210105/1077616444202.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20210105/1077616444202.jpg"
@@ -721,8 +721,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15881760/1026144753120.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15881760/1026144753120.jpg"
@@ -742,8 +742,8 @@
   "colors": "Black",
   "price": 13.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/eba7f662-9cad-47a1-92d3-f479915cf6eb.jpg",
   "images": [
    "https://cf.cjdropshipping.com/eba7f662-9cad-47a1-92d3-f479915cf6eb.jpg",
@@ -770,8 +770,8 @@
   "colors": "Black",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1614042171879.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1614042171879.jpg",
@@ -792,8 +792,8 @@
   "colors": "Blue",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200512/1181198736832.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20200512/1181198736832.jpg",
@@ -814,8 +814,8 @@
   "colors": "Black, Skin",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/690cfd1a-777c-47c9-a991-bc75e72f5c6f.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/690cfd1a-777c-47c9-a991-bc75e72f5c6f.jpg",
@@ -836,8 +836,8 @@
   "colors": "",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/203009/1782173064740.jpg",
   "images": [
    "https://cf.cjdropshipping.com/203009/1782173064740.jpg"
@@ -857,8 +857,8 @@
   "colors": "Blue",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200325/760986523338.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20200325/760986523338.jpg"
@@ -878,8 +878,8 @@
   "colors": "A101 Numbers & Shapes",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/31c2071a-35ba-43e5-926c-dc6e53feb1fc.jpg",
   "images": [
    "https://cf.cjdropshipping.com/31c2071a-35ba-43e5-926c-dc6e53feb1fc.jpg",
@@ -900,8 +900,8 @@
   "colors": "White",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200725/1722316766596.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20200725/1722316766596.jpg",
@@ -922,8 +922,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/29e4e3d7-840b-459e-9c4c-0e77e7a4baca.jpg",
   "images": [
    "https://cf.cjdropshipping.com/29e4e3d7-840b-459e-9c4c-0e77e7a4baca.jpg",
@@ -944,8 +944,8 @@
   "colors": "Grey",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/2045/854164241416.jpg",
   "images": [
    "https://cf.cjdropshipping.com/2045/854164241416.jpg",
@@ -966,8 +966,8 @@
   "colors": "Little Yellow Turtle",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2023/10/17/08/ea568244-a244-463c-b41a-692fc802c3fc.jpg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2023/10/17/08/ea568244-a244-463c-b41a-692fc802c3fc.jpg"
@@ -987,8 +987,8 @@
   "colors": "Bear",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15366816/1442303419011.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15366816/1442303419011.jpg"
@@ -1008,8 +1008,8 @@
   "colors": "Style A",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1616825808659.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1616825808659.jpg"
@@ -1029,8 +1029,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 15,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/5b8dbaeb-3282-4353-af6a-fe47cc9f04a8.jpg",
   "images": [
    "https://cf.cjdropshipping.com/5b8dbaeb-3282-4353-af6a-fe47cc9f04a8.jpg"
@@ -1050,8 +1050,8 @@
   "colors": "Black gray",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1f68b01a-a6cb-4501-8dda-beadacf0ce30.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1f68b01a-a6cb-4501-8dda-beadacf0ce30.jpg"
@@ -1071,8 +1071,8 @@
   "colors": "Random color",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200509/5700938517006.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20200509/5700938517006.jpg"
@@ -1092,8 +1092,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200703/506274393830.png",
   "images": [
    "https://cf.cjdropshipping.com/20200703/506274393830.png"
@@ -1113,8 +1113,8 @@
   "colors": "Black",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/2047/1280427527907.jpg",
   "images": [
    "https://cf.cjdropshipping.com/2047/1280427527907.jpg"
@@ -1134,8 +1134,8 @@
   "colors": "Nude",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/38ab0716-f315-4426-b99b-844f8c27dc89.jpg",
   "images": [
    "https://cf.cjdropshipping.com/38ab0716-f315-4426-b99b-844f8c27dc89.jpg"
@@ -1155,8 +1155,8 @@
   "colors": "White",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2026/08/16/03/4b954832-eee9-45d7-8d02-76025ee9950f_fine.jpeg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2026/08/16/03/4b954832-eee9-45d7-8d02-76025ee9950f_fine.jpeg"
@@ -1176,8 +1176,8 @@
   "colors": "Pink",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/a4d7e417-baa2-4995-9d67-ea9a8c7cb364.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/a4d7e417-baa2-4995-9d67-ea9a8c7cb364.jpg"
@@ -1197,8 +1197,8 @@
   "colors": "Wine red",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/f12e940e-2868-45e3-861e-407386b9e249.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/f12e940e-2868-45e3-861e-407386b9e249.jpg"
@@ -1218,8 +1218,8 @@
   "colors": "White, Nude",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2026/02/04/09/7370f301-137e-42db-9aec-38e8808ebf79_trans.jpeg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2026/02/04/09/7370f301-137e-42db-9aec-38e8808ebf79_trans.jpeg"
@@ -1239,8 +1239,8 @@
   "colors": "Pink lace / black straps",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1a0940e1-dae1-4169-8a11-353c2dd2968e.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1a0940e1-dae1-4169-8a11-353c2dd2968e.jpg"
@@ -1260,8 +1260,8 @@
   "colors": "Red",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1617195176464.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1617195176464.jpg"
@@ -1281,8 +1281,8 @@
   "colors": "",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15145920/654691810136.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15145920/654691810136.jpg"
@@ -1302,8 +1302,8 @@
   "colors": "",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/20200607/1430832185065.jpg",
   "images": [
    "https://cf.cjdropshipping.com/20200607/1430832185065.jpg"
@@ -1323,8 +1323,8 @@
   "colors": "Assorted theme",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/ef33b386-cf60-4cc0-8e3f-2304163a2932.jpg",
   "images": [
    "https://cf.cjdropshipping.com/ef33b386-cf60-4cc0-8e3f-2304163a2932.jpg"
@@ -1344,8 +1344,8 @@
   "colors": "Assorted design",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1616241991710.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1616241991710.jpg"
@@ -1365,8 +1365,8 @@
   "colors": "Lamb",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/15551712/2729231088766.jpg",
   "images": [
    "https://cf.cjdropshipping.com/15551712/2729231088766.jpg"
@@ -1386,8 +1386,8 @@
   "colors": "Assorted",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/71b831cd-ecc3-4770-8396-3d44c4a5a438.jpg",
   "images": [
    "https://cf.cjdropshipping.com/71b831cd-ecc3-4770-8396-3d44c4a5a438.jpg"
@@ -1407,8 +1407,8 @@
   "colors": "Red",
   "price": 9.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2026/07/15/06/2df81d52-fa55-41f9-8c1a-33fe2fd72680_trans.jpeg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2026/07/15/06/2df81d52-fa55-41f9-8c1a-33fe2fd72680_trans.jpeg"
@@ -1428,8 +1428,8 @@
   "colors": "Grey / pink",
   "price": 11.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/1622363478634.jpg",
   "images": [
    "https://cf.cjdropshipping.com/1622363478634.jpg"
@@ -1449,8 +1449,8 @@
   "colors": "Grey",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2026/04/30/09/246ae717-2aa0-4ffc-a3ec-451a5044b9ef_trans.jpeg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2026/04/30/09/246ae717-2aa0-4ffc-a3ec-451a5044b9ef_trans.jpeg"
@@ -1470,8 +1470,8 @@
   "colors": "Black",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/0219c386-0141-475e-8f30-a98d59df7243.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/0219c386-0141-475e-8f30-a98d59df7243.jpg"
@@ -1491,8 +1491,8 @@
   "colors": "Assorted",
   "price": 8.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/5ed006d7-52e1-473b-815e-8012a5d02f5c.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/5ed006d7-52e1-473b-815e-8012a5d02f5c.jpg"
@@ -1512,8 +1512,8 @@
   "colors": "Grey / lilac",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://oss-cf.cjdropshipping.com/product/2026/08/06/09/c46973fd-d45c-41ad-acbd-0ce790e477c1_water_trans.jpeg",
   "images": [
    "https://oss-cf.cjdropshipping.com/product/2026/08/06/09/c46973fd-d45c-41ad-acbd-0ce790e477c1_water_trans.jpeg"
@@ -1533,8 +1533,8 @@
   "colors": "Assorted",
   "price": 10.99,
   "stock": 50,
-  "status": "draft",
-  "visibilityStatus": "Draft",
+  "status": "ready",
+  "visibilityStatus": "Published",
   "image": "https://cf.cjdropshipping.com/quick/product/b10dcdd7-06c3-476e-a2bd-1d30434c1b16.jpg",
   "images": [
    "https://cf.cjdropshipping.com/quick/product/b10dcdd7-06c3-476e-a2bd-1d30434c1b16.jpg"
