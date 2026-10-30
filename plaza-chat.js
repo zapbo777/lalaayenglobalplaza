@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030b';
+  var VERSION = '20261030c';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -29,7 +29,7 @@
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'toby', 'lingerie': 'gemini', 'gym-sports': 'echo', 'temple': 'mira', 'wonderland': 'peter',
     'pet-paradise': 'ethan', 'author-bookstore': 'toby', 'preloved-books': 'gemini', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'toby', 'creative-studio': 'echo', 'portrait-studio': 'gemini',
+    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'toby', 'creative-studio': 'echo', 'portrait-studio': 'ethan',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'toby'
   };
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
