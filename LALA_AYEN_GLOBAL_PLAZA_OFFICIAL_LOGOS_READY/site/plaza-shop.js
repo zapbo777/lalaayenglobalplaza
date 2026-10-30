@@ -33,7 +33,7 @@ function updateAuthUI(){
  $$('[data-signout]').forEach(e=>e.hidden=!account);$$('[data-auth-open]').forEach(e=>{e.textContent=account?'My account':'Sign in / Create account';});
  $$('.owner-only').forEach(e=>e.hidden=!owner);
  if(account)authText('Signed in as '+account.email+(owner?' · Owner access':' · Customer access'));
- else authText(configured?'Sign in or create a customer account.':'Accounts will be available after secure Firebase setup.');
+ else authText(configured?'Sign in or create a customer account.':'Accounts will be available after secure account setup.');
  if(byId('review-form')){const form=byId('review-form');form.querySelector('button[type=submit]').disabled=!account||!configured;}
 }
 function setupAuth(){
@@ -44,8 +44,8 @@ function setupAuth(){
  if(!form)return;
  const email=()=>String(byId('account-email').value).trim();const pass=()=>String(byId('account-password').value);
  form.addEventListener('submit',async e=>{e.preventDefault();if(!auth)return authText('Secure account login is not connected yet.');try{await signInWithEmailAndPassword(auth,email(),pass());closeModal(dlg);}catch(e){authText('Sign-in failed: '+(e.code||'Check email and password.'));}});
- byId('account-create')?.addEventListener('click',async()=>{if(!auth)return authText('Create-account is waiting for Firebase setup.');if(pass().length<6)return authText('Password must be 6+ characters.');try{await createUserWithEmailAndPassword(auth,email(),pass());closeModal(dlg);}catch(e){authText('Unable to create account: '+(e.code||'Please try again.'));}});
- byId('account-reset')?.addEventListener('click',async()=>{if(!auth)return authText('Password reset is waiting for Firebase setup.');if(!email())return authText('Enter your email first.');try{await sendPasswordResetEmail(auth,email());authText('If the address is registered, check your inbox for a password reset email.');}catch(e){authText('Unable to send reset: '+(e.code||'Try again.'));}});
+ byId('account-create')?.addEventListener('click',async()=>{if(!auth)return authText('Create-account is waiting for account setup.');if(pass().length<6)return authText('Password must be 6+ characters.');try{await createUserWithEmailAndPassword(auth,email(),pass());closeModal(dlg);}catch(e){authText('Unable to create account: '+(e.code||'Please try again.'));}});
+ byId('account-reset')?.addEventListener('click',async()=>{if(!auth)return authText('Password reset is waiting for account setup.');if(!email())return authText('Enter your email first.');try{await sendPasswordResetEmail(auth,email());authText('If the address is registered, check your inbox for a password reset email.');}catch(e){authText('Unable to send reset: '+(e.code||'Try again.'));}});
 }
 async function loadPrepared(){try{const res=await fetch('products.json',{cache:'no-store'});if(res.ok){const data=await res.json();if(Array.isArray(data))inventory=data.map(clean).filter(x=>x.status==='ready'&&x.title&&x.price>=0);}}catch(e){inventory=[];}renderCatalog();}
 function subscribeProducts(){if(!db)return loadPrepared();
@@ -99,7 +99,7 @@ async function showReviews(id){
  byId('review-feedback').textContent='';byId('review-list').textContent='Loading customer comments…';
  byId('review-form')?.reset();
  openModal(dlg);
- if(!configured||!db){byId('review-list').textContent='Customer reviews will open after Firebase is configured. No ratings have been invented.';return;}
+ if(!configured||!db){byId('review-list').textContent='Customer reviews will open after a secure account service is configured. No ratings have been invented.';return;}
  try{
   const snap=await getDocs(collection(db,'products',id,'reviews'));
   const rows=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
@@ -136,12 +136,12 @@ async function showReviews(id){
   }
   if(account){const mine=rows.find(x=>x.id===account.uid);if(mine){byId('review-stars').value=String(mine.stars);byId('review-text').value=String(mine.text||'');}}
   byId('review-feedback').textContent=account?'Ratings are tied to your signed-in account. You can update your own review.':'Sign in or create an account to leave a rating and comment.';
- }catch(e){byId('review-list').textContent='Reviews unavailable. Please check Firebase permissions.';}
+ }catch(e){byId('review-list').textContent='Reviews unavailable. Please check account permissions.';}
 }
 async function submitReview(e){
  e.preventDefault();
  const feedback=byId('review-feedback'),button=byId('review-form')?.querySelector('button[type=submit]');
- if(!db||!storage||!account){feedback.textContent='Please sign in to leave a review. Firebase must be connected.';return;}
+ if(!db||!storage||!account){feedback.textContent='Please sign in to leave a review. secure account service must be connected.';return;}
  const id=ratingFor,item=inventory.find(x=>x.id===id);
  if(!item||item.status!=='ready'){feedback.textContent='This product is not available for reviews.';return;}
  const stars=Number(byId('review-stars').value),comment=String(byId('review-text').value).trim().slice(0,500);
@@ -184,12 +184,12 @@ function setupCatalog(){if(!catalog)return;renderCategories();
  byId('export-json')?.addEventListener('click',()=>{if(!owner)return;const blob=new Blob([JSON.stringify(inventory,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lala-plaza-products-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
  byId('reviews-form')?.addEventListener('submit',submitReview);byId('review-form')?.addEventListener('submit',submitReview);$$('[data-reviews-close]').forEach(x=>x.addEventListener('click',()=>closeModal(byId('reviews-dialog'))));
  const chat=byId('shop-chat-dialog'),title=byId('shop-chat-title'),log=byId('shop-chat-log'),qs=byId('shop-chat-questions');
- byId('store-chat-launch')?.addEventListener('click',()=>{if(!chat)return;title.textContent=(byId('manager-heading')?.textContent.includes('book')?'Book':'Shop')+' Guide';log.textContent='Welcome! Here are answers about this store.';qs.replaceChildren();for(const [q,a] of [['How can I buy an item?','Open a listing and choose Add to Quote Basket. Request a quote. Prices, delivery and taxes are confirmed before you pay.'],['How can I pay?','After confirming a real order, use the Square payment link provided by the Plaza. PayPal is being prepared for international orders.'],['Can I ask about sizes or availability?','Yes. Email lalaayenglobalplaza@gmail.com with the product name and your question.'],['How do star reviews work?','Customers with signed-in accounts can post a 1–5-star rating; ratings are never fabricated.']]){const b=document.createElement('button');b.type='button';b.textContent=q;b.addEventListener('click',()=>{log.textContent=q+'\n\n'+a;});qs.append(b);}openModal(chat);});
+ byId('store-chat-launch')?.addEventListener('click',()=>{if(!chat)return;title.textContent=(byId('manager-heading')?.textContent.includes('book')?'Book':'Shop')+' Guide';log.textContent='Welcome! Here are answers about this store.';qs.replaceChildren();for(const [q,a] of [['How can I buy an item?','Open a listing and choose Add to Quote Basket. Request a quote. Prices, delivery and taxes are confirmed before you pay.'],['How can I pay?','After confirming a real order, use the Square payment link provided by the Plaza. International payment options are confirmed before orders.'],['Can I ask about sizes or availability?','Yes. Email lalaayenglobalplaza@gmail.com with the product name and your question.'],['How do star reviews work?','Customers with signed-in accounts can post a 1–5-star rating; ratings are never fabricated.']]){const b=document.createElement('button');b.type='button';b.textContent=q;b.addEventListener('click',()=>{log.textContent=q+'\n\n'+a;});qs.append(b);}openModal(chat);});
  $$('[data-chat-close]').forEach(b=>b.addEventListener('click',()=>closeModal(chat)));
  byId('menu-toggle')?.addEventListener('click',()=>$('.sidebar')?.classList.toggle('mobile-open'));
  renderCatalog();renderBasket();}
 setupAuth();setupCatalog();updateAuthUI();
 if(configured){try{app=initializeApp(firebaseDetails);auth=getAuth(app);db=getFirestore(app);storage=getStorage(app);
  onAuthStateChanged(auth,async user=>{account=user;owner=!!(user&&user.uid===ownerUid);updateAuthUI();if(catalog)subscribeProducts();});
- if(catalog)loadPrepared();}catch(e){authText('Firebase setup error: '+e.message);if(catalog)loadPrepared();}}
+ if(catalog)loadPrepared();}catch(e){authText('account setup error: '+e.message);if(catalog)loadPrepared();}}
 else{if(catalog)loadPrepared();}
