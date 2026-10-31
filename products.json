@@ -6267,8 +6267,8 @@
   "price": 22.99,
   "stock": 20,
   "stockDisplay": "available",
-  "status": "ready",
-  "visibilityStatus": "Published",
+  "status": "draft",
+  "visibilityStatus": "Draft",
   "image": "https://ae-pic-a1.aliexpress-media.com/kf/S5f8faa1ac3d14205a256ed60d1d2434bt.png",
   "images": [
    "https://ae-pic-a1.aliexpress-media.com/kf/S5f8faa1ac3d14205a256ed60d1d2434bt.png"
