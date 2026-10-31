@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030k';
+  var VERSION = '20261030l';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -37,8 +37,8 @@
   var ROTATION = ['ethan', 'atlas', 'jem', 'echo', 'mira', 'peter']; // Toby is admin-only
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'atlas', 'lingerie': 'jem', 'gym-sports': 'atlas', 'temple': 'jem', 'wonderland': 'atlas',
-    'pet-paradise': 'jem', 'author-bookstore': 'atlas', 'preloved-books': 'jem', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'western': 'atlas', 'fashions': 'jem', 'costume-world': 'atlas', 'creative-studio': 'echo', 'portrait-studio': 'ara',
+    'pet-paradise': 'jem', 'author-bookstore': 'atlas', 'preloved-books': 'jem', 'thrift-store': 'atlas', 'affiliate-marketing': 'atlas',
+    'lala-merchants': 'jem', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'western': 'atlas', 'fashions': 'jem', 'costume-world': 'atlas', 'creative-studio': 'echo', 'portrait-studio': 'ara',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'atlas'
   };
   // Two-helper store pages: Atlas + Jem cards ([data-chat-persona]); the page host above alternates between them.
@@ -81,7 +81,7 @@
       ['Can I ask about a song?', 'Yes. Email ' + EMAIL + ' or use the contact form on the Plaza Home page.'],
       ['Where is Lala Ayen on TikTok?', 'The TikTok account is @lalaayenmusicartist.']],
     portraits: [['How much is a portrait?', 'Custom digital portraits: Individual $25, Couple $35, Family (up to 5 people) $45, Pet $30. Digital files only, nothing is shipped. Other styles: email us for a quote.'],
-      ['How do I order a portrait?', 'Open the Custom Portrait Studio page, choose your portrait and send your photo by email to ' + EMAIL + '. We confirm the details before you pay.'],
+      ['How do I order a portrait?', 'On the Custom Portrait Studio page, tap "Request This Style" or scroll to the "Request Your Portrait" form, fill it in and press "Send Portrait Request". Your email app opens so you can attach your reference photo. We confirm the details and total by email before you pay.'],
       ['Can I use my own photo?', 'Yes. Send a clear photo by email with your order. Please never send passwords or card details.']],
     videos: [['How much does a video cost?', 'Promotional video packages: Starter $75, Professional $150, Premium Campaign from $300 (quote).'],
       ['How can I request a video?', 'Open the Creative Studio page or email ' + EMAIL + ' with your idea, length and deadline.'],
