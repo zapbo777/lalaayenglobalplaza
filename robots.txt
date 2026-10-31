@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lalaayenglobalplaza.com/sitemap.xml
