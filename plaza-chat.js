@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030i';
+  var VERSION = '20261030j';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -38,7 +38,7 @@
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'atlas', 'lingerie': 'jem', 'gym-sports': 'atlas', 'temple': 'jem', 'wonderland': 'atlas',
     'pet-paradise': 'jem', 'author-bookstore': 'atlas', 'preloved-books': 'jem', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ara',
+    'lala-merchants': 'peter', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'western': 'atlas', 'fashions': 'jem', 'creative-studio': 'echo', 'portrait-studio': 'ara',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'atlas'
   };
   // Two-helper store pages: Atlas + Jem cards ([data-chat-persona]); the page host above alternates between them.
@@ -58,7 +58,7 @@
     'LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html': ['author-bookstore', 'Author Bookstore'], 'PRELOVED_BOOKSTORE_MARK1.html': ['preloved-books', 'Preloved Bookstore'],
     'LALA_IRON_THRIFT_STORE_MARK1.html': ['thrift-store', 'Iron Thrift Store'], 'LALA_AYEN_AFFILIATE_MARKETING_MARK1.html': ['affiliate-marketing', 'Affiliate Marketing'],
     'LALA_AYEN_MERCHANTS_MARK1.html': ['lala-merchants', 'Merchants'], 'LALA_AYEN_DIY_CRAFT_MARK1.html': ['diy-craft', 'DIY & Craft'],
-    'LALA_PARTY_SHOP_MARK1.html': ['party-shop', 'Party Shop'], 'creative-studio.html': ['creative-studio', 'Creative Studio'],
+    'LALA_PARTY_SHOP_MARK1.html': ['party-shop', 'Party Shop'], 'LALA_COWGIRL_COWBOY_WORLD_MARK1.html': ['western', 'Cowgirl & Cowboy World'], 'LALA_AYEN_FASHIONS_MARK1.html': ['fashions', 'LALA AYEN Fashions'], 'creative-studio.html': ['creative-studio', 'Creative Studio'],
     'custom-portrait-studio.html': ['portrait-studio', 'Portrait Studio'], 'shipping.html': ['shipping', 'Shipping'],
     'returns.html': ['returns', 'Returns'], 'terms.html': ['terms', 'Terms'], 'privacy.html': ['privacy', 'Privacy']
   };
