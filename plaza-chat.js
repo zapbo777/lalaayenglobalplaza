@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030e';
+  var VERSION = '20261030g';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -22,7 +22,9 @@
     peter:  { name: 'Peter',  greeting: "Hi, I'm Peter", coreHqEndpoint: null },
     // Party Shop helpers (updated flyer): Gerio = AI Creative Artist, hosts the Party Shop page; Verio = AI Video Creator (video items).
     gerio:  { name: 'Gerio',  greeting: "Hi, I'm Gerio", coreHqEndpoint: null },
-    verio:  { name: 'Verio',  greeting: "Hi, I'm Verio", coreHqEndpoint: null }
+    verio:  { name: 'Verio',  greeting: "Hi, I'm Verio", coreHqEndpoint: null },
+    // Ara hosts the Custom Portrait Studio. Until her Core HQ link is connected (CORE_HQ.ara below), she uses the shared Plaza AI.
+    ara:    { name: 'Ara',    greeting: "Hi, I'm Ara", coreHqEndpoint: null }
   };
   // Other Core HQ bots that are not page helpers yet.
   var CORE_HQ = { ara: { name: 'Ara', endpoint: null /* TODO: Ara's Core HQ endpoint from Peter */ } };
@@ -32,12 +34,14 @@
   var PAGE_PERSONA = {
     'home': 'ethan', 'global-shop': 'toby', 'lingerie': 'gemini', 'gym-sports': 'echo', 'temple': 'mira', 'wonderland': 'peter',
     'pet-paradise': 'ethan', 'author-bookstore': 'toby', 'preloved-books': 'gemini', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ethan',
+    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ara',
     'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'toby'
   };
+  // Two-helper studio pages: Creative Studio = Echo (host, created the studio) + Verio; Custom Portrait Studio = Ara (host) + Gerio.
+  // The second helper opens from a [data-chat-persona] button on the page.
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
-  var PAGE_INTRO = { 'creative-studio': ' I help with the Creative Studio.' };
-  var PERSONA_INTRO = { gerio: " I'm the Party Shop's AI Creative Artist: invitations, posters, cards, portraits and photo edits.", verio: " I'm the AI Video Creator: video greetings, animated greetings, slideshows and social media videos." };
+  var PAGE_INTRO = { 'creative-studio': ' I created the Creative Studio and guide you through videos and creative projects.' };
+  var PERSONA_INTRO = { gerio: " I'm the AI Creative Artist: portraits, posters, invitations, cards and photo edits.", verio: " I'm the AI Video Creator: promotional videos, video greetings, animated greetings, slideshows and social media videos.", ara: " I'm the Custom Portrait Studio guide: portrait styles, prices and how to order." };
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -195,6 +199,10 @@
     launch.setAttribute('aria-label', 'Open chat with ' + persona.name + ', the Lala Plaza AI helper');
     document.querySelectorAll('#store-chat-launch,.chat-open,.lala-chat-launch').forEach(function (b) {
       b.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); open({ topic: b.getAttribute('data-topic') }); }, true);
+    });
+    // Second-helper buttons (studio pages): <button data-chat-persona="verio" data-topic="videos">.
+    document.querySelectorAll('[data-chat-persona]').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); open({ persona: b.getAttribute('data-chat-persona'), topic: b.getAttribute('data-topic') }); }, true);
     });
     document.addEventListener('lala:open-chat', function (e) { e.preventDefault(); open(e.detail || {}); });
   }
