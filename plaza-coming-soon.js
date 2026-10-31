@@ -8,7 +8,8 @@
     'LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html',
     'PRELOVED_BOOKSTORE_MARK1.html',
     'LALA_IRON_THRIFT_STORE_MARK1.html',
-    'LALA_AYEN_MERCHANTS_MARK1.html'
+    'LALA_AYEN_MERCHANTS_MARK1.html',
+    'LALA_AYEN_AFFILIATE_MARKETING_MARK1.html' // Arlene, Oct 30: closed too (partner links kept on the page)
   ];
   if (!CLOSED.length || window.LalaComingSoon) return;
   function fileOf(href) {
