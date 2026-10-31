@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030h';
+  var VERSION = '20261030i';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -47,6 +47,7 @@
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
   var PAGE_INTRO = { 'creative-studio': ' I created the Creative Studio and guide you through videos and creative projects.' };
   var PERSONA_INTRO = { gerio: " I'm the AI Creative Artist: portraits, posters, invitations, cards and photo edits.", verio: " I'm the AI Video Creator: promotional videos, video greetings, animated greetings, slideshows and social media videos.", ara: " I'm the Custom Portrait Studio guide: portrait styles, prices and how to order.", atlas: " I help you find products, compare items, and answer sizing, shipping and returns questions.", jem: " I help with product ideas, gift picks, sizes, shipping and returns." };
+  var PERSONA_TITLE = { ara: 'Queen of All Designers 👑' }; // optional title shown under the name in the chat header (Arlene, Oct 30)
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -67,6 +68,7 @@
   var pageId = page[0];
   var personaId = (Object.prototype.hasOwnProperty.call(PAGE_PERSONA, pageId) && PAGE_PERSONA[pageId]) || 'ethan';
   if (ROTATE_BY_DAY) { var day = Math.floor(Date.now() / 864e5); personaId = ROTATION[(ROTATION.indexOf(personaId) + day) % ROTATION.length]; }
+  function subFor(id) { return Object.prototype.hasOwnProperty.call(PERSONA_TITLE, id) ? PERSONA_TITLE[id] + ' · ' + page[1] : page[1] + ' helper'; }
   var persona = Object.prototype.hasOwnProperty.call(PERSONAS, personaId) ? PERSONAS[personaId] : PERSONAS.ethan;
 
   // ===== Preset answers (used when the AI is off, and as fallback) =====
@@ -136,7 +138,7 @@
   var panel = el('aside', 'lala-chat-panel'); panel.hidden = true; panel.id = 'lala-chat';
   panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true'); panel.setAttribute('aria-labelledby', 'lala-chat-name');
   var head = el('div', 'lala-chat-head'), who = el('div'), kicker = el('small', null, 'LALA PLAZA AI HELPER'), name = el('h2', null, persona.name);
-  name.id = 'lala-chat-name'; var sub = el('span', 'lala-chat-sub', page[1] + ' helper');
+  name.id = 'lala-chat-name'; var sub = el('span', 'lala-chat-sub', subFor(personaId));
   var x = el('button', 'lala-chat-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Close chat');
   who.append(kicker, name, sub); var avatar = el('span', 'lala-chat-avatar', persona.name.charAt(0)); head.append(avatar, who, x);
   var log = el('div', 'lala-chat-log'); log.setAttribute('role', 'log'); log.setAttribute('aria-live', 'polite');
@@ -165,7 +167,7 @@
   var pagePersonaId = personaId;
   function setPersona(id) { // a button can open the chat with another helper (e.g. Verio for the Party Creative Suite)
     if (id === personaId) return; personaId = id; persona = PERSONAS[id]; hist = [];
-    name.textContent = persona.name; avatar.textContent = persona.name.charAt(0); input.placeholder = 'Ask ' + persona.name + ' a question…';
+    name.textContent = persona.name; sub.textContent = subFor(id); avatar.textContent = persona.name.charAt(0); input.placeholder = 'Ask ' + persona.name + ' a question…';
   }
   var lastFocus = null;
   function open(o) {
