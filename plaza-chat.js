@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030g';
+  var VERSION = '20261030h';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -24,24 +24,29 @@
     gerio:  { name: 'Gerio',  greeting: "Hi, I'm Gerio", coreHqEndpoint: null },
     verio:  { name: 'Verio',  greeting: "Hi, I'm Verio", coreHqEndpoint: null },
     // Ara hosts the Custom Portrait Studio. Until her Core HQ link is connected (CORE_HQ.ara below), she uses the shared Plaza AI.
-    ara:    { name: 'Ara',    greeting: "Hi, I'm Ara", coreHqEndpoint: null }
+    ara:    { name: 'Ara',    greeting: "Hi, I'm Ara", coreHqEndpoint: null },
+    // Store-page shopping helpers (Arlene, Oct 30): Atlas and Jem show on Global Shop, Lingerie, Gym & Sports, Temple,
+    // Wonderland, Pet Paradise and DIY & Craft. Toby stays admin-only and is not shown on any public page.
+    atlas:  { name: 'Atlas',  greeting: "Hi, I'm Atlas", coreHqEndpoint: null },
+    jem:    { name: 'Jem',    greeting: "Hi, I'm Jem", coreHqEndpoint: null }
   };
   // Other Core HQ bots that are not page helpers yet.
   var CORE_HQ = { ara: { name: 'Ara', endpoint: null /* TODO: Ara's Core HQ endpoint from Peter */ } };
 
   // Page -> helper. Rotates Ethan, Toby, Gemini, Echo, Mira, Peter across the Plaza in sidebar order.
-  var ROTATION = ['ethan', 'toby', 'gemini', 'echo', 'mira', 'peter'];
+  var ROTATION = ['ethan', 'atlas', 'jem', 'echo', 'mira', 'peter']; // Toby is admin-only
   var PAGE_PERSONA = {
-    'home': 'ethan', 'global-shop': 'toby', 'lingerie': 'gemini', 'gym-sports': 'echo', 'temple': 'mira', 'wonderland': 'peter',
-    'pet-paradise': 'ethan', 'author-bookstore': 'toby', 'preloved-books': 'gemini', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
-    'lala-merchants': 'peter', 'diy-craft': 'ethan', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ara',
-    'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'toby'
+    'home': 'ethan', 'global-shop': 'atlas', 'lingerie': 'jem', 'gym-sports': 'atlas', 'temple': 'jem', 'wonderland': 'atlas',
+    'pet-paradise': 'jem', 'author-bookstore': 'atlas', 'preloved-books': 'jem', 'thrift-store': 'echo', 'affiliate-marketing': 'mira',
+    'lala-merchants': 'peter', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'creative-studio': 'echo', 'portrait-studio': 'ara',
+    'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'atlas'
   };
+  // Two-helper store pages: Atlas + Jem cards ([data-chat-persona]); the page host above alternates between them.
   // Two-helper studio pages: Creative Studio = Echo (host, created the studio) + Verio; Custom Portrait Studio = Ara (host) + Gerio.
   // The second helper opens from a [data-chat-persona] button on the page.
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
   var PAGE_INTRO = { 'creative-studio': ' I created the Creative Studio and guide you through videos and creative projects.' };
-  var PERSONA_INTRO = { gerio: " I'm the AI Creative Artist: portraits, posters, invitations, cards and photo edits.", verio: " I'm the AI Video Creator: promotional videos, video greetings, animated greetings, slideshows and social media videos.", ara: " I'm the Custom Portrait Studio guide: portrait styles, prices and how to order." };
+  var PERSONA_INTRO = { gerio: " I'm the AI Creative Artist: portraits, posters, invitations, cards and photo edits.", verio: " I'm the AI Video Creator: promotional videos, video greetings, animated greetings, slideshows and social media videos.", ara: " I'm the Custom Portrait Studio guide: portrait styles, prices and how to order.", atlas: " I help you find products, compare items, and answer sizing, shipping and returns questions.", jem: " I help with product ideas, gift picks, sizes, shipping and returns." };
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
 
   var PAGES = {
@@ -60,9 +65,9 @@
   var file = decodeURIComponent(location.pathname.split('/').pop() || '').replace(/\.html?$/i, '');
   var page = PAGES[file ? file + '.html' : ''] || ['home', 'Lala Plaza'];
   var pageId = page[0];
-  var personaId = PAGE_PERSONA[pageId] || 'ethan';
+  var personaId = (Object.prototype.hasOwnProperty.call(PAGE_PERSONA, pageId) && PAGE_PERSONA[pageId]) || 'ethan';
   if (ROTATE_BY_DAY) { var day = Math.floor(Date.now() / 864e5); personaId = ROTATION[(ROTATION.indexOf(personaId) + day) % ROTATION.length]; }
-  var persona = PERSONAS[personaId];
+  var persona = Object.prototype.hasOwnProperty.call(PERSONAS, personaId) ? PERSONAS[personaId] : PERSONAS.ethan;
 
   // ===== Preset answers (used when the AI is off, and as fallback) =====
   var SHOP = [['How can I buy an item?','Tap "＋ Add to Cart" on any product (choose size or color if asked). Open the 🛒 Cart at the top of the page and choose Pay with Square (US). One cart works across the whole Plaza.'],['How can I pay?',"US orders are paid on Square's secure checkout page in US dollars. Your card details are entered with Square and never reach our website. International checkout is coming soon."],['Do you ship outside the US?','For now we ship to US addresses only. International shipping is coming soon.'],['How long does shipping take?','US shipping is free. Most orders arrive in about 7 to 14 business days, including 1 to 3 business days of processing. Items from US warehouses usually arrive in about 3 to 8 business days. Each product page shows its own estimate.'],['Where is my order?','Email lalaayenglobalplaza@gmail.com with your order number (it is on your Square receipt) and we will check the status for you.'],['Can I return an item?','Yes. Returns are free for any item, including lingerie, for any reason, within 14 days of delivery. Email lalaayenglobalplaza@gmail.com with your order number, the item and the reason. We email you a free prepaid return label; ship the item to the address on that label (it may be a supplier or partner warehouse). Refunds go back to your original payment method.'],['It does not fit. Can I exchange it?','Yes. Request a free return (within 14 days of delivery) and place a new order for the size you need, or email lalaayenglobalplaza@gmail.com and we will help you choose.'],['My item arrived damaged or wrong.','Sorry about that! Email lalaayenglobalplaza@gmail.com with your order number and photos of the item and the package. We will send a replacement or a refund, whichever you prefer.'],['Can I cancel my order?','Yes, before it ships. Email lalaayenglobalplaza@gmail.com as soon as possible with your order number. After it ships, you can use our free 14-day returns.'],['Is the lingerie shop for adults only?','Yes. The Lingerie Boutique is for adults 18 and older only.'],['Can I ask about sizes or availability?','Yes. Email lalaayenglobalplaza@gmail.com with the product name and your question.'],['How do star reviews work?','Customer reviews are coming soon. Ratings are never fabricated.']];
@@ -164,8 +169,8 @@
   }
   var lastFocus = null;
   function open(o) {
-    var topic = o && o.topic && TOPICS[o.topic] ? o.topic : PAGE_TOPIC[pageId];
-    setPersona(o && o.persona && PERSONAS[o.persona] ? o.persona : pagePersonaId);
+    var topic = o && o.topic && Object.prototype.hasOwnProperty.call(TOPICS, o.topic) ? o.topic : PAGE_TOPIC[pageId];
+    setPersona(o && o.persona && Object.prototype.hasOwnProperty.call(PERSONAS, o.persona) ? o.persona : pagePersonaId);
     lastFocus = document.activeElement; log.replaceChildren(); opts.replaceChildren(); hist = [];
     setNote();
     line('bot', greet());
