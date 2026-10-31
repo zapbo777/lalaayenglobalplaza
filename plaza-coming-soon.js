@@ -26,6 +26,7 @@
     + '.cs-banner h2{margin:8px 0 6px;font:500 clamp(28px,4vw,40px)/1.15 Georgia,serif;color:#fff}'
     + '.cs-banner h2 span{display:block;font-size:.55em;color:#dfbd77;margin-top:4px}'
     + '.cs-banner p{margin:8px auto 16px;max-width:560px;color:#e6dcf5;font-size:15px;line-height:1.55}'
+    + '.cs-banner p,.cs-banner h2{min-height:0;text-align:center}.cs-banner .cs-eyebrow{display:block;width:100%}'
     + '.cs-banner .cs-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}'
     + '.cs-banner a{display:inline-block;padding:10px 18px;border-radius:999px;border:1px solid #dfbd77;font-weight:700;font-size:14px}'
     + '.cs-banner a.cs-primary{background:#dfbd77;color:#29115f}.cs-banner a.cs-secondary{color:#dfbd77}'
