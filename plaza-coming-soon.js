@@ -27,7 +27,7 @@
     + '.cs-banner h2{margin:8px 0 6px;font:500 clamp(28px,4vw,40px)/1.15 Georgia,serif;color:#fff}'
     + '.cs-banner h2 span{display:block;font-size:.55em;color:#dfbd77;margin-top:4px}'
     + '.cs-banner p{margin:8px auto 16px;max-width:560px;color:#e6dcf5;font-size:15px;line-height:1.55}'
-    + '.cs-banner p,.cs-banner h2{min-height:0;text-align:center}.cs-banner .cs-eyebrow{display:block;width:100%}'
+    + '.cs-banner p,.cs-banner h2{min-height:0;text-align:center}.cs-banner .cs-eyebrow{display:block;width:100%;max-width:none;margin:0 auto}.cs-banner a{text-decoration:none}'
     + '.cs-banner .cs-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}'
     + '.cs-banner a{display:inline-block;padding:10px 18px;border-radius:999px;border:1px solid #dfbd77;font-weight:700;font-size:14px}'
     + '.cs-banner a.cs-primary{background:#dfbd77;color:#29115f}.cs-banner a.cs-secondary{color:#dfbd77}'
@@ -45,7 +45,7 @@
     // Banner on the closed store page itself.
     if (isClosed(fileOf(location.href))) {
       document.body.classList.add('is-coming-soon');
-      var name = (document.querySelector('.shop-hero h2') || {}).textContent || 'This store';
+      var name = (document.querySelector('.shop-hero h2') || {}).textContent || document.title.split(' | ')[0].replace(/\s*\(Coming Soon\)\s*$/i, '').replace(/^LALA AYEN\s*[—-]\s*/, '') || 'This store';
       var ban = document.createElement('section'); ban.className = 'cs-banner'; ban.setAttribute('role', 'status');
       ban.innerHTML = '<p class="cs-eyebrow">TEMPORARILY CLOSED</p><h2>Coming Soon<span>Malapit na!</span></h2><p></p>'
         + '<div class="cs-actions"><a class="cs-primary" href="index.html#marketplace">← Back to the Plaza</a><a class="cs-secondary" href="LALA_AYEN_GLOBAL_SHOP_MARK1.html">Shop the Global Shop</a></div>';
