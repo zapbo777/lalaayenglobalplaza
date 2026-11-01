@@ -10176,5 +10176,31 @@
   ],
   "merchantUrl": "",
   "isSample": false
+ },
+ {
+  "id": "item-06e1891d-0d57-49a2-b6f2-ca8c4b4802bb",
+  "store": "lingerie-boutique",
+  "title": "Silk Satin Lace Slip Dress with Cross Back",
+  "category": "Sleepwear & Nightwear",
+  "subcategory": "",
+  "condition": "New",
+  "description": "Soft imitation-silk satin slip dress with floral lace trim and an open cross-strap back. Color: Skin/Nude. One size. FREE shipping to the US. Ships from China, est. 6-12 business days. Underwear is final sale for hygiene unless it arrives damaged or defective.",
+  "sizes": "",
+  "colors": "",
+  "price": 19.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://cf.cjdropshipping.com/1621493621146.jpg",
+  "images": [
+   "https://cf.cjdropshipping.com/1621493621146.jpg",
+   "https://cf.cjdropshipping.com/1621493621147.jpg",
+   "https://cf.cjdropshipping.com/1621493621143.jpg",
+   "https://cf.cjdropshipping.com/1621493621150.jpg",
+   "https://cf.cjdropshipping.com/1621493621138.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false
  }
 ]
