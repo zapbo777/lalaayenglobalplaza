@@ -31,7 +31,13 @@
   function showDetails(p){
     var d=byId('lc-details');if(!d)return;var body=byId('lc-details-body');body.replaceChildren();
     var sizes=opts(p.sizes),colors=opts(p.colors),buyable=p.status==='ready'&&Number(p.stock)>0&&Number(p.price)>0;
-    if(/^https:\/\//.test(p.image||'')){body.appendChild(el('img',{src:p.image,alt:p.title,class:'lc-details-img',loading:'lazy',referrerpolicy:'no-referrer'}));}
+    var pics=[];[p.image].concat(Array.isArray(p.images)?p.images:[]).forEach(function(u){u=String(u||'');if(/^https:\/\//.test(u)&&pics.indexOf(u)<0)pics.push(u);});pics=pics.slice(0,12);
+    if(pics.length){var gal=el('div',{class:'lc-gallery'});var main=el('img',{src:pics[0],alt:p.title,class:'lc-details-img',loading:'lazy',referrerpolicy:'no-referrer'});gal.appendChild(main);
+      if(pics.length>1){var cur=0,thumbs=el('div',{class:'lc-thumbs'});var show=function(i){cur=(i+pics.length)%pics.length;main.src=pics[cur];main.alt=p.title+' photo '+(cur+1)+' of '+pics.length;Array.prototype.forEach.call(thumbs.children,function(t,k){t.classList.toggle('active',k===cur);});};
+        pics.forEach(function(u,i){var t=el('button',{type:'button',class:'lc-thumb'+(i?'':' active'),'aria-label':'Photo '+(i+1)});t.appendChild(el('img',{src:u,alt:'',loading:'lazy',referrerpolicy:'no-referrer'}));t.addEventListener('click',function(){show(i);});thumbs.appendChild(t);});
+        var pv=el('button',{type:'button',class:'lc-gal-nav lc-gal-prev','aria-label':'Previous photo'},'‹'),nx=el('button',{type:'button',class:'lc-gal-nav lc-gal-next','aria-label':'Next photo'},'›');pv.addEventListener('click',function(){show(cur-1);});nx.addEventListener('click',function(){show(cur+1);});gal.appendChild(pv);gal.appendChild(nx);
+        var sx=null;main.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});main.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>35)show(cur+(dx<0?1:-1));});
+        body.appendChild(gal);body.appendChild(thumbs);}else body.appendChild(gal);}
     body.appendChild(el('h3',null,p.title));
     var price=el('p',{class:'lc-details-price notranslate','data-usd':String(p.price)});price.textContent=usd(p.price)+' USD';body.appendChild(price);
     if(p.description)body.appendChild(el('p',{class:'lc-details-desc'},String(p.description).slice(0,600)));
