@@ -52,7 +52,7 @@
 
   var PAGES = {
     'index.html': ['home', 'Plaza Home'], '': ['home', 'Plaza Home'],
-    'LALA_AYEN_GLOBAL_SHOP_MARK1.html': ['global-shop', 'Global Shop'], 'LALA_LINGERIE_MARK1.html': ['lingerie', 'Lingerie Boutique'],
+    'LALA_AYEN_GLOBAL_SHOP_MARK1.html': ['global-shop', 'Global Shop'], 'LALA_LINGERIE_MARK1.html': ['lingerie', 'Lingerie Boutique'], 'LALA_AYEN_PERSONALIZED_SONGS.html': ['personalized-songs', 'Personalized Songs'],
     'LALA_GYM_SPORTS_MARK1.html': ['gym-sports', 'Gym & Sports'], 'LALA_TEMPLE_MARK1.html': ['temple', 'Temple'],
     'LALA_WONDERLAND_MARK1.html': ['wonderland', 'Wonderland'], 'LALA_PET_PARADISE_MARK1.html': ['pet-paradise', 'Pet Paradise'],
     'LALA_AYEN_AUTHOR_BOOKSTORE_MARK1.html': ['author-bookstore', 'Author Bookstore'], 'PRELOVED_BOOKSTORE_MARK1.html': ['preloved-books', 'Preloved Bookstore'],
