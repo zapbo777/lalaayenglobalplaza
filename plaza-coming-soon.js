@@ -12,9 +12,8 @@
     'LALA_AYEN_AFFILIATE_MARKETING_MARK1.html', // Arlene, Oct 30: closed too (partner links kept on the page)
     'LALA_COWGIRL_COWBOY_WORLD_MARK1.html', // Arlene, Oct 30: new Western store, categories only for now
     'LALA_AYEN_FASHIONS_MARK1.html', // Arlene, Oct 30: Fashion Department (bags & jewelry), coming soon
-    'LALA_AYEN_COSTUME_WORLD_MARK1.html', // Arlene, Oct 30: Costume World, coming soon
-    'LALA_BAGS_PURSES_MARK1.html', // Arlene, Oct 31: Bags & Purses, coming soon
-    'LALA_BEAUTY_MARK1.html' // Arlene, Oct 31: Beauty, coming soon
+    'LALA_AYEN_COSTUME_WORLD_MARK1.html' // Arlene, Oct 30: Costume World, coming soon
+    // Arlene, Oct 31: LALA_BAGS_PURSES_MARK1.html and LALA_BEAUTY_MARK1.html reopened with their first products
   ];
   if (!CLOSED.length || window.LalaComingSoon) return;
   function fileOf(href) {
