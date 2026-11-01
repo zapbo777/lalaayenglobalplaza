@@ -92,6 +92,10 @@
       rm.addEventListener('click',function(){var a=load();a.splice(i,1);save(a);});
       ctr.append(minus,num,plus,rm);info.appendChild(ctr);row.appendChild(info);list.appendChild(row);
     });
+    var isDig=function(x){return x.digital===true||/^item-lala-personalized-song/.test(x.id||'');},allDig=c.length&&c.every(isDig),anyDig=c.some(isDig);
+    var nt=document.querySelector('#lc-drawer .lc-note'),sub=document.querySelector('#lc-square .lc-btn-sub');
+    if(nt){if(!nt.getAttribute('data-phys'))nt.setAttribute('data-phys',nt.innerHTML);nt.innerHTML=allDig?'<strong>Digital delivery: MP3 by email within 3 days. No shipping.</strong> Prices are charged in US dollars; other currencies are an approximate guide.':nt.getAttribute('data-phys')+(anyDig?' Digital items (songs) are delivered by email as MP3 within 3 days; no shipping.':'');}
+    if(sub)sub.style.display=allDig?'none':'';
     var st=byId('lc-subtotal');if(st){st.setAttribute('data-usd',String(subtotal()));st.textContent=usd(subtotal())+' USD';}
     var co=byId('lc-checkout');if(co)co.disabled=!c.length;var sq=byId('lc-square');if(sq)sq.disabled=!c.length;var em=byId('lc-email');if(em)em.disabled=!c.length;
     applyPrices(byId('lc-drawer'));
