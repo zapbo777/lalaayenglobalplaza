@@ -10146,5 +10146,35 @@
   ],
   "merchantUrl": "",
   "isSample": false
+ },
+ {
+  "id": "item-e8fb6bd5-4351-53de-af62-2834d88610df",
+  "store": "lingerie-boutique",
+  "title": "Lace Lingerie Sling Dress",
+  "category": "Sleepwear & Nightwear",
+  "subcategory": "",
+  "condition": "New",
+  "description": "Sheer babydoll sling chemise with a delicate lace back. Colors: Black, Wine Red, Pink. Sizes S-XXXL; sizes run small (Asian sizing), so please write your usual US size and your color in the order note and we'll match it to the supplier's size chart (we recommend one size up). FREE shipping to the US. Ships from China, est. 6-12 business days. Underwear is final sale for hygiene unless it arrives damaged or defective.",
+  "sizes": "",
+  "colors": "",
+  "price": 17.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://cf.cjdropshipping.com/quick/product/697912cb-8b77-49f5-81cc-a5f7cb1a8f04.jpg",
+  "images": [
+   "https://cf.cjdropshipping.com/quick/product/697912cb-8b77-49f5-81cc-a5f7cb1a8f04.jpg",
+   "https://cf.cjdropshipping.com/quick/product/ba7da4d2-b6af-457c-a3c5-dad84a32e4e4.jpg",
+   "https://cf.cjdropshipping.com/quick/product/457f9ba6-3319-42b3-9e76-613d6db284d1.jpg",
+   "https://cf.cjdropshipping.com/quick/product/2d26daa6-2c6a-4adf-90ba-d0e11251cdd4.jpg",
+   "https://cf.cjdropshipping.com/quick/product/f81b8bbf-396f-49c3-bf93-e9f61bf5decc.jpg",
+   "https://cf.cjdropshipping.com/quick/product/96280ff1-8d04-4253-8795-694e887239c4.jpg",
+   "https://cf.cjdropshipping.com/16995744/1722903919757234176.jpg",
+   "https://cf.cjdropshipping.com/16995744/1722903919878868992.jpg",
+   "https://cf.cjdropshipping.com/16995744/1722903920004698112.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false
  }
 ]
