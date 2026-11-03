@@ -163,7 +163,37 @@
       var sb=document.querySelector('#lc-square .lc-test'),zb=document.querySelector('#lc-checkout .lc-test');
       if(sb){if(c.square&&c.squareEnv==='production')sb.remove();else sb.textContent=c.square?'TEST MODE':'COMING SOON';}
       if(zb)zb.textContent=c.enabled?'TEST MODE':'COMING SOON';
+      initPayPal(c);
     }).catch(function(){});
+  }
+
+  /* ---------- PayPal for international (non-US) buyers — DRAFT, gated by server PAYPAL_MODE ---------- */
+  var ppState='idle';
+  function cartItems(){return load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});}
+  function initPayPal(c){
+    var box=byId('lc-paypal');if(!box||ppState!=='idle')return;
+    var pp=c&&c.paypal;var m=location.search.match(/[?&]lalacountry=([A-Za-z]{2})/);var country=(m?m[1]:(c&&c.country)||'').toUpperCase();
+    if(!pp||!pp.enabled||!pp.clientId||!country||country==='US')return; // US buyers keep Square
+    ppState='loading';
+    var s=document.createElement('script');s.src='https://www.paypal.com/sdk/js?client-id='+encodeURIComponent(pp.clientId)+'&currency=USD&intent=capture&components=buttons';s.async=true;
+    s.onload=function(){
+      if(!window.paypal||!window.paypal.Buttons){ppState='off';return;}
+      box.hidden=false;if(pp.mode!=='live'){var n=el('p',{class:'lc-note'},'PayPal (international) — TEST MODE: no payment will be taken.');box.appendChild(n);}
+      var slot=el('div',{id:'lc-paypal-buttons'});box.appendChild(slot);
+      window.paypal.Buttons({
+        style:{layout:'vertical',shape:'rect',label:'paypal'},
+        createOrder:function(){status('Opening PayPal…');return fetch('/api/checkout/paypal/create',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:cartItems(),country:country})})
+          .then(function(r){return r.json().then(function(d){if(!r.ok||!d.id)throw new Error(d.error||'PayPal checkout is unavailable.');try{localStorage.setItem('lala_pending_order',d.ref||'');}catch(e){}status('');return d.id;});})
+          .catch(function(e){status(e.message);throw e;});},
+        onApprove:function(data){status('Confirming your PayPal payment…');return fetch('/api/checkout/paypal/capture',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({id:data.orderID})})
+          .then(function(r){return r.json().then(function(d){
+            if(r.ok&&d.paid){try{localStorage.removeItem(KEY);localStorage.removeItem('lala_pending_order');}catch(e){}render();status('');toast('Thank you! Your PayPal payment was received. PayPal emails your receipt.');return;}
+            status(d.error||'Payment was not completed. Your cart is saved.');});});},
+        onCancel:function(){status('PayPal was closed. Your cart is saved.');},
+        onError:function(){status('PayPal checkout is temporarily unavailable. Your cart is saved.');}
+      }).render('#lc-paypal-buttons').then(function(){ppState='ready';}).catch(function(){ppState='off';box.hidden=true;});
+    };
+    s.onerror=function(){ppState='off';};document.head.appendChild(s);
   }
 
   /* ---------- Build UI ---------- */
@@ -175,7 +205,7 @@
     var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
-    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free US shipping. Ships to US addresses only.</strong> Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Ships to US addresses only</small></button><button type="button" id="lc-checkout" class="lc-primary lc-intl">International checkout (Zonos) <span class="lc-test">COMING SOON</span></button></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
+    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free US shipping. Ships to US addresses only.</strong> Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Ships to US addresses only</small></button><button type="button" id="lc-checkout" class="lc-primary lc-intl">International checkout (Zonos) <span class="lc-test">COMING SOON</span></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
     document.body.appendChild(d);
     var dd=el('dialog',{id:'lc-details',class:'lc-details','aria-label':'Product details'});dd.innerHTML='<button type="button" class="lc-close" aria-label="Close">×</button><div id="lc-details-body"></div>';document.body.appendChild(dd);
     dd.querySelector('.lc-close').addEventListener('click',function(){dd.close();});
