@@ -196,13 +196,25 @@
     s.onerror=function(){ppState='off';};document.head.appendChild(s);
   }
 
+  /* Header Cart stays hidden until plaza-auth.js reports a signed-in customer (LalaAuth.user + lala-auth). */
+  function cartUser(e){
+    if(e&&e.detail&&Object.prototype.hasOwnProperty.call(e.detail,'user'))return e.detail.user;
+    return window.LalaAuth&&window.LalaAuth.user;
+  }
+  function syncCartGate(e){
+    var btn=byId('lc-cart-open');if(!btn)return;
+    var on=!!cartUser(e);
+    btn.hidden=!on;
+    if(!on){var d=byId('lc-drawer');if(d&&d.open)d.close();}
+  }
+
   /* ---------- Build UI ---------- */
   function build(){
     var host=document.querySelector('.topbar-actions')||document.querySelector('.site-account-actions');
     if(!host||byId('lc-cart-open'))return;
     var sel=el('select',{id:'lc-currency',class:'lc-currency notranslate','aria-label':'Currency'});sel.appendChild(new Option('US$ USD','USD'));
     sel.addEventListener('change',function(){try{localStorage.setItem(CKEY,sel.value);}catch(e){}applyPrices();render();});
-    var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
+    var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart',hidden:true});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
     d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free shipping.</strong> We ship to the US and internationally. Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Card checkout for US buyers</small></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
@@ -215,6 +227,8 @@
     var _zco=byId('lc-checkout');if(_zco)_zco.addEventListener('click',checkoutClick);byId('lc-square').addEventListener('click',squareClick);byId('lc-email').addEventListener('click',emailOrder);
     var grid=byId('product-grid');if(grid&&window.MutationObserver)new MutationObserver(function(){applyPrices(grid);}).observe(grid,{childList:true});
     window.addEventListener('storage',function(e){if(e.key===KEY)render();});
+    document.addEventListener('lala-auth',syncCartGate);
+    syncCartGate();
     render();loadRates();paidNotice();render();
   }
   window.LalaCart={add:add,addProduct:addProduct,showDetails:showDetails,items:load,count:count,applyPrices:applyPrices};
