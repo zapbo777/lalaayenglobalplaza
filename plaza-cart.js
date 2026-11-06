@@ -132,8 +132,8 @@
     if(zonosState==='ready')return; // Zonos handles the click itself
     // Not ready: still validate the cart with the server, then explain.
     status('Checking your cart…');
-    createCartId().then(function(){status('International checkout is in TEST mode and not open yet. We ship to US addresses only for now. Your cart is saved.');})
-      .catch(function(e){var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'International checkout is coming soon. We ship to US addresses only for now. Your cart is saved.':m);});
+    createCartId().then(function(){status('International checkout is in TEST mode and not open yet. International PayPal checkout is available for non-US buyers. Your cart is saved.');})
+      .catch(function(e){var m=e&&e.message||'';status(!m||/not enabled|unavailable/i.test(m)?'International checkout is coming soon. International PayPal checkout is available for non-US buyers. Your cart is saved.':m);});
   }
 
   function squareClick(){
@@ -151,7 +151,7 @@
     (function poll(){
       fetch('/api/orders/status?order='+ref,{headers:{Accept:'application/json'}}).then(function(r){return r.json();}).then(function(d){
         if(d&&d.paid){try{localStorage.removeItem(KEY);localStorage.removeItem('lala_pending_order');}catch(e){}render();
-          toast(d.nonUS?'Thank you! Payment received. Note: we ship to US addresses only, so we will contact you about this order.':'Thank you! Your payment was received. Square emails your receipt. Questions? Email us with your order number.');return;}
+          toast(d.nonUS?'Thank you! Payment received. We will confirm international shipping for this order.':'Thank you! Your payment was received. Square emails your receipt. Questions? Email us with your order number.');return;}
         if(d&&(d.status==='failed'||d.status==='canceled')){toast('Your payment was not completed. Your cart is saved, so you can try again.');return;}
         if(++tries<10)return setTimeout(poll,3000);
         toast('We are still confirming your payment. Your cart is saved. If you paid, you will get a Square receipt by email.');
@@ -167,7 +167,7 @@
     }).catch(function(){});
   }
 
-  /* ---------- PayPal for international (non-US) buyers — DRAFT, gated by server PAYPAL_MODE ---------- */
+  /* ---------- PayPal for international (non-US) buyers — gated by server PAYPAL_MODE ---------- */
   var ppState='idle';
   function cartItems(){return load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});}
   function initPayPal(c){
@@ -205,14 +205,14 @@
     var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
-    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free US shipping. Ships to US addresses only.</strong> Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Ships to US addresses only</small></button><button type="button" id="lc-checkout" class="lc-primary lc-intl">International checkout (Zonos) <span class="lc-test">COMING SOON</span></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
+    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free shipping.</strong> We ship to the US and internationally. Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Card checkout for US buyers</small></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
     document.body.appendChild(d);
     var dd=el('dialog',{id:'lc-details',class:'lc-details','aria-label':'Product details'});dd.innerHTML='<button type="button" class="lc-close" aria-label="Close">×</button><div id="lc-details-body"></div>';document.body.appendChild(dd);
     dd.querySelector('.lc-close').addEventListener('click',function(){dd.close();});
     d.querySelector('.lc-close').addEventListener('click',function(){d.close();});
     d.addEventListener('click',function(e){if(e.target===d)d.close();});dd.addEventListener('click',function(e){if(e.target===dd)dd.close();});
     btn.addEventListener('click',function(){render();status('');d.showModal();initZonos();applyCheckoutConfig();});
-    byId('lc-checkout').addEventListener('click',checkoutClick);byId('lc-square').addEventListener('click',squareClick);byId('lc-email').addEventListener('click',emailOrder);
+    var _zco=byId('lc-checkout');if(_zco)_zco.addEventListener('click',checkoutClick);byId('lc-square').addEventListener('click',squareClick);byId('lc-email').addEventListener('click',emailOrder);
     var grid=byId('product-grid');if(grid&&window.MutationObserver)new MutationObserver(function(){applyPrices(grid);}).observe(grid,{childList:true});
     window.addEventListener('storage',function(e){if(e.key===KEY)render();});
     render();loadRates();paidNotice();render();
