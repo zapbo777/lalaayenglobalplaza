@@ -1,5 +1,6 @@
 /* Shared cart, currency and language controls (scoped lc-/lt- classes; does not change existing layout) */
 .lc-cart-button{border:1px solid #d8b781;border-radius:8px;background:#fff;color:#4a276e;padding:8px 11px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}
+.lc-cart-button[hidden]{display:none!important}
 .lc-cart-button b{background:#29115f;color:#fff;border-radius:99px;min-width:18px;display:inline-block;padding:2px 5px;margin-left:3px;font-size:11px;text-align:center}
 .lc-currency,.lt-lang{border:1px solid #d8b781;border-radius:8px;background:#fff;color:#4a276e;padding:7px 6px;font-weight:700;font-size:12px;max-width:150px;cursor:pointer}
 .site-account-actions .lc-cart-button,.site-account-actions .lc-currency,.site-account-actions .lt-lang{background:#fff;color:#2c1748;border:0}
