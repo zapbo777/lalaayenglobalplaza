@@ -23,7 +23,12 @@
     var c=load(),line={id:String(p.id),title:String(p.title||'').slice(0,120),price:Number(p.price)||0,image:String(p.image||''),store:String(p.store||''),size:size||'',color:color||'',qty:Math.max(1,qty||1),max:Math.max(1,Math.min(20,Number(p.stock)||1))};
     var k=lineKey(line),ex=c.filter(function(x){return lineKey(x)===k;})[0];
     if(ex)ex.qty=Math.min(ex.max||20,ex.qty+line.qty);else c.push(line);
-    save(c);toast(line.title+' added to cart.');
+    save(c);
+    if(!(window.LalaAuth&&window.LalaAuth.user)){
+      toast(line.title+' saved to your cart. Sign in to continue to checkout.');
+      var accountDialog=byId('account-dialog');
+      if(accountDialog&&typeof accountDialog.showModal==='function'&&!accountDialog.open)accountDialog.showModal();
+    }else{toast(line.title+' added to cart.');}
   }
   function toast(msg){var t=byId('toast');if(t){t.textContent=msg;t.classList.remove('hidden');clearTimeout(t.lcTimer);t.lcTimer=setTimeout(function(){t.classList.add('hidden');},3500);}else{var s=byId('lc-status');if(s)s.textContent=msg;}}
 
