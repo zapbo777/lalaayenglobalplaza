@@ -36,7 +36,7 @@
   function showDetails(p){
     var d=byId('lc-details');if(!d)return;var body=byId('lc-details-body');body.replaceChildren();
     var sizes=opts(p.sizes),colors=opts(p.colors),buyable=p.status==='ready'&&Number(p.stock)>0&&Number(p.price)>0;
-    var pics=[];[p.image].concat(Array.isArray(p.images)?p.images:[]).forEach(function(u){u=String(u||'');if(/^https:\/\//.test(u)&&pics.indexOf(u)<0)pics.push(u);});pics=pics.slice(0,12);
+    var pics=[];[p.image].concat(Array.isArray(p.images)?p.images:[]).forEach(function(u){u=String(u||'');if((/^https:\/\//.test(u)||/^assets\/(?!.*\.\.)[A-Za-z0-9_./-]+$/.test(u))&&pics.indexOf(u)<0)pics.push(u);});pics=pics.slice(0,12);
     if(pics.length){var gal=el('div',{class:'lc-gallery'});var main=el('img',{src:pics[0],alt:p.title,class:'lc-details-img',loading:'lazy',referrerpolicy:'no-referrer'});gal.appendChild(main);
       if(pics.length>1){var cur=0,thumbs=el('div',{class:'lc-thumbs'});var show=function(i){cur=(i+pics.length)%pics.length;main.src=pics[cur];main.alt=p.title+' photo '+(cur+1)+' of '+pics.length;Array.prototype.forEach.call(thumbs.children,function(t,k){t.classList.toggle('active',k===cur);});};
         pics.forEach(function(u,i){var t=el('button',{type:'button',class:'lc-thumb'+(i?'':' active'),'aria-label':'Photo '+(i+1)});t.appendChild(el('img',{src:u,alt:'',loading:'lazy',referrerpolicy:'no-referrer'}));t.addEventListener('click',function(){show(i);});thumbs.appendChild(t);});
@@ -86,7 +86,7 @@
     if(!c.length){list.appendChild(el('p',{class:'lc-empty'},'Your cart is empty.'));}
     c.forEach(function(x,i){
       var row=el('div',{class:'lc-line'});
-      if(/^https:\/\//.test(x.image||''))row.appendChild(el('img',{src:x.image,alt:'',loading:'lazy',referrerpolicy:'no-referrer'}));
+      if((/^https:\/\//.test(x.image||'')||/^assets\/(?!.*\.\.)[A-Za-z0-9_./-]+$/.test(x.image||'')))row.appendChild(el('img',{src:x.image,alt:'',loading:'lazy',referrerpolicy:'no-referrer'}));
       var info=el('div',{class:'lc-line-info'});info.appendChild(el('strong',null,x.title));
       var o=[x.size&&('Size '+x.size),x.color&&('Color '+x.color)].filter(Boolean).join(' · ');if(o)info.appendChild(el('small',null,o));
       var pr=el('small',{class:'notranslate','data-usd':String(x.price*x.qty)},usd(x.price)+' × '+x.qty+' = '+usd(x.price*x.qty));info.appendChild(pr);
