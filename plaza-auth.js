@@ -52,7 +52,7 @@
         if(!em)return say('Enter your email first.');if(p.length<8)return say('Choose a password with at least 8 characters.');
         busy(true);say('Creating your account…');
         api('/auth/signup',{email:em,password:p,name:val('account-name').trim()}).then(function(d){busy(false);
-          if(d.user){state.user=d.user;byId('account-password').value='';render();say('Welcome! Your account is ready.');}else say(d.error||'Could not create the account. Please try again.');})
+          if(d.user){state.user=d.user;byId('account-password').value='';render();say('Welcome! Your account is ready.');if(dlg&&dlg.open)dlg.close();}else say(d.error||'Could not create the account. Please try again.');})
         .catch(function(){busy(false);say('Network problem. Please try again.');});});
       var reset=byId('account-reset');if(reset)reset.addEventListener('click',function(){say('Forgot your password? Email lalaayenglobalplaza@gmail.com from your account email address and we will help you reset it.');});
     }
