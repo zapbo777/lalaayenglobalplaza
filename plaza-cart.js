@@ -24,11 +24,7 @@
     var k=lineKey(line),ex=c.filter(function(x){return lineKey(x)===k;})[0];
     if(ex)ex.qty=Math.min(ex.max||20,ex.qty+line.qty);else c.push(line);
     save(c);
-    if(!(window.LalaAuth&&window.LalaAuth.user)){
-      toast(line.title+' saved to your cart. Sign in to continue to checkout.');
-      var accountDialog=byId('account-dialog');
-      if(accountDialog&&typeof accountDialog.showModal==='function'&&!accountDialog.open)accountDialog.showModal();
-    }else{toast(line.title+' added to cart.');}
+    toast(line.title+' added to cart. Sign in only when you are ready to check out.');
   }
   function toast(msg){var t=byId('toast');if(t){t.textContent=msg;t.classList.remove('hidden');clearTimeout(t.lcTimer);t.lcTimer=setTimeout(function(){t.classList.add('hidden');},3500);}else{var s=byId('lc-status');if(s)s.textContent=msg;}}
 
@@ -115,12 +111,13 @@
   var zonosState='idle';
   function status(msg){var s=byId('lc-status');if(s)s.textContent=msg;}
   function createCartId(){
+    if(!requestCheckoutLogin())return Promise.reject(new Error('Sign in required before checkout.'));
     var items=load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});
     return fetch('/api/checkout/cart',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:items})})
       .then(function(r){return r.json().then(function(d){if(!r.ok||!d.cartId)throw new Error(d.error||'Checkout is unavailable.');return d.cartId;});});
   }
   function initZonos(){
-    if(zonosState!=='idle')return;zonosState='loading';
+    if(!cartUser()||zonosState!=='idle')return;zonosState='loading';
     fetch('/api/checkout/config').then(function(r){return r.json();}).then(function(cfg){
       if(!cfg||!cfg.enabled||!cfg.publicKey||!cfg.storeId){zonosState='off';return;}
       var s=document.createElement('script');s.src='https://js.zonos.com/dist/scripts/loadZonos.js?timestamp='+Date.now();s.async=true;
@@ -134,6 +131,7 @@
     }).catch(function(){zonosState='off';});
   }
   function checkoutClick(){
+    if(!requestCheckoutLogin())return;
     if(zonosState==='ready')return; // Zonos handles the click itself
     // Not ready: still validate the cart with the server, then explain.
     status('Checking your cart…');
@@ -142,6 +140,7 @@
   }
 
   function squareClick(){
+    if(!requestCheckoutLogin())return;
     var b=byId('lc-square');var items=load().map(function(x){return {id:x.id,qty:x.qty,size:x.size||'',color:x.color||''};});if(!items.length)return;
     if(b)b.disabled=true;status('Opening secure Square checkout…');
     fetch('/api/checkout/square',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:items,returnTo:location.href.split('#')[0].split('?')[0]})})
@@ -168,7 +167,7 @@
       var sb=document.querySelector('#lc-square .lc-test'),zb=document.querySelector('#lc-checkout .lc-test');
       if(sb){if(c.square&&c.squareEnv==='production')sb.remove();else sb.textContent=c.square?'TEST MODE':'COMING SOON';}
       if(zb)zb.textContent=c.enabled?'TEST MODE':'COMING SOON';
-      initPayPal(c);
+      if(cartUser())initPayPal(c);
     }).catch(function(){});
   }
 
@@ -187,7 +186,7 @@
       var slot=el('div',{id:'lc-paypal-buttons'});box.appendChild(slot);
       window.paypal.Buttons({
         style:{layout:'vertical',shape:'rect',label:'paypal'},
-        createOrder:function(){status('Opening PayPal…');return fetch('/api/checkout/paypal/create',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:cartItems(),country:country})})
+        createOrder:function(){if(!requestCheckoutLogin())return Promise.reject(new Error('Sign in required before checkout.'));status('Opening PayPal…');return fetch('/api/checkout/paypal/create',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({items:cartItems(),country:country})})
           .then(function(r){return r.json().then(function(d){if(!r.ok||!d.id)throw new Error(d.error||'PayPal checkout is unavailable.');try{localStorage.setItem('lala_pending_order',d.ref||'');}catch(e){}status('');return d.id;});})
           .catch(function(e){status(e.message);throw e;});},
         onApprove:function(data){status('Confirming your PayPal payment…');return fetch('/api/checkout/paypal/capture',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({id:data.orderID})})
@@ -201,16 +200,22 @@
     s.onerror=function(){ppState='off';};document.head.appendChild(s);
   }
 
-  /* Header Cart stays hidden until plaza-auth.js reports a signed-in customer (LalaAuth.user + lala-auth). */
+  /* Guest browsing and guest cart are open. Authenticate only at paid checkout. */
   function cartUser(e){
     if(e&&e.detail&&Object.prototype.hasOwnProperty.call(e.detail,'user'))return e.detail.user;
     return window.LalaAuth&&window.LalaAuth.user;
   }
+  function requestCheckoutLogin(){
+    if(cartUser())return true;
+    status('Sign in or create a free account to check out. Your cart will stay saved.');
+    var dlg=byId('account-dialog');
+    if(dlg&&typeof dlg.showModal==='function'&&!dlg.open)dlg.showModal();
+    return false;
+  }
   function syncCartGate(e){
-    var btn=byId('lc-cart-open');if(!btn)return;
-    var on=!!cartUser(e);
-    btn.hidden=!on;
-    if(!on){var d=byId('lc-drawer');if(d&&d.open)d.close();}
+    var btn=byId('lc-cart-open');
+    if(btn)btn.hidden=false;
+    if(cartUser(e)){var d=byId('lc-drawer');if(d&&d.open){initZonos();applyCheckoutConfig();}}
   }
 
   /* ---------- Build UI ---------- */
@@ -219,10 +224,10 @@
     if(!host||byId('lc-cart-open'))return;
     var sel=el('select',{id:'lc-currency',class:'lc-currency notranslate','aria-label':'Currency'});sel.appendChild(new Option('US$ USD','USD'));
     sel.addEventListener('change',function(){try{localStorage.setItem(CKEY,sel.value);}catch(e){}applyPrices();render();});
-    var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart',hidden:true});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
+    var btn=el('button',{type:'button',id:'lc-cart-open',class:'lc-cart-button','aria-label':'Open cart'});btn.append('🛒 Cart ',el('b',{class:'lc-cart-count notranslate'},'0'));
     var lt=document.getElementById('lt-lang');var ref=lt?lt.nextSibling:host.firstChild;host.insertBefore(btn,ref);host.insertBefore(sel,btn);
     var d=el('dialog',{id:'lc-drawer',class:'lc-drawer','aria-labelledby':'lc-title'});
-    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note"><strong>Free shipping.</strong> We ship to the US and internationally. Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Card checkout for US buyers</small></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
+    d.innerHTML='<div class="lc-head"><h2 id="lc-title">Your cart</h2><button type="button" class="lc-close" aria-label="Close cart">×</button></div><div id="lc-lines" class="lc-lines"></div><div class="lc-foot"><div class="lc-subtotal-row"><span>Subtotal</span><strong id="lc-subtotal" class="notranslate" data-usd="0">$0.00 USD</strong></div><p class="lc-note">Shipping availability and cost vary by destination. Please confirm the final shipping charge before paying. Prices are charged in US dollars; other currencies are an approximate guide. Free returns within 14 days of delivery (<a href="returns.html">details</a>).</p><div class="lc-pay-row"><button type="button" id="lc-square" class="lc-primary lc-square">Pay with Square (US) <span class="lc-test">TEST MODE</span><small class="lc-btn-sub">Card checkout for US buyers</small></button></div><div id="lc-paypal" class="lc-paypal" hidden></div><button type="button" id="lc-email" class="lc-secondary">Email my order</button><p id="lc-status" class="lc-status" role="status" aria-live="polite"></p></div>';
     document.body.appendChild(d);
     var dd=el('dialog',{id:'lc-details',class:'lc-details','aria-label':'Product details'});dd.innerHTML='<button type="button" class="lc-close" aria-label="Close">×</button><div id="lc-details-body"></div>';document.body.appendChild(dd);
     dd.querySelector('.lc-close').addEventListener('click',function(){dd.close();});
