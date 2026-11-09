@@ -162,7 +162,7 @@
 
     const hint = el("p", "qa-msg info");
     hint.textContent = options.context === "quote"
-      ? "Free while in early access. Creating an account does not charge a card. The $19/month plan is coming soon and is not for sale yet."
+      ? "Creating an account does not charge a card."
       : "Basic, Pro, and Business are not activated. Creating an account does not charge a card or unlock a paid plan.";
     signedOut.append(switcher, form, hint);
 
@@ -281,7 +281,9 @@
     localStorage.removeItem(TOKEN_KEY);
     user = null;
     busy = false;
-    setMessage("Signed out. Ideas already on this device stay here.", "info");
+    setMessage(mounts.some((m) => m.options.context === "quote")
+      ? "Signed out. Your prices and quotes stay private in your account and were cleared from this screen."
+      : "Signed out. Ideas already on this device stay here.", "info");
     emit();
   }
 
