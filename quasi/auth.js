@@ -2,7 +2,9 @@
 // Session cookie is httpOnly on the API host. A bearer token is kept in
 // localStorage because the Pages host and workers.dev host do not share a site.
 (function () {
-  const TOKEN_KEY = "quasi_session_token";
+  // A local ?api= test host gets its own token slot so a production session
+  // token is never sent to a localhost test server.
+  const TOKEN_KEY = localApiOverride() ? "quasi_session_token_local" : "quasi_session_token";
   const PLANS = ["Basic", "Pro", "Business"];
   let user = null;
   let mode = "login";
@@ -10,13 +12,20 @@
   let message = "";
   let messageTone = "info";
   const listeners = new Set();
+  const beforeLogout = new Set();
   const mounts = [];
 
-  function apiBase() {
+  function localApiOverride() {
     try {
       const override = new URLSearchParams(location.search).get("api");
       if (override && /^http:\/\/(127\.0\.0\.1|localhost):8787$/.test(override)) return override;
     } catch { /* keep the configured host */ }
+    return "";
+  }
+
+  function apiBase() {
+    const override = localApiOverride();
+    if (override) return override;
     const raw = String(window.QUASI_API || "").trim().replace(/\/$/, "");
     if (!raw || /PLACEHOLDER/i.test(raw)) return "";
     return raw;
@@ -260,6 +269,10 @@
   async function logout() {
     busy = true;
     paintAll();
+    // Let pages flush unsynced account data before the session ends.
+    for (const hook of beforeLogout) {
+      try { await hook(user); } catch { /* sign out anyway */ }
+    }
     try { await request("/auth/logout", { method: "POST", body: {} }); } catch { /* clear the local session either way */ }
     localStorage.removeItem(TOKEN_KEY);
     user = null;
@@ -307,6 +320,7 @@
       listeners.add(listener);
       listener(user);
     },
+    onBeforeLogout(hook) { beforeLogout.add(hook); },
     currentUser() { return user; },
     async getLibrary() {
       const data = await request("/library");
