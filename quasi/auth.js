@@ -161,7 +161,9 @@
     form.append(grid, msg, submit);
 
     const hint = el("p", "qa-msg info");
-    hint.textContent = "Basic, Pro, and Business are not activated. Creating an account does not charge a card or unlock a paid plan.";
+    hint.textContent = options.context === "quote"
+      ? "Free while in early access. Creating an account does not charge a card. The $19/month plan is coming soon and is not for sale yet."
+      : "Basic, Pro, and Business are not activated. Creating an account does not charge a card or unlock a paid plan.";
     signedOut.append(switcher, form, hint);
 
     const signedIn = el("div", "qa-in");
@@ -170,7 +172,7 @@
     const email = el("span", "qa-email");
     who.append(email);
     const plans = el("div", "qa-plans");
-    for (const name of PLANS) {
+    for (const name of (options.context === "quote" ? [] : PLANS)) {
       const pill = el("span", "qa-pill");
       pill.textContent = name + " · not activated";
       plans.append(pill);
@@ -178,9 +180,11 @@
     const signedMsg = el("p", "qa-msg info");
     signedMsg.textContent = options.context === "studio"
       ? "Favorites and named briefs save to your account. Plans stay not activated."
-      : "Open HYDRA Hook Studio to save hooks to this account. Plans stay not activated.";
+      : options.context === "quote"
+        ? "Your prices and saved quotes are private to this account."
+        : "Open HYDRA Hook Studio to save hooks to this account. Plans stay not activated.";
     const actions = el("div", "qa-actions");
-    if (options.context !== "studio") {
+    if (options.context !== "studio" && options.context !== "quote") {
       const open = el("a", "qa-btn primary");
       open.href = "studio.html" + (location.search || "");
       open.textContent = "Open HYDRA Hook Studio";
@@ -230,7 +234,7 @@
     record.submit.disabled = busy;
     record.msg.className = "qa-msg " + (messageTone || "info");
     record.msg.textContent = message || (configured()
-      ? "Sign in to save HYDRA projects to your account."
+      ? (record.options.context === "quote" ? "Sign in or create a free account to make and save cleaning quotes." : "Sign in to save HYDRA projects to your account.")
       : "Sign-in is on this page. Cloud save turns on after the API hostname in config.js replaces PLACEHOLDER.");
     record.email.textContent = user ? user.email : "";
   }
@@ -304,7 +308,7 @@
   function preserveLocalApiLinks() {
     const search = location.search || "";
     if (!/^\?api=http:\/\/(127\.0\.0\.1|localhost):8787$/.test(search)) return;
-    document.querySelectorAll('a[href="studio.html"], a[href="index.html"]').forEach((anchor) => {
+    document.querySelectorAll('a[href="studio.html"], a[href="index.html"], a[href="quote.html"]').forEach((anchor) => {
       const href = anchor.getAttribute("href");
       if (href && !href.includes("?")) anchor.href = href + search;
     });
@@ -345,5 +349,25 @@
     async deleteProject(id) {
       await request("/projects/" + encodeURIComponent(id), { method: "DELETE" });
     },
+    // Quotation Maker (cleaners). Prices and quotes are private to the signed-in account.
+    async getQuoteProfile() {
+      return request("/quote/profile");
+    },
+    async saveQuoteProfile(payload) {
+      const data = await request("/quote/profile", { method: "PUT", body: payload });
+      return data.profile;
+    },
+    async listQuotes() {
+      const data = await request("/quotes");
+      return data.quotes || [];
+    },
+    async createQuote(payload) {
+      const data = await request("/quotes", { method: "POST", body: payload });
+      return data.quote;
+    },
+    async deleteQuote(id) {
+      await request("/quotes/" + encodeURIComponent(id), { method: "DELETE" });
+    },
+    apiBase,
   };
 })();

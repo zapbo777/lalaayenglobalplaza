@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Cleaning quote</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f1fb;color:#1d1a2b;font:16px/1.55 system-ui,-apple-system,Arial,sans-serif;padding:28px 16px}
+.card{background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(40,20,80,.12);padding:26px;max-width:520px;margin:0 auto}
+.biz{font-size:24px;font-weight:850;margin:0 0 4px}
+p{color:#4b4660;margin:0 0 6px}
+.total{font-size:42px;font-weight:900;color:#6a3df0;margin:14px 0}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:14px 0 0}
+dt{color:#7a748f;font-size:14px}dd{margin:0;font-weight:650}
+.note{font-size:13px;color:#7a748f;margin-top:18px;border-top:1px solid #ece8f6;padding-top:12px}
+.err{max-width:520px;margin:0 auto;text-align:center;color:#4b4660}
+small a{color:#6a3df0}
+</style>
+</head>
+<body>
+<div id="out" class="err">Loading quote…</div>
+<script src="config.js"></script>
+<script>
+(function () {
+  const out = document.getElementById("out");
+  const token = (location.hash || "").slice(1);
+  function apiBase() {
+    const o = new URLSearchParams(location.search).get("api");
+    if (o && /^http:\/\/(127\.0\.0\.1|localhost):8787$/.test(o)) return o;
+    return String(window.QUASI_API || "").replace(/\/$/, "");
+  }
+  const money = (c) => "$" + (Number(c || 0) / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function el(tag, cls, text) { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function fail(text) { out.className = "err"; out.textContent = text; }
+  if (!/^[A-Za-z0-9_-]{40,64}$/.test(token)) return fail("This quote link is not valid. Ask the cleaner to send it again.");
+  fetch(apiBase() + "/q/" + token, { credentials: "omit", referrerPolicy: "no-referrer" })
+    .then((r) => r.ok ? r.json() : Promise.reject(r.status))
+    .then(({ quote: q }) => {
+      document.title = "Cleaning quote from " + q.businessName;
+      out.className = "card"; out.replaceChildren();
+      out.append(el("div", "biz", q.businessName), el("p", null, "Cleaning quote for " + q.customerName), el("div", "total", money(q.totalCents)));
+      const dl = el("dl");
+      for (const [k, v] of [["Type of clean", q.cleanTypeLabel], ["Home size", q.homeSizeLabel], ["Date", new Date(q.createdAt).toLocaleDateString()]]) dl.append(el("dt", null, k), el("dd", null, v));
+      out.append(dl);
+      const note = el("div", "note");
+      note.append("To book or ask a question, reply to the message this link came in. ");
+      const sm = el("small"); sm.append("Quote made with "); const a = el("a", null, "QUASI Quotation Maker"); a.href = "quote.html"; sm.append(a); note.append(sm);
+      out.append(note);
+    })
+    .catch((s) => fail(s === 404 ? "This quote was not found. It may have been deleted. Ask the cleaner to send it again." : "Could not load this quote. Check your connection and try again."));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121123">
+<meta name="referrer" content="no-referrer">
+<title>QUASI Quotation Maker for Cleaners — Lala Ayen Global Plaza</title>
+<meta name="description" content="Make a cleaning quote in under a minute. Set your own prices, enter the customer and home, and send the quote by link, text or email.">
+<style>
+:root{color-scheme:dark;--bg:#100f1d;--border:#47415f;--ink:#f8f5ff;--muted:#bab4ce;--pink:#ffaccb;--lav:#baacff;--mint:#a6edd8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 10% 0,#30203e,transparent 45%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Arial,sans-serif}
+header,main,footer{max-width:1000px;margin:auto;padding:0 20px}
+header{padding-top:24px;padding-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+header a{color:var(--lav);text-decoration:none;font-size:14px;font-weight:600}
+header .links{display:flex;gap:16px;flex-wrap:wrap}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(30px,6vw,54px);line-height:1.05;letter-spacing:-.05em;max-width:760px}
+h2{font-size:clamp(22px,4vw,30px);letter-spacing:-.03em}
+p{color:var(--muted)}
+.eyebrow{color:var(--pink);text-transform:uppercase;font-size:12px;letter-spacing:.14em;font-weight:800}
+.hero{padding:48px 0 30px}
+.break{padding:30px 0;border-bottom:1px solid #383249}
+.panel{border:1px solid var(--border);background:linear-gradient(160deg,#242039,#191728);border-radius:18px;padding:20px}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}}
+label{display:block;font-size:13px;font-weight:750;margin-bottom:6px;color:#ece7fd}
+input,select{display:block;width:100%;background:#100f1d;border:1px solid #71668f;color:#fff;padding:12px;border-radius:10px;font:inherit}
+.money{position:relative}.money span{position:absolute;left:12px;top:12px;color:var(--muted)}.money input{padding-left:26px}
+.btn{border:1px solid var(--border);padding:11px 15px;border-radius:11px;background:#29243e;color:#fff;text-decoration:none;cursor:pointer;font:inherit;font-weight:800;display:inline-flex;align-items:center;min-height:44px}
+.btn.main{background:linear-gradient(120deg,#ffb1d1,#b9a7ff);color:#23152e;border:0}
+.btn.small{padding:8px 11px;min-height:38px;font-size:14px}
+.btn.danger{border-color:#8a4d5d;color:#ffd6de}
+.btn:disabled{opacity:.55;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.msg{font-size:13px;border-radius:12px;padding:10px 13px;margin:12px 0 0}
+.msg:empty{display:none}
+.msg.info{color:#e5cad8;background:#392437;border:1px solid #74516c}
+.msg.good{color:#e7fff6;background:#17352d;border:1px solid #3f7564}
+.msg.bad{color:#ffe8e8;background:#3a2230;border:1px solid #8a4d5d}
+.plan{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.price{font-size:32px;font-weight:900;color:var(--pink)}
+.pill{border:1px solid #876c74;border-radius:30px;padding:4px 10px;font-size:12px;color:var(--pink);display:inline-block}
+.estimate{font-size:14px;color:var(--mint);margin-top:10px}
+.quote-card{background:#fff;color:#1d1a2b;border-radius:16px;padding:22px;max-width:520px}
+.quote-card p{color:#4b4660;margin:0 0 6px}
+.quote-card .biz{font-size:22px;font-weight:850;margin-bottom:4px}
+.quote-card .total{font-size:36px;font-weight:900;color:#6a3df0;margin:10px 0}
+.quote-card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:12px 0 0}
+.quote-card dt{color:#7a748f;font-size:13px}.quote-card dd{margin:0;font-weight:650}
+.list{display:grid;gap:10px}
+.item{border:1px solid var(--border);border-radius:14px;padding:14px;background:#171426;display:grid;gap:8px}
+.item b{font-size:17px}.item small{color:var(--muted)}
+.item .amt{color:var(--pink);font-weight:900;font-size:20px}
+footer{padding-top:24px;padding-bottom:44px;font-size:12px;color:var(--muted)}
+.steps{display:grid;gap:14px}@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.num{color:var(--mint);font-weight:900;letter-spacing:.1em;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <b>✦ QUASI · Quotation Maker</b>
+  <span class="links">
+    <a href="/">← Lala Ayen Global Plaza</a>
+    <a href="index.html">QUASI home</a>
+    <a href="#account" id="headerAccount">Sign in</a>
+  </span>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">For cleaning businesses</div>
+    <h1>Send a cleaning quote in under a minute.</h1>
+    <p>Set your own prices once. Then enter the customer's name, the type of clean and the home size, and QUASI builds a quote with your business name. Send it by link, text or email.</p>
+    <div class="row"><a class="btn main" href="#account">Start free</a><a class="btn" href="#plan">Plan</a></div>
+  </section>
+
+  <section class="break">
+    <div class="steps">
+      <div class="panel"><div class="num">01 · YOUR PRICES</div><h3>Set your prices</h3><p>Your price for a standard, deep and move-out clean, plus what you add for each extra bedroom.</p></div>
+      <div class="panel"><div class="num">02 · THE JOB</div><h3>Fill in three things</h3><p>Customer name, type of clean (standard, deep or move-out) and home size.</p></div>
+      <div class="panel"><div class="num">03 · SEND</div><h3>Send the quote</h3><p>Copy the link, or open a text or email with it ready to send. Every quote is saved to your account.</p></div>
+    </div>
+  </section>
+
+  <section class="break" id="plan">
+    <div class="panel plan">
+      <div>
+        <h2 style="margin-bottom:6px">QUASI Quotation Maker</h2>
+        <p style="margin:0">Unlimited quotes, your own prices, saved quotes list.</p>
+      </div>
+      <div style="text-align:right">
+        <div class="price">$19<span style="font-size:16px">/month</span></div>
+        <span class="pill">Coming soon · not for sale yet</span>
+      </div>
+    </div>
+    <p class="msg info" style="display:block">No payment is taken. There is no checkout on this page, and creating an account does not charge a card.</p>
+  </section>
+
+  <section class="break" id="account">
+    <h2>Your account</h2>
+    <div id="accountPanel"></div>
+  </section>
+
+  <!-- Private work area: only rendered after sign-in. Nothing in here is filled while signed out. -->
+  <div id="app" hidden>
+    <section class="break" id="prices">
+      <h2>1 · Your business and prices</h2>
+      <form id="profileForm" class="panel" novalidate>
+        <div class="grid">
+          <div><label for="businessName">Business name (shown on every quote)</label><input id="businessName" name="businessName" maxlength="120" autocomplete="organization" required></div>
+          <div class="grid g4">
+            <div><label for="pStandard">Standard clean</label><div class="money"><span>$</span><input id="pStandard" name="standard" type="number" min="0" step="1" inputmode="decimal" required></div></div>
+            <div><label for="pDeep">Deep clean</label><div class="money"><span>$</span><input id="pDeep" name="deep" type="number" min="0" step="1" inputmode="decimal" required></div></div>
+            <div><label for="pMoveout">Move-out clean</label><div class="money"><span>$</span><input id="pMoveout" name="moveout" type="number" min="0" step="1" inputmode="decimal" required></div></div>
+            <div><label for="pBedroom">Add per extra bedroom</label><div class="money"><span>$</span><input id="pBedroom" name="perBedroom" type="number" min="0" step="1" inputmode="decimal" required></div></div>
+          </div>
+          <p style="margin:0;font-size:13px">The clean prices are for a studio or 1-bedroom home. For bigger homes, QUASI adds your extra-bedroom amount for each bedroom after the first.</p>
+          <div class="row"><button class="btn main" type="submit">Save prices</button></div>
+        </div>
+        <p class="msg" id="profileMsg" role="status"></p>
+      </form>
+    </section>
+
+    <section class="break" id="new">
+      <h2>2 · New quote</h2>
+      <form id="quoteForm" class="panel" novalidate>
+        <div class="grid g3">
+          <div><label for="customerName">Customer name</label><input id="customerName" name="customerName" maxlength="80" autocomplete="off" required></div>
+          <div><label for="cleanType">Type of clean</label>
+            <select id="cleanType" name="cleanType">
+              <option value="standard">Standard clean</option>
+              <option value="deep">Deep clean</option>
+              <option value="moveout">Move-out clean</option>
+            </select></div>
+          <div><label for="homeSize">Home size</label>
+            <select id="homeSize" name="homeSize">
+              <option value="studio">Studio / 1 bedroom</option>
+              <option value="bed2">2 bedrooms</option>
+              <option value="bed3">3 bedrooms</option>
+              <option value="bed4">4 bedrooms</option>
+              <option value="bed5">5+ bedrooms</option>
+            </select></div>
+        </div>
+        <div class="estimate" id="estimate"></div>
+        <div class="row" style="margin-top:12px"><button class="btn main" type="submit">Make quote</button></div>
+        <p class="msg" id="quoteMsg" role="status"></p>
+      </form>
+      <div id="latest" style="margin-top:18px" hidden></div>
+    </section>
+
+    <section class="break" id="saved">
+      <h2>3 · Saved quotes</h2>
+      <p>Only you can see this list. Anyone you send a link to sees just that one quote.</p>
+      <div class="list" id="quoteList"></div>
+      <p class="msg" id="listMsg" role="status"></p>
+    </section>
+  </div>
+</main>
+<footer>
+  <p>© 2026 QUASI by Lala Ayen · <a href="/" style="color:var(--lav)">Lala Ayen Global Plaza</a>. QUASI stores only your business name, your prices, and for each quote the customer name, type of clean, home size and price. It does not send texts or emails itself; your own phone or email app does.</p>
+</footer>
+<script src="config.js"></script>
+<script src="auth.js"></script>
+<script>
+(function () {
+  const Q = window.QuasiAuth;
+  const $ = (id) => document.getElementById(id);
+  const SIZE_EXTRA = { studio: 0, bed2: 1, bed3: 2, bed4: 3, bed5: 4 };
+  const SIZE_LABEL = { studio: "Studio / 1 bedroom", bed2: "2 bedrooms", bed3: "3 bedrooms", bed4: "4 bedrooms", bed5: "5+ bedrooms" };
+  const TYPE_LABEL = { standard: "Standard clean", deep: "Deep clean", moveout: "Move-out clean" };
+  let profile = null;
+  let quotes = [];
+  const money = (cents) => "$" + (Number(cents || 0) / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function msg(id, text, tone) { const n = $(id); n.textContent = text || ""; n.className = "msg " + (tone || "info"); }
+
+  function shareUrl(token) {
+    // Works whether the page was opened as /quasi/quote.html or /quasi/quote.
+    const url = new URL("q.html", location.href);
+    url.search = /^\?api=http:\/\/(127\.0\.0\.1|localhost):8787$/.test(location.search) ? location.search : "";
+    url.hash = token;
+    return url.href;
+  }
+  function shareText(q) {
+    return "Hi " + q.customerName + ", here is your cleaning quote from " + q.businessName + ": " + q.cleanTypeLabel + ", " + q.homeSizeLabel + ", " + money(q.totalCents) + ". View it here: " + shareUrl(q.shareToken);
+  }
+  function smsHref(q) { return "sms:?&body=" + encodeURIComponent(shareText(q)); }
+  function mailHref(q) { return "mailto:?subject=" + encodeURIComponent("Your cleaning quote from " + q.businessName) + "&body=" + encodeURIComponent(shareText(q)); }
+
+  async function copy(text, btn) {
+    try { await navigator.clipboard.writeText(text); }
+    catch {
+      const t = document.createElement("textarea"); t.value = text; document.body.append(t); t.select();
+      try { document.execCommand("copy"); } catch {} t.remove();
+    }
+    const old = btn.textContent; btn.textContent = "Link copied"; setTimeout(() => { btn.textContent = old; }, 1600);
+  }
+
+  function el(tag, cls, text) { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  function shareRow(q, withDelete) {
+    const row = el("div", "row");
+    const c = el("button", "btn small main", "Copy link"); c.type = "button"; c.addEventListener("click", () => copy(shareUrl(q.shareToken), c));
+    const s = el("a", "btn small", "Text"); s.href = smsHref(q);
+    const m = el("a", "btn small", "Email"); m.href = mailHref(q);
+    const o = el("a", "btn small", "Open"); o.href = shareUrl(q.shareToken); o.target = "_blank"; o.rel = "noopener noreferrer";
+    row.append(c, s, m, o);
+    if (withDelete) {
+      const d = el("button", "btn small danger", "Delete"); d.type = "button";
+      d.addEventListener("click", async () => {
+        if (!confirm("Delete the quote for " + q.customerName + "? Its link will stop working.")) return;
+        try { await Q.deleteQuote(q.id); quotes = quotes.filter((x) => x.id !== q.id); renderList(); msg("listMsg", "Quote deleted.", "good"); }
+        catch (e) { msg("listMsg", e.message, "bad"); }
+      });
+      row.append(d);
+    }
+    return row;
+  }
+
+  function quoteCard(q) {
+    const card = el("div", "quote-card");
+    card.append(el("div", "biz", q.businessName), el("p", null, "Cleaning quote for " + q.customerName));
+    card.append(el("div", "total", money(q.totalCents)));
+    const dl = el("dl");
+    for (const [k, v] of [["Type of clean", q.cleanTypeLabel], ["Home size", q.homeSizeLabel], ["Date", new Date(q.createdAt).toLocaleDateString()]]) dl.append(el("dt", null, k), el("dd", null, v));
+    card.append(dl);
+    return card;
+  }
+
+  function renderList() {
+    const list = $("quoteList"); list.replaceChildren();
+    if (!quotes.length) { list.append(el("p", null, "No saved quotes yet.")); return; }
+    for (const q of quotes) {
+      const item = el("div", "item");
+      const top = el("div", "row"); top.style.justifyContent = "space-between";
+      const left = el("div"); left.append(el("b", null, q.customerName), el("br"), el("small", null, q.cleanTypeLabel + " · " + q.homeSizeLabel + " · " + new Date(q.createdAt).toLocaleDateString()));
+      top.append(left, el("span", "amt", money(q.totalCents)));
+      item.append(top, shareRow(q, true));
+      list.append(item);
+    }
+  }
+
+  function estimate() {
+    if (!profile || !profile.prices) { $("estimate").textContent = "Save your prices first to see the price."; return; }
+    const p = profile.prices, t = $("cleanType").value, s = $("homeSize").value;
+    $("estimate").textContent = "Price: " + money((p.base[t] || 0) + (p.perBedroom || 0) * SIZE_EXTRA[s]);
+  }
+
+  function fillProfile() {
+    const f = $("profileForm");
+    f.businessName.value = profile ? profile.businessName : "";
+    const p = profile && profile.prices;
+    f.standard.value = p ? p.base.standard / 100 : "";
+    f.deep.value = p ? p.base.deep / 100 : "";
+    f.moveout.value = p ? p.base.moveout / 100 : "";
+    f.perBedroom.value = p ? p.perBedroom / 100 : "";
+    estimate();
+  }
+
+  function clearPrivate() {
+    profile = null; quotes = [];
+    $("profileForm").reset(); $("quoteForm").reset();
+    $("quoteList").replaceChildren(); $("latest").replaceChildren(); $("latest").hidden = true;
+    for (const id of ["profileMsg", "quoteMsg", "listMsg"]) msg(id, "");
+    $("estimate").textContent = "";
+  }
+
+  async function loadPrivate() {
+    try {
+      const data = await Q.getQuoteProfile();
+      profile = data.profile;
+      fillProfile();
+      if (!profile) msg("profileMsg", "Start here: add your business name and your prices.", "info");
+      quotes = await Q.listQuotes();
+      renderList();
+    } catch (e) { msg("listMsg", e.message, "bad"); }
+  }
+
+  $("profileForm").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const f = ev.target;
+    const vals = [f.standard.value, f.deep.value, f.moveout.value, f.perBedroom.value];
+    if (!f.businessName.value.trim()) return msg("profileMsg", "Enter your business name.", "bad");
+    if (vals.some((v) => v === "" || Number(v) < 0)) return msg("profileMsg", "Enter all four prices (0 or more).", "bad");
+    try {
+      profile = await Q.saveQuoteProfile({ businessName: f.businessName.value, prices: { base: { standard: Number(f.standard.value), deep: Number(f.deep.value), moveout: Number(f.moveout.value) }, perBedroom: Number(f.perBedroom.value) } });
+      fillProfile();
+      msg("profileMsg", "Prices saved. New quotes use these prices.", "good");
+    } catch (e) { msg("profileMsg", e.message, "bad"); }
+  });
+
+  $("cleanType").addEventListener("change", estimate);
+  $("homeSize").addEventListener("change", estimate);
+
+  $("quoteForm").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const f = ev.target;
+    if (!profile) return msg("quoteMsg", "Save your business name and prices first.", "bad");
+    if (!f.customerName.value.trim()) return msg("quoteMsg", "Enter the customer's name.", "bad");
+    try {
+      const q = await Q.createQuote({ customerName: f.customerName.value, cleanType: f.cleanType.value, homeSize: f.homeSize.value });
+      quotes.unshift(q); renderList();
+      const box = $("latest"); box.replaceChildren(quoteCard(q), el("div", null, "")); box.lastChild.style.marginTop = "12px"; box.lastChild.append(shareRow(q, false)); box.hidden = false;
+      msg("quoteMsg", "Quote made and saved. Send it with the buttons below.", "good");
+      f.customerName.value = "";
+    } catch (e) { msg("quoteMsg", e.message, "bad"); }
+  });
+
+  Q.mount($("accountPanel"), { context: "quote" });
+  Q.onChange((user) => {
+    $("headerAccount").textContent = user ? "My quotes" : "Sign in";
+    $("headerAccount").href = user ? "#new" : "#account";
+    if (user) { $("app").hidden = false; loadPrivate(); }
+    else { $("app").hidden = true; clearPrivate(); }
+  });
+  Q.start();
+})();
+</script>
+</body>
+</html>
