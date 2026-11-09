@@ -2,11 +2,11 @@
  {
   "id": "item-e2edb6fa-7dd1-52ae-b75a-dbcd7439c812",
   "store": "global-shop",
-  "title": "Electric Heated Eyelash Curler – USB-C Rechargeable (Pink)",
+  "title": "Heated Eyelash Curler – Warm Curl in Seconds, USB-C Rechargeable (Pink)",
   "category": "Beauty & Wellness",
   "subcategory": "",
   "condition": "New",
-  "description": "Heated eyelash curler in pink. Made of ABS and silicone, about 10.2 x 6.9 cm. Warms up in about 15-30 seconds and recharges by USB-C (230mAh battery). 1 piece. FREE shipping to the US. Estimated delivery: 2-8 business days after processing.",
+  "description": "Curl your lashes with gentle warmth instead of a pinching metal curler. Why you'll like it: Warms up in about 15–30 seconds; Recharges by USB-C, so no batteries to buy (230mAh); Small enough for a makeup bag: about 10.2 x 6.9 cm. Details: Made of ABS and silicone; Color: pink; 1 piece. FREE shipping to the US. Estimated delivery: 2-8 business days after processing.",
   "sizes": "",
   "colors": "Pink",
   "price": 17.99,
@@ -18,16 +18,38 @@
    "https://xffbbhangzhou.oss-cn-hangzhou.aliyuncs.com/product/269Y9K0GP49RXSQ8W1QRH4ZHFD.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Curl your lashes with gentle warmth instead of a pinching metal curler.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Warms up in about 15–30 seconds",
+      "Recharges by USB-C, so no batteries to buy (230mAh)",
+      "Small enough for a makeup bag: about 10.2 x 6.9 cm"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Made of ABS and silicone",
+      "Color: pink",
+      "1 piece"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 2-8 business days after processing."
+  }
  },
  {
   "id": "item-92eb11b5-93e8-5410-ba81-233bc4211579",
   "store": "global-shop",
-  "title": "Travel Makeup Brush & Blender Holder – Silicone Pouch",
+  "title": "Travel Makeup Brush & Sponge Holder – Soft Silicone Pouch (Dark Pink)",
   "category": "Beauty & Wellness",
   "subcategory": "",
   "condition": "New",
-  "description": "Soft silicone travel pouch that holds your makeup brushes and a makeup sponge. Color: dark pink. Weight about 120 g. FREE shipping to the US. Estimated delivery: 2-8 business days after processing.",
+  "description": "Keep brushes and your makeup sponge together and protected in your bag. Why you'll like it: Holds your makeup brushes and a makeup sponge in one pouch; Soft silicone; Light for travel: about 120 g. Details: Color: dark pink. FREE shipping to the US. Estimated delivery: 2-8 business days after processing.",
   "sizes": "",
   "colors": "Dark pink",
   "price": 15.99,
@@ -39,7 +61,27 @@
    "https://xffbbhangzhou.oss-cn-hangzhou.aliyuncs.com/product/71M5NRE22Q8KZBPAQ63W0CXQG0.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Keep brushes and your makeup sponge together and protected in your bag.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Holds your makeup brushes and a makeup sponge in one pouch",
+      "Soft silicone",
+      "Light for travel: about 120 g"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Color: dark pink"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 2-8 business days after processing."
+  }
  },
  {
   "id": "item-a138b926-6386-58f6-8227-d74d398b4d6c",
@@ -572,11 +614,11 @@
  {
   "id": "item-63c840fd-4d58-5cac-a476-f9e221b437ba",
   "store": "lingerie-boutique",
-  "title": "Seamless Push-Up Bra",
+  "title": "Seamless Wire-Free Push-Up Bra – Smooth Everyday Comfort with Gentle Lift (Black)",
   "category": "Bras",
   "subcategory": "",
   "condition": "New",
-  "description": "Smooth, seamless wire-free push-up bra for comfortable everyday wear with a gentle lift. Color: black. Bust fit from S (74-85 cm) up to 3XL (113-123 cm). Sizes run small (Asian sizing) — we recommend ordering one size up. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
+  "description": "A smooth, seamless bra with a gentle lift and no underwire, made for all-day wear. Why you'll like it: Seamless, so it stays smooth under clothes; Wire-free comfort with a gentle push-up lift. Fit: Sizes S to 3XL: bust about 74–85 cm (S) up to 113–123 cm (3XL); Runs small (Asian sizing): we recommend ordering one size up. Details: Color: black. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
   "sizes": "S, M, L, XL, XXL, 3XL",
   "colors": "Black",
   "price": 10.99,
@@ -588,16 +630,42 @@
    "https://cf.cjdropshipping.com/15314112/463966887666.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A smooth, seamless bra with a gentle lift and no underwire, made for all-day wear.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Seamless, so it stays smooth under clothes",
+      "Wire-free comfort with a gentle push-up lift"
+     ]
+    },
+    {
+     "h": "Fit",
+     "items": [
+      "Sizes S to 3XL: bust about 74–85 cm (S) up to 113–123 cm (3XL)",
+      "Runs small (Asian sizing): we recommend ordering one size up"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Color: black"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing."
+  }
  },
  {
   "id": "item-bc6f38bb-1fc9-5e2e-b435-0f573f2486b6",
   "store": "lingerie-boutique",
-  "title": "Invisible Strapless Push-Up Bra (Front Closure)",
+  "title": "Invisible Strapless Push-Up Bra – For Backless & Strapless Outfits (Front Closure)",
   "category": "Bras",
   "subcategory": "",
   "condition": "New",
-  "description": "Backless, strapless adhesive push-up bra with a front closure, made for open-back and strapless outfits. Default option: 2 black + 2 beige. Cup options as listed by the supplier: AA, SA, MB, LC, D, F. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
+  "description": "Wear open-back and strapless outfits with lift and no visible straps. Why you'll like it: Backless and strapless adhesive design; Push-up lift with an easy front closure. Details: Default option: 2 black + 2 beige; Cup options as listed by the supplier: AA, SA, MB, LC, D, F. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
   "sizes": "AA, SA, MB, LC, D, F",
   "colors": "2 Black + 2 Beige",
   "price": 13.99,
@@ -609,7 +677,27 @@
    "https://cf.cjdropshipping.com/88e08204-262c-4780-bb4d-365693d17b10.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Wear open-back and strapless outfits with lift and no visible straps.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Backless and strapless adhesive design",
+      "Push-up lift with an easy front closure"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Default option: 2 black + 2 beige",
+      "Cup options as listed by the supplier: AA, SA, MB, LC, D, F"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing."
+  }
  },
  {
   "id": "item-210cb326-905f-518e-9c0b-fbc79787c14f",
@@ -765,11 +853,11 @@
  {
   "id": "item-fcc63ccd-fd4a-5b6a-81f6-bd57f102cb24",
   "store": "global-shop",
-  "title": "Bamboo Washable Breast Pads",
+  "title": "Reusable Bamboo Nursing Pads – Soft, Absorbent & Washable (Blue)",
   "category": "LALA AYEN TEMPLE · Maternity Essentials",
   "subcategory": "Nursing Essentials",
   "condition": "New",
-  "description": "Soft, reusable nursing pads made of bamboo fiber with 3 absorbent layers. Washable and reusable. About 12 cm in diameter. Color: blue. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
+  "description": "Soft, washable nursing pads you can reuse instead of buying disposables. Why you'll like it: Soft bamboo fiber; 3 absorbent layers; Washable and reusable. Details: About 12 cm in diameter; Color: blue. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
   "sizes": "",
   "colors": "Blue",
   "price": 9.99,
@@ -782,7 +870,28 @@
    "https://cf.cjdropshipping.com/20200512/472979819146.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Soft, washable nursing pads you can reuse instead of buying disposables.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Soft bamboo fiber",
+      "3 absorbent layers",
+      "Washable and reusable"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "About 12 cm in diameter",
+      "Color: blue"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing."
+  }
  },
  {
   "id": "item-18cb659f-bf1c-5931-9f5e-c5747c8d9570",
@@ -851,11 +960,11 @@
  {
   "id": "item-cee89f1c-058d-5dc1-a832-771a23718b9b",
   "store": "global-shop",
-  "title": "Montessori Wooden Shape Puzzle (Numbers & Shapes)",
+  "title": "Montessori Wooden Numbers & Shapes Puzzle – Early Learning Toy (Ages 3+)",
   "category": "LALA AYEN WONDERLAND · Educational Toys",
   "subcategory": "Learning Toys",
   "condition": "New",
-  "description": "Montessori-style wooden shape-matching puzzle for early learning. Design: A101 Numbers & Shapes. Board size about 30 x 22.5 cm. Recommended for ages 3+. Contains small parts; adult supervision advised. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
+  "description": "Hands-on shape matching that helps little ones learn numbers and shapes. Why you'll like it: Montessori-style wooden shape-matching puzzle; Numbers & shapes design (A101); Board about 30 x 22.5 cm. Safety: Recommended for ages 3+; Contains small parts; adult supervision advised. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
   "sizes": "",
   "colors": "A101 Numbers & Shapes",
   "price": 10.99,
@@ -868,7 +977,28 @@
    "https://cf.cjdropshipping.com/f0da4705-5ec8-423e-939f-8a24a8319e6d.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Hands-on shape matching that helps little ones learn numbers and shapes.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Montessori-style wooden shape-matching puzzle",
+      "Numbers & shapes design (A101)",
+      "Board about 30 x 22.5 cm"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Recommended for ages 3+",
+      "Contains small parts; adult supervision advised"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing."
+  }
  },
  {
   "id": "item-74e96501-4ac8-5b30-9643-ec7a11f00e58",
@@ -895,11 +1025,11 @@
  {
   "id": "item-0de3e835-36e0-5810-9f48-104ad0f76864",
   "store": "global-shop",
-  "title": "Resistance Pull-up Band (25-65 lb)",
+  "title": "Pull-Up Assist Resistance Band (25–65 lb) – Build Strength & Stretch",
   "category": "LALA AYEN GYM & SPORTS · Fitness Accessories",
   "subcategory": "Training Accessories",
   "condition": "New",
-  "description": "Elastic loop resistance band for assisted pull-ups, stretching, and strength training. Black, 25-65 lb resistance. About 2080 mm long and 4 mm thick. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
+  "description": "One band for assisted pull-ups, stretching and strength training. Why you'll like it: Helps with assisted pull-ups as you build strength; Also for stretching and strength workouts; 25–65 lb resistance. Details: Elastic loop band, black; About 2080 mm long and 4 mm thick. FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing.",
   "sizes": "",
   "colors": "Black",
   "price": 10.99,
@@ -912,7 +1042,28 @@
    "https://cf.cjdropshipping.com/quick/product/7288c84b-0297-459e-9cbf-1de35c8b80dd.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "One band for assisted pull-ups, stretching and strength training.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Helps with assisted pull-ups as you build strength",
+      "Also for stretching and strength workouts",
+      "25–65 lb resistance"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Elastic loop band, black",
+      "About 2080 mm long and 4 mm thick"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Estimated delivery: 7-14 business days, including 1-3 days processing."
+  }
  },
  {
   "id": "item-20231e66-9efc-5892-8151-1648ea69be12",
@@ -1044,11 +1195,11 @@
  {
   "id": "item-4f209371-7712-5bdd-863b-d02ef9c3566d",
   "store": "pet-paradise",
-  "title": "Silicone Bone Dog Chew Toy",
+  "title": "Silicone Bone Chew Toy for Dogs",
   "category": "Dog Toys & Enrichment",
   "subcategory": "",
   "condition": "New",
-  "description": "Bone-shaped silicone chew toy for dogs. Color: random (color shipped may vary). Supervise your pet during play and replace the toy if it becomes damaged. FREE shipping to the US. Ships from China, est. 6-14 business days.",
+  "description": "A bone-shaped silicone chew toy to keep your dog busy. Details: Bone-shaped silicone chew toy; Color is random; the color shipped may vary. Safety: Supervise your pet during play; Replace the toy if it becomes damaged. FREE shipping to the US. Ships from China, est. 6-14 business days.",
   "sizes": "",
   "colors": "Random color",
   "price": 8.99,
@@ -1060,7 +1211,27 @@
    "https://cf.cjdropshipping.com/20200509/5700938517006.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A bone-shaped silicone chew toy to keep your dog busy.",
+   "sections": [
+    {
+     "h": "Details",
+     "items": [
+      "Bone-shaped silicone chew toy",
+      "Color is random; the color shipped may vary"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Supervise your pet during play",
+      "Replace the toy if it becomes damaged"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-14 business days."
+  }
  },
  {
   "id": "item-4ed91720-54ef-522f-9c13-d975425b389c",
@@ -1527,11 +1698,11 @@
  {
   "id": "item-025906bb-42bf-544f-be7d-a0af340268b4",
   "store": "pet-paradise",
-  "title": "Self-Warming Pet Blanket Pad (no electricity)",
+  "title": "Self-Warming Pet Blanket Pad – Cozy Warmth with No Electricity",
   "category": "Dog Beds & Blankets",
   "subcategory": "",
   "condition": "New",
-  "description": "Self-Warming Pet Blanket Pad (no electricity). Details: Large Self-Heating Pet Pads Blanket Puppy Pad Warm Cushion Mat for Cats Dogs Washable Pets with Thermal Cats Dogs Bed. Style/color as pictured. Supervise your pet during use and remove the item if damaged. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "A warm cushion mat for cats and dogs that needs no plug or batteries. Why you'll like it: Self-warming thermal pad: no electricity needed; For cats and dogs; Washable. Details: Large pad, style/color as pictured. Safety: Supervise your pet during use and remove the item if damaged. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "",
   "colors": "",
   "price": 13.99,
@@ -1549,7 +1720,33 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S6f4df7c41e8142b3b41db8ccd4f5656dR.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A warm cushion mat for cats and dogs that needs no plug or batteries.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Self-warming thermal pad: no electricity needed",
+      "For cats and dogs",
+      "Washable"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Large pad, style/color as pictured"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Supervise your pet during use and remove the item if damaged"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-03c10d79-dbfe-5994-85f8-ed1757b438c3",
@@ -1608,11 +1805,11 @@
  {
   "id": "item-062839b2-ab98-5dcf-9d18-13ef4e2e0e21",
   "store": "pet-paradise",
-  "title": "Stainless Steel Cat Litter Scoop",
+  "title": "Stainless Steel Cat Litter Scoop – Rust-Resistant & Easy to Clean",
   "category": "Cat Litter & Accessories",
   "subcategory": "",
   "condition": "New",
-  "description": "Stainless Steel Cat Litter Scoop. Details: Stainless Steel Cat Litter Scoop – Durable, Easy Clean, Ergonomic Handle, Rust-Resistant, Ideal for Quick Waste Removal. Style/color as pictured. Supervise your pet during use and remove the item if damaged. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "A sturdy metal scoop for quick, easy litter box clean-ups. Why you'll like it: Stainless steel, durable and rust-resistant; Easy to clean; Ergonomic handle for quick waste removal. Details: Style/color as pictured. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "",
   "colors": "",
   "price": 7.99,
@@ -1630,7 +1827,27 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/Sdb45beca1f284b428facd01466f2cb128.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A sturdy metal scoop for quick, easy litter box clean-ups.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Stainless steel, durable and rust-resistant",
+      "Easy to clean",
+      "Ergonomic handle for quick waste removal"
+     ]
+    },
+    {
+     "h": "Details",
+     "items": [
+      "Style/color as pictured"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-10d086d2-76b0-542c-85a0-98733982269d",
@@ -3548,11 +3765,11 @@
  {
   "id": "item-6e4876c8-c1d0-5108-8dbf-2c9e725139d2",
   "store": "party-shop",
-  "title": "40\" White & Gold Number Foil Balloon",
+  "title": "40\" White & Gold Number Balloon – Big Birthday & Milestone Decor",
   "category": "Balloons & Backdrops",
   "subcategory": "",
   "condition": "New",
-  "description": "Large 40-inch foil number balloon in white and gold for birthdays and milestones. Choose your number. Helium not included. Foil balloon: not a toy; keep deflated or broken balloons away from children under 8, and do not release outdoors (keep away from power lines). Style/color as pictured; if several colors or designs are shown, color/design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "A big 40-inch number for birthday and milestone photos. Why you'll like it: Large 40-inch foil number in white and gold; Choose any number from 0 to 9. Good to know: Helium not included; Style/color as pictured; if several are shown, design is assorted. Safety: Foil balloon: not a toy. Keep deflated or broken balloons away from children under 8; Do not release outdoors; keep away from power lines. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "Number 0, Number 1, Number 2, Number 3, Number 4, Number 5, Number 6, Number 7, Number 8, Number 9",
   "colors": "",
   "price": 6.99,
@@ -3570,16 +3787,43 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/Sf33b98dda6404efabbff75fcd0d75dc0U.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A big 40-inch number for birthday and milestone photos.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Large 40-inch foil number in white and gold",
+      "Choose any number from 0 to 9"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Helium not included",
+      "Style/color as pictured; if several are shown, design is assorted"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Foil balloon: not a toy. Keep deflated or broken balloons away from children under 8",
+      "Do not release outdoors; keep away from power lines"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-d61d8498-8ca9-584b-afe7-e337ca4c60ba",
   "store": "party-shop",
-  "title": "40\" Starry Rainbow Number Foil Balloon",
+  "title": "40\" Starry Rainbow Number Balloon – Colorful Birthday & Milestone Decor",
   "category": "Balloons & Backdrops",
   "subcategory": "",
   "condition": "New",
-  "description": "Large 40-inch foil number balloon with a starry rainbow gradient. Choose your number. Helium not included. Foil balloon: not a toy; keep deflated or broken balloons away from children under 8, and do not release outdoors (keep away from power lines). Style/color as pictured; if several colors or designs are shown, color/design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "A bright 40-inch rainbow number for birthdays and milestone photos. Why you'll like it: Large 40-inch foil number with a starry rainbow gradient; Choose any number from 0 to 9. Good to know: Helium not included; Style/color as pictured; if several are shown, design is assorted. Safety: Foil balloon: not a toy. Keep deflated or broken balloons away from children under 8; Do not release outdoors; keep away from power lines. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "Number 0, Number 1, Number 2, Number 3, Number 4, Number 5, Number 6, Number 7, Number 8, Number 9",
   "colors": "",
   "price": 6.99,
@@ -3597,16 +3841,43 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S07e411bcb5db471cabe5c9506415e827h.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A bright 40-inch rainbow number for birthdays and milestone photos.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Large 40-inch foil number with a starry rainbow gradient",
+      "Choose any number from 0 to 9"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Helium not included",
+      "Style/color as pictured; if several are shown, design is assorted"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Foil balloon: not a toy. Keep deflated or broken balloons away from children under 8",
+      "Do not release outdoors; keep away from power lines"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-dbfaaa66-4121-5bbc-a101-19967eb54320",
   "store": "party-shop",
-  "title": "Construction Vehicle Cake Topper Set (18 pcs)",
+  "title": "Construction Cake Topper Set (18 pcs) – Construction-Theme Party Decor",
   "category": "Birthday Parties",
   "subcategory": "",
   "condition": "New",
-  "description": "Excavator, crane and traffic-sign cake and cupcake toppers for a construction-theme party. Decoration only, not edible: remove before serving. Style/color as pictured; if several colors or designs are shown, color/design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "Turn a plain cake or cupcakes into a construction-site party. What you get: 18 pieces: excavator, crane and traffic-sign toppers; For cakes and cupcakes. Good to know: Decoration only, not edible: remove before serving; Style/color as pictured; if several are shown, design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "",
   "colors": "",
   "price": 10.99,
@@ -3624,7 +3895,27 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/Scbcc3344b027426d91fe1857d2566e02t.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Turn a plain cake or cupcakes into a construction-site party.",
+   "sections": [
+    {
+     "h": "What you get",
+     "items": [
+      "18 pieces: excavator, crane and traffic-sign toppers",
+      "For cakes and cupcakes"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Decoration only, not edible: remove before serving",
+      "Style/color as pictured; if several are shown, design is assorted"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-658a2faf-f796-5d7d-91d9-0bd9bbc51f5c",
@@ -3924,11 +4215,11 @@
  {
   "id": "item-5e1dd54c-3aab-5260-a52a-ea4ec66994d6",
   "store": "diy-craft",
-  "title": "Bear Silicone Mold",
+  "title": "Bear Silicone Mold – Make Cute Resin, Soap & Candle Bears",
   "category": "Resin & Candle Making",
   "subcategory": "",
   "condition": "New",
-  "description": "Cute bear-shaped silicone mold for resin, soap or candle making. For crafts only, not for food. Style/color as pictured; if several colors or designs are shown, color/design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "Make cute bear-shaped resin pieces, soaps or candles at home. Why you'll like it: Bear-shaped silicone mold; Works for resin, soap or candle making. Good to know: For crafts only, not for food; Style/color as pictured; if several are shown, design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "",
   "colors": "",
   "price": 4.99,
@@ -3946,16 +4237,36 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/Sb1ccf9ebaa2b48f690714f33f25024f1S.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Make cute bear-shaped resin pieces, soaps or candles at home.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Bear-shaped silicone mold",
+      "Works for resin, soap or candle making"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "For crafts only, not for food",
+      "Style/color as pictured; if several are shown, design is assorted"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-1d512c81-a74b-59c0-a61e-7ea56192f704",
   "store": "diy-craft",
-  "title": "Cube Silicone Resin Mold",
+  "title": "Cube Silicone Resin Mold – Cast Resin & Dried-Flower Blocks",
   "category": "Resin & Candle Making",
   "subcategory": "",
   "condition": "New",
-  "description": "Cube/rectangle silicone mold for resin casting, crystal glue and dried-flower blocks. For crafts only, not for food. Style/color as pictured; if several colors or designs are shown, color/design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
+  "description": "Cast clear resin blocks and keep dried flowers on display. Why you'll like it: Cube/rectangle silicone mold; For resin casting, crystal glue and dried-flower blocks. Good to know: For crafts only, not for food; Style/color as pictured; if several are shown, design is assorted. FREE shipping to the US. Ships from China, est. 6-11 business days.",
   "sizes": "",
   "colors": "",
   "price": 6.99,
@@ -3973,7 +4284,27 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S8247f3667cc14903a3615d8716bc7845W.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Cast clear resin blocks and keep dried flowers on display.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Cube/rectangle silicone mold",
+      "For resin casting, crystal glue and dried-flower blocks"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "For crafts only, not for food",
+      "Style/color as pictured; if several are shown, design is assorted"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-11 business days."
+  }
  },
  {
   "id": "item-09b24f9e-35e0-590a-9f41-6b4a524d6c42",
@@ -8020,11 +8351,11 @@
  {
   "id": "item-1fa17c4a-4824-5b03-88e4-819e0e75ac32",
   "store": "bags-purses",
-  "title": "Floral Print Canvas Tote Bag",
+  "title": "Large Floral Canvas Tote Bag – Roomy for School, Work & Errands",
   "category": "Totes",
   "subcategory": "",
   "condition": "New",
-  "description": "Large canvas tote with an all-over floral print and shoulder straps. Roomy enough for school, work or errands. Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order. FREE shipping to the US. Ships from China, est. 6-12 business days.",
+  "description": "A roomy everyday tote with a cheerful all-over floral print. Why you'll like it: Large canvas tote, roomy enough for school, work or errands; All-over floral print; Shoulder straps. Good to know: Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order. FREE shipping to the US. Ships from China, est. 6-12 business days.",
   "sizes": "",
   "colors": "",
   "price": 9.99,
@@ -8042,16 +8373,36 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S211a6f19a0014438ae02099b818629edE.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A roomy everyday tote with a cheerful all-over floral print.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Large canvas tote, roomy enough for school, work or errands",
+      "All-over floral print",
+      "Shoulder straps"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-12 business days."
+  }
  },
  {
   "id": "item-28364283-fa57-5c48-99f7-69126126be0c",
   "store": "bags-purses",
-  "title": "Vintage Leopard Canvas Tote Bag",
+  "title": "Vintage Leopard Canvas Tote Bag – Big-Capacity Shoulder Tote",
   "category": "Totes",
   "subcategory": "",
   "condition": "New",
-  "description": "Big-capacity canvas shoulder tote with a vintage leopard pattern. Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order. FREE shipping to the US. Ships from China, est. 6-12 business days.",
+  "description": "A big-capacity shoulder tote with a vintage leopard look. Why you'll like it: Big-capacity canvas tote; Vintage leopard pattern; Carry on your shoulder. Good to know: Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order. FREE shipping to the US. Ships from China, est. 6-12 business days.",
   "sizes": "",
   "colors": "",
   "price": 23.99,
@@ -8069,7 +8420,27 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S80c94808d48d4e6f8b18a781adbf37b5s.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "A big-capacity shoulder tote with a vintage leopard look.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Big-capacity canvas tote",
+      "Vintage leopard pattern",
+      "Carry on your shoulder"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Style/color as pictured; if several colors are shown, color is assorted unless you note a preference with your order"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-12 business days."
+  }
  },
  {
   "id": "item-bf37d2b7-9db9-5956-b60f-326ec1274f3b",
@@ -8397,11 +8768,11 @@
  {
   "id": "item-a8f2e7de-0333-5021-b0dd-3867ba94798e",
   "store": "beauty",
-  "title": "DIY Lash Clusters Kit",
+  "title": "DIY Lash Clusters Kit – Apply Lash Clusters at Home",
   "category": "Lashes & Brows",
   "subcategory": "",
   "condition": "New",
-  "description": "At-home lash cluster kit with lash clusters, bond & seal and tweezers (LASHVNNA). Patch-test the bond first and keep away from eyes during application; follow the included instructions. Style as pictured. FREE shipping to the US. Ships from China, est. 7-15 business days.",
+  "description": "Everything to apply lash clusters yourself, at home. What you get: Lash clusters; Bond & seal; Tweezers; Brand: LASHVNNA. Safety: Patch-test the bond first; Keep the bond away from eyes during application; follow the included instructions. Good to know: Style as pictured. FREE shipping to the US. Ships from China, est. 7-15 business days.",
   "sizes": "",
   "colors": "",
   "price": 8.99,
@@ -8419,16 +8790,44 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/Sd9522080680b4b85a76f6d49a2aa96e8T.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Everything to apply lash clusters yourself, at home.",
+   "sections": [
+    {
+     "h": "What you get",
+     "items": [
+      "Lash clusters",
+      "Bond & seal",
+      "Tweezers",
+      "Brand: LASHVNNA"
+     ]
+    },
+    {
+     "h": "Safety",
+     "items": [
+      "Patch-test the bond first",
+      "Keep the bond away from eyes during application; follow the included instructions"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Style as pictured"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 7-15 business days."
+  }
  },
  {
   "id": "item-d6b9f9a6-cb28-568a-89af-dfe1264d42e8",
   "store": "beauty",
-  "title": "Clear Full-Cover Press-On Nail Tips",
+  "title": "Clear Full-Cover Press-On Nail Tips – Base for Your Own DIY Manicure",
   "category": "Nails & Press-Ons",
   "subcategory": "",
   "condition": "New",
-  "description": "Plain clear full-cover false nail tips in multiple sizes for DIY manicures (Nailpop). Not pre-designed. Tip count depends on the pack option the supplier ships (smallest pack listed). FREE shipping to the US. Ships from China, est. 6-12 business days.",
+  "description": "Plain clear tips in multiple sizes, ready for your own nail designs. Why you'll like it: Full-cover clear tips in multiple sizes; A blank base to paint or decorate your way (not pre-designed). Good to know: Brand: Nailpop; Tip count depends on the pack option the supplier ships (smallest pack listed). FREE shipping to the US. Ships from China, est. 6-12 business days.",
   "sizes": "",
   "colors": "",
   "price": 15.99,
@@ -8446,16 +8845,36 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S12146f8667ca4aa4b61c64227405fe0ao.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Plain clear tips in multiple sizes, ready for your own nail designs.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "Full-cover clear tips in multiple sizes",
+      "A blank base to paint or decorate your way (not pre-designed)"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Brand: Nailpop",
+      "Tip count depends on the pack option the supplier ships (smallest pack listed)"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-12 business days."
+  }
  },
  {
   "id": "item-5d53080e-0fa2-5c13-b300-b0a4f9e0180a",
   "store": "beauty",
-  "title": "26-inch Straight Ponytail Extension (Synthetic)",
+  "title": "26-Inch Straight Ponytail Extension – Instant Long Ponytail (Synthetic)",
   "category": "Wigs & Hair",
   "subcategory": "",
   "condition": "New",
-  "description": "Long 26-inch synthetic straight ponytail with an elastic band. Synthetic fiber; avoid high heat. Color as pictured. FREE shipping to the US. Ships from China, est. 6-12 business days.",
+  "description": "Add instant length with a long, straight ponytail on an elastic band. Why you'll like it: 26-inch straight ponytail; Elastic band for quick wear. Good to know: Synthetic fiber; avoid high heat; Color as pictured. FREE shipping to the US. Ships from China, est. 6-12 business days.",
   "sizes": "",
   "colors": "",
   "price": 7.99,
@@ -8473,7 +8892,27 @@
    "https://ae-pic-a1.aliexpress-media.com/kf/S00051dc16ba64af4835dae984dae5a0bo.jpg"
   ],
   "merchantUrl": "",
-  "isSample": false
+  "isSample": false,
+  "copy": {
+   "intro": "Add instant length with a long, straight ponytail on an elastic band.",
+   "sections": [
+    {
+     "h": "Why you'll like it",
+     "items": [
+      "26-inch straight ponytail",
+      "Elastic band for quick wear"
+     ]
+    },
+    {
+     "h": "Good to know",
+     "items": [
+      "Synthetic fiber; avoid high heat",
+      "Color as pictured"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from China, est. 6-12 business days."
+  }
  },
  {
   "id": "item-667c713f-c1e5-5051-a7e7-195e848d274e",
