@@ -11453,11 +11453,11 @@
  {
   "id": "item-e4ea6ea2-3164-5eba-b88b-63cd7d9827e8",
   "store": "global-shop",
-  "title": "Reusable Hook-and-Loop Cable Ties (20 pcs)",
+  "title": "20Pcs Adhesive Cable Management Straps",
   "category": "Home & Living",
   "subcategory": "",
   "condition": "New",
-  "description": "20 reusable hook-and-loop cable ties for desk wire management. Color: black. Pack of 20. Ships from China. Shipping cost and delivery time are confirmed when you order.",
+  "description": "20 reusable hook-and-loop cable ties for desk wire management. Color: black. Pack of 20. Ships from China. Free US shipping.",
   "sizes": "20 pcs",
   "colors": "Black",
   "price": 5.99,
@@ -11470,7 +11470,11 @@
   ],
   "merchantUrl": "",
   "isSample": false,
-  "stockDisplay": "available"
+  "stockDisplay": "available",
+  "copy": {
+   "intro": "20 reusable hook-and-loop cable ties for desk wire management. Color: black. Pack of 20. Ships from China.",
+   "ship": "Free US shipping."
+  }
  },
  {
   "id": "item-3e8a95c2-3f2d-5cd1-bbcb-893f50fda41a",
@@ -11479,7 +11483,7 @@
   "category": "LALA AYEN GYM & SPORTS · Sportswear",
   "subcategory": "",
   "condition": "New",
-  "description": "3 pairs of women's long yoga socks with anti-slip silicone grips, for pilates, barre, dance, or home workouts. One size (US 5.5–9.5). Colors: pink, white, black. Ships from China. Shipping cost and delivery time are confirmed when you order.",
+  "description": "3 pairs of women's long yoga socks with anti-slip silicone grips, for pilates, barre, dance, or home workouts. One size (US 5.5–9.5). Colors: pink, white, black. Ships from China. Free US shipping.",
   "sizes": "One size (US 5.5-9.5)",
   "colors": "Pink, White, Black",
   "price": 8.99,
@@ -11492,7 +11496,11 @@
   ],
   "merchantUrl": "",
   "isSample": false,
-  "stockDisplay": "available"
+  "stockDisplay": "available",
+  "copy": {
+   "intro": "3 pairs of women's long yoga socks with anti-slip silicone grips, for pilates, barre, dance, or home workouts. One size (US 5.5–9.5). Colors: pink, white, black. Ships from China.",
+   "ship": "Free US shipping."
+  }
  },
  {
   "id": "item-07a62546-14f4-501e-a12b-c48203397ea8",
@@ -11501,7 +11509,7 @@
   "category": "Panties",
   "subcategory": "",
   "condition": "New",
-  "description": "7-pair pack of solid-color cotton briefs. Soft, breathable everyday underwear. Colors: assorted solids. Underwear is final sale for hygiene unless it arrives damaged or defective. Ships from China. Shipping cost and delivery time are confirmed when you order.",
+  "description": "7-pair pack of solid-color cotton briefs. Soft, breathable everyday underwear. Colors: assorted solids. Underwear is final sale for hygiene unless it arrives damaged or defective. Ships from China. Free US shipping.",
   "sizes": "",
   "colors": "Assorted solids",
   "price": 10.99,
@@ -11514,7 +11522,11 @@
   ],
   "merchantUrl": "",
   "isSample": false,
-  "stockDisplay": "available"
+  "stockDisplay": "available",
+  "copy": {
+   "intro": "7-pair pack of solid-color cotton briefs. Soft, breathable everyday underwear. Colors: assorted solids. Underwear is final sale for hygiene unless it arrives damaged or defective. Ships from China.",
+   "ship": "Free US shipping."
+  }
  },
  {
   "id": "item-6b6339b8-995b-591b-b6ff-3520ff76f373",
@@ -11523,7 +11535,7 @@
   "category": "LALA AYEN TEMPLE · Infant Care",
   "subcategory": "",
   "condition": "New",
-  "description": "Long-sleeve waterproof toddler art smock / feeding bib with a pocket. The supplier lists it for ages 1–3 years. Prints are assorted. Ships from China. Shipping cost and delivery time are confirmed when you order.",
+  "description": "Long-sleeve waterproof toddler art smock / feeding bib with a pocket. The supplier lists it for ages 1–3 years. Prints are assorted. Ships from China. Free US shipping.",
   "sizes": "Toddler (1-3 years)",
   "colors": "Assorted prints",
   "price": 6.99,
@@ -11536,7 +11548,11 @@
   ],
   "merchantUrl": "",
   "isSample": false,
-  "stockDisplay": "available"
+  "stockDisplay": "available",
+  "copy": {
+   "intro": "Long-sleeve waterproof toddler art smock / feeding bib with a pocket. The supplier lists it for ages 1–3 years. Prints are assorted. Ships from China.",
+   "ship": "Free US shipping."
+  }
  },
  {
   "id": "item-2dbf51c0-d790-5708-b5bd-d78257605226",
@@ -11545,7 +11561,7 @@
   "category": "LALA AYEN WONDERLAND · Dolls & Stuffed Animals",
   "subcategory": "",
   "condition": "New",
-  "description": "Rainbow unicorn / pony plush doll, as pictured. Soft stuffed toy. Supervise young children during play. Ships from China. Shipping cost and delivery time are confirmed when you order.",
+  "description": "Rainbow unicorn / pony plush doll, as pictured. Soft stuffed toy. Supervise young children during play. Ships from China. Free US shipping.",
   "sizes": "",
   "colors": "Rainbow / as pictured",
   "price": 9.99,
@@ -11558,6 +11574,10 @@
   ],
   "merchantUrl": "",
   "isSample": false,
-  "stockDisplay": "available"
+  "stockDisplay": "available",
+  "copy": {
+   "intro": "Rainbow unicorn / pony plush doll, as pictured. Soft stuffed toy. Supervise young children during play. Ships from China.",
+   "ship": "Free US shipping."
+  }
  }
 ]
