@@ -105,6 +105,13 @@ footer nav a{color:var(--silver);text-decoration:none}
   #services .svc-list li{align-items:flex-start}
   #services .btn.quote{width:100%;text-align:center;padding:16px 18px}
 }
+#samples{background:radial-gradient(80% 70% at 50% 0%,#2a1848 0%,#120c1c 42%,var(--ink) 78%)}
+#samples .intro{margin-top:14px;max-width:36em;color:#d9d4c8;font-size:17px}
+#samples .gallery{gap:18px;margin-top:24px}
+#samples .gallery figure{border:1px solid rgba(216,180,106,.42);border-radius:18px;box-shadow:0 18px 44px rgba(0,0,0,.3),0 0 0 1px rgba(243,220,160,.06);background:#0d0d11;display:flex;flex-direction:column;overflow:hidden}
+#samples .gallery figure.lead{box-shadow:0 22px 56px rgba(74,20,120,.32),0 0 0 1px rgba(243,220,160,.28),0 0 48px rgba(216,180,106,.16)}
+#samples .gallery figcaption{padding:14px 18px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);background:linear-gradient(180deg,#16141c,#0d0d11)}
+#samples .note{margin-top:22px}
 @media(min-width:900px){
  .hero{grid-template-columns:1.05fr 1fr;align-items:center;min-height:640px}
  .hero figure{order:2;height:100%;aspect-ratio:auto;min-height:640px}
@@ -113,6 +120,13 @@ footer nav a{color:var(--silver);text-decoration:none}
  .hero .copy{padding:60px 40px 60px max(20px,calc((100vw - 1120px)/2 + 20px))}
  .grid2{grid-template-columns:1fr 1fr}
  .gallery{grid-template-columns:1fr 1fr;align-items:start}
+ #samples .gallery{grid-template-columns:1.2fr .9fr .9fr;grid-template-areas:"lead white purple" "lead blue blue";align-items:stretch}
+ #samples .gallery figure.lead{grid-area:lead}
+ #samples .gallery figure.white{grid-area:white}
+ #samples .gallery figure.blue{grid-area:blue}
+ #samples .gallery figure.purple{grid-area:purple}
+ #samples .gallery figure img{flex:1 1 auto;height:100%;object-fit:cover;object-position:50% 12%}
+ #samples .gallery figure.blue img{object-position:50% 22%}
 }
 </style>
 </head>
@@ -189,19 +203,17 @@ footer nav a{color:var(--silver);text-decoration:none}
  </div>
 </div></section>
 
-<section id="looks"><div class="wrap">
- <div class="eyebrow">Signature looks</div><div class="rule"></div>
- <h2>The Lala Ayen <span class="gold">style</span></h2>
+<section id="samples"><div class="wrap">
+ <div class="eyebrow">Ambassador samples</div><div class="rule"></div>
+ <h2>Ambassador <span class="gold">Samples</span></h2>
+ <p class="intro">A few looks that show how your product can be presented — elegant, clear, and on brand.</p>
  <div class="gallery">
-  <figure><img src="assets/ambassador/white-gown-640.webp" srcset="assets/ambassador/white-gown-640.webp 640w, assets/ambassador/white-gown-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a white gown with gold embroidery by a seaside pool"><figcaption>White &amp; gold gown</figcaption></figure>
-  <figure><img src="assets/ambassador/blue-gown-640.webp" srcset="assets/ambassador/blue-gown-640.webp 640w, assets/ambassador/blue-gown-1024.webp 1024w" sizes="(min-width:900px) 56vw, 100vw" loading="lazy" decoding="async" width="1024" height="763" alt="Lala Ayen in a navy gown beside a piano and guitar"><figcaption>Navy evening gown</figcaption></figure>
-  <figure><img src="assets/ambassador/cream-suit-640.webp" srcset="assets/ambassador/cream-suit-640.webp 640w, assets/ambassador/cream-suit-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a cream suit with gold accents on a rooftop terrace"><figcaption>Cream suit</figcaption></figure>
-  <figure><img src="assets/ambassador/purple-gown-640.webp" srcset="assets/ambassador/purple-gown-640.webp 640w, assets/ambassador/purple-gown-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a purple satin gown with gold embroidery on stone stairs"><figcaption>Purple gown</figcaption></figure>
-  <figure><img src="assets/ambassador/khaki-cargo-640.webp" srcset="assets/ambassador/khaki-cargo-640.webp 640w, assets/ambassador/khaki-cargo-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a khaki cargo look walking on a city sidewalk"><figcaption>Khaki cargo look</figcaption></figure>
-  <figure><img src="assets/ambassador/purple-jumpsuit-640.webp" srcset="assets/ambassador/purple-jumpsuit-640.webp 640w, assets/ambassador/purple-jumpsuit-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a purple jumpsuit with gold embroidery on a rooftop at sunset"><figcaption>Purple jumpsuit</figcaption></figure>
-  <figure><img src="assets/ambassador/black-gold-gown-640.webp" srcset="assets/ambassador/black-gold-gown-640.webp 640w, assets/ambassador/black-gold-gown-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1050" height="1402" alt="Lala Ayen in a black and gold embroidered gown in a grand lobby"><figcaption>Black &amp; gold gown</figcaption></figure>
-  <figure><img src="assets/ambassador/gold-sequin-suit-640.webp" srcset="assets/ambassador/gold-sequin-suit-640.webp 640w, assets/ambassador/gold-sequin-suit-1024.webp 1024w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1050" height="1402" alt="Lala Ayen in a gold sequin suit in a grand lobby"><figcaption>Gold sequin suit</figcaption></figure>
+  <figure class="lead"><img src="assets/ambassador/green-gown-640.webp" srcset="assets/ambassador/green-gown-640.webp 640w, assets/ambassador/green-gown-1024.webp 1024w, assets/ambassador/green-gown-1086.webp 1086w" sizes="(min-width:900px) 42vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in an emerald velvet gown with gold embroidery, seated in a garden"><figcaption>Emerald velvet gown</figcaption></figure>
+  <figure class="white"><img src="assets/ambassador/white-gown-640.webp" srcset="assets/ambassador/white-gown-640.webp 640w, assets/ambassador/white-gown-1024.webp 1024w" sizes="(min-width:900px) 28vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a white gown with gold embroidery by a seaside pool"><figcaption>White &amp; gold gown</figcaption></figure>
+  <figure class="purple"><img src="assets/ambassador/purple-gown-640.webp" srcset="assets/ambassador/purple-gown-640.webp 640w, assets/ambassador/purple-gown-1024.webp 1024w" sizes="(min-width:900px) 28vw, 100vw" loading="lazy" decoding="async" width="1086" height="1448" alt="Lala Ayen in a purple satin gown with gold embroidery on stone stairs"><figcaption>Purple gown on the stairs</figcaption></figure>
+  <figure class="blue"><img src="assets/ambassador/blue-gown-640.webp" srcset="assets/ambassador/blue-gown-640.webp 640w, assets/ambassador/blue-gown-1024.webp 1024w" sizes="(min-width:900px) 56vw, 100vw" loading="lazy" decoding="async" width="1024" height="763" alt="Lala Ayen in a navy gown beside a piano and guitar"><figcaption>Navy evening gown</figcaption></figure>
  </div>
+ <p class="note">Images created with AI. These visuals are creative examples of Lala Ayen's presentation style.</p>
 </div></section>
 
 <section id="terms"><div class="wrap">
