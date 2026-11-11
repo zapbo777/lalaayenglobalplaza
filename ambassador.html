@@ -63,6 +63,48 @@ footer{padding:36px 20px 48px;text-align:center;border-top:1px solid var(--line)
 footer .site{margin-top:0}
 footer nav{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center}
 footer nav a{color:var(--silver);text-decoration:none}
+
+#services{padding:56px 0 72px;background:radial-gradient(90% 80% at 50% 0%,#4a1d72 0%,#1c0f2e 46%,var(--ink) 78%);border-top:1px solid var(--line)}
+#services .svc-card{position:relative;border-radius:28px;padding:36px 22px 40px;background:
+  linear-gradient(180deg,rgba(74,30,112,.95),rgba(22,12,36,.97) 58%,rgba(12,8,20,.99));
+  border:1px solid rgba(216,180,106,.5);
+  box-shadow:0 0 0 1px rgba(243,220,160,.1),0 28px 70px rgba(74,20,120,.35),0 0 90px rgba(216,180,106,.1);
+  overflow:hidden}
+#services .svc-card::before{content:"";position:absolute;inset:9px;border-radius:20px;border:1px solid rgba(243,220,160,.18);pointer-events:none}
+#services .svc-card::after{content:"";position:absolute;top:-80px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(216,180,106,.16),transparent 70%);pointer-events:none}
+#services .svc-logo{width:84px;height:84px;border-radius:50%;margin:0 auto 18px;display:block;position:relative;z-index:1;box-shadow:0 0 0 1px var(--line),0 8px 28px rgba(216,180,106,.28)}
+#services .svc-kicker{position:relative;z-index:1;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold2);text-align:center}
+#services .svc-llc{position:relative;z-index:1;margin-top:10px;text-align:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver)}
+#services .svc-headline{position:relative;z-index:1;text-align:center;font-size:clamp(26px,6.6vw,50px);line-height:1.12;margin:18px 0 20px}
+#services .svc-lead,#services .svc-hire,#services .svc-offer-label,#services .svc-spotlight,#services .svc-focus,#services .svc-relax,#services .svc-quote-head,#services .svc-contact,#services .svc-web,#services .svc-brand,#services .svc-tag{position:relative;z-index:1;text-align:center}
+#services .svc-lead{color:#efe9dc;font-size:18px;max-width:28em;margin:0 auto;line-height:1.55}
+#services .svc-hire{margin:18px auto 0;font-size:clamp(22px,4.8vw,32px);color:var(--gold2);line-height:1.25}
+#services .svc-offer-label{margin:28px 0 16px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver)}
+#services .svc-list{list-style:none;display:grid;gap:12px;margin:0 auto;max-width:800px;position:relative;z-index:1}
+#services .svc-list li{display:flex;align-items:center;gap:14px;padding:14px 16px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(216,180,106,.26);border-radius:16px;color:#f3eee3;font-size:16px;line-height:1.4;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+#services .svc-list li .ico{flex:0 0 42px;width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;background:radial-gradient(circle at 32% 28%,rgba(243,220,160,.28),rgba(42,18,70,.55));box-shadow:0 0 14px rgba(216,180,106,.2)}
+#services .svc-spotlight{margin:28px auto 0;max-width:32em;color:#efe9dc;font-size:17px}
+#services .svc-focus{margin:24px auto 0;font-size:clamp(18px,3.8vw,27px);line-height:1.3;color:var(--gold2)}
+#services .svc-relax{margin:12px auto 0;font-size:clamp(22px,4.4vw,30px);color:#f3dca0}
+#services .svc-quote-head{margin:32px auto 6px;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver)}
+#services .btn.quote{position:relative;z-index:1;display:block;width:fit-content;max-width:100%;margin:12px auto 0;padding:16px 32px;font-size:16px;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 36px rgba(216,180,106,.45)}
+#services .btn.quote:hover,#services .btn.quote:focus{filter:brightness(1.06)}
+#services .svc-contact{margin:16px auto 0;max-width:30em;color:#e4dfd2}
+#services .svc-web{margin-top:18px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--silver)}
+#services .svc-web a{color:var(--gold2);text-decoration:none;border-bottom:1px solid rgba(216,180,106,.4)}
+#services .svc-brand{margin-top:24px;font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
+#services .svc-tag{margin-top:6px;font-size:16px;color:#e4dfd2;font-style:italic}
+#services .rule.center{margin:16px auto}
+@media(min-width:720px){
+  #services .svc-card{padding:56px 52px 60px}
+  #services .svc-list{grid-template-columns:1fr 1fr;gap:14px 16px}
+}
+@media(max-width:719px){
+  #services{padding:44px 0 56px}
+  #services .svc-card{padding:28px 16px 32px;border-radius:22px}
+  #services .svc-list li{align-items:flex-start}
+  #services .btn.quote{width:100%;text-align:center;padding:16px 18px}
+}
 @media(min-width:900px){
  .hero{grid-template-columns:1.05fr 1fr;align-items:center;min-height:640px}
  .hero figure{order:2;height:100%;aspect-ratio:auto;min-height:640px}
@@ -92,6 +134,39 @@ footer nav a{color:var(--silver);text-decoration:none}
   <div class="site"><a href="https://lalaayenglobalplaza.com">lalaayenglobalplaza.com</a></div>
  </div>
 </div>
+
+
+<section id="services"><div class="wrap">
+ <article class="svc-card">
+  <img class="svc-logo" src="assets/ambassador/lala-ayen-official-logo-360.webp" alt="Lala Ayen official logo" width="84" height="81">
+  <div class="svc-kicker">GENERAL BRAND AMBASSADOR</div>
+  <div class="rule center"></div>
+  <p class="svc-llc">LALA AYEN LLC | CREATIVE &amp; PROMOTIONAL SERVICES</p>
+  <h2 class="svc-headline gold">YOUR BRAND. OUR CREATIVITY. EVERY PLATFORM.</h2>
+  <p class="svc-lead">Looking for someone to represent, showcase, advertise, or help launch your business?</p>
+  <h3 class="svc-hire">Hire the Lala Ayen Team!</h3>
+  <div class="svc-offer-label">We offer:</div>
+  <ul class="svc-list">
+   <li><span class="ico" aria-hidden="true">✦</span>General Brand Ambassador Services</li>
+   <li><span class="ico" aria-hidden="true">✓</span>Product Testing, Demonstrations &amp; Honest Reviews</li>
+   <li><span class="ico" aria-hidden="true">▣</span>Professional Posters &amp; Advertisements</li>
+   <li><span class="ico" aria-hidden="true">▶</span>Promotional Videos, Reels &amp; Shorts</li>
+   <li><span class="ico" aria-hidden="true">◇</span>Custom T-Shirts &amp; Branded Merchandise</li>
+   <li><span class="ico" aria-hidden="true">✶</span>Product Launches &amp; Marketing Campaigns</li>
+   <li><span class="ico" aria-hidden="true">◎</span>Social Media Advertising &amp; Promotion</li>
+   <li><span class="ico" aria-hidden="true">✧</span>Content for Facebook, Instagram, TikTok, YouTube &amp; More!</li>
+  </ul>
+  <p class="svc-spotlight">From everyday essentials to luxury products, we help bring your brand into the spotlight.</p>
+  <p class="svc-focus">YOU FOCUS ON YOUR BUSINESS. WE HANDLE THE CREATIVE PROMOTION.</p>
+  <p class="svc-relax">RELAX, WE GOT IT! 💜</p>
+  <div class="svc-quote-head">REQUEST A QUOTATION TODAY!</div>
+  <a class="btn quote" href="mailto:lalaayen@lalaayenglobalplaza.com?subject=Quotation%20Request">Request a Quotation</a>
+  <p class="svc-contact">Contact the Lala Ayen Team to discuss your project, promotional needs, and pricing.</p>
+  <div class="svc-web">🌐 <a href="https://lalaayenglobalplaza.com/ambassador.html">lalaayenglobalplaza.com</a></div>
+  <div class="svc-brand">LALA AYEN LLC</div>
+  <p class="svc-tag">Creative Ideas. Global Opportunities.</p>
+ </article>
+</div></section>
 
 <section id="offer"><div class="wrap">
  <div class="eyebrow">The offer</div><div class="rule"></div>
