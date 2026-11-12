@@ -7,7 +7,7 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261030l';
+  var VERSION = '20261111v';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -140,17 +140,101 @@
   var head = el('div', 'lala-chat-head'), who = el('div'), kicker = el('small', null, 'LALA PLAZA AI HELPER'), name = el('h2', null, persona.name);
   name.id = 'lala-chat-name'; var sub = el('span', 'lala-chat-sub', subFor(personaId));
   var x = el('button', 'lala-chat-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Close chat');
-  who.append(kicker, name, sub); var avatar = el('span', 'lala-chat-avatar', persona.name.charAt(0)); head.append(avatar, who, x);
+  var avatar = el('span', 'lala-chat-avatar', persona.name.charAt(0));
   var log = el('div', 'lala-chat-log'); log.setAttribute('role', 'log'); log.setAttribute('aria-live', 'polite');
   var opts = el('div', 'lala-chat-options'); opts.setAttribute('aria-label', 'Quick questions');
   var form = el('form', 'lala-chat-form'); form.hidden = true;
   var input = el('input'); input.type = 'text'; input.maxLength = 500; input.required = true; input.autocomplete = 'off';
   input.placeholder = 'Ask ' + persona.name + ' a question…'; input.setAttribute('aria-label', 'Type your question');
-  var send = el('button', null, 'Send'); send.type = 'submit'; form.append(input, send);
+  var send = el('button', null, 'Send'); send.type = 'submit';
+  // Voice (free Web Speech API only; hidden when the browser does not support it)
+  var Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var canListen = typeof Rec === 'function';
+  var canSpeak = typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance === 'function';
+  var mic = null, listenFlag = null, rec = null, listening = false, speakOn = false, speaker = null;
+  function stopSpeak() { if (canSpeak) { try { window.speechSynthesis.cancel(); } catch (err) {} } }
+  function speak(text) {
+    if (!speakOn || !canSpeak || !text || text === '…') return;
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = document.documentElement.lang || 'en-US';
+      window.speechSynthesis.speak(u);
+    } catch (err) {}
+  }
+  function stopListen() {
+    listening = false;
+    if (mic) { mic.setAttribute('aria-pressed', 'false'); mic.classList.remove('is-listening'); }
+    if (listenFlag) listenFlag.classList.remove('is-on');
+    if (rec) { try { rec.stop(); } catch (err) {} rec = null; }
+  }
+  function startListen() {
+    if (!canListen || input.disabled) return;
+    try {
+      stopListen();
+      rec = new Rec();
+      rec.lang = document.documentElement.lang || 'en-US';
+      rec.interimResults = true;
+      rec.continuous = false;
+      rec.maxAlternatives = 1;
+      rec.onstart = function () {
+        listening = true;
+        mic.setAttribute('aria-pressed', 'true');
+        mic.classList.add('is-listening');
+        if (listenFlag) listenFlag.classList.add('is-on');
+      };
+      rec.onresult = function (ev) {
+        var said = '';
+        for (var i = ev.resultIndex; i < ev.results.length; i++) said += ev.results[i][0].transcript;
+        said = said.replace(/^\s+|\s+$/g, '');
+        if (said) input.value = said.slice(0, 500);
+        var last = ev.results[ev.results.length - 1];
+        if (last && last.isFinal && input.value.trim()) {
+          stopListen();
+          if (typeof form.requestSubmit === 'function') form.requestSubmit();
+          else form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      };
+      rec.onerror = function () { stopListen(); };
+      rec.onend = function () { if (listening) stopListen(); };
+      rec.start();
+    } catch (err) { stopListen(); }
+  }
+  if (canListen) {
+    listenFlag = el('div', 'lala-chat-listen');
+    listenFlag.setAttribute('role', 'status');
+    listenFlag.setAttribute('aria-live', 'polite');
+    listenFlag.textContent = 'Listening… speak your question. Tap the mic to stop.';
+    mic = el('button', 'lala-chat-mic', '🎤');
+    mic.type = 'button';
+    mic.setAttribute('aria-label', 'Speak your question');
+    mic.setAttribute('aria-pressed', 'false');
+    mic.title = 'Speak your question';
+    mic.addEventListener('click', function () { if (listening) stopListen(); else startListen(); });
+    form.append(listenFlag, input, mic, send);
+  } else {
+    form.append(input, send);
+  }
+  if (canSpeak) {
+    speaker = el('button', 'lala-chat-speak', 'Sound off');
+    speaker.type = 'button';
+    speaker.setAttribute('aria-label', 'Read replies aloud');
+    speaker.setAttribute('aria-pressed', 'false');
+    speaker.title = 'Read replies aloud';
+    speaker.addEventListener('click', function () {
+      speakOn = !speakOn;
+      speaker.setAttribute('aria-pressed', speakOn ? 'true' : 'false');
+      speaker.textContent = speakOn ? 'Sound on' : 'Sound off';
+      if (!speakOn) stopSpeak();
+    });
+  }
   var foot = el('div', 'lala-chat-foot'), note = el('p'), more = el('p');
   more.textContent = 'Live chat with our Core HQ team bots is coming soon.';
   var mail = el('a', null, 'Email the Plaza ↗'); mail.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Plaza question (' + page[1] + ')');
   foot.append(note, more, mail);
+  who.append(kicker, name, sub);
+  if (speaker) head.append(avatar, who, speaker, x);
+  else head.append(avatar, who, x);
   panel.append(head, log, opts, form, foot);
 
   function setNote() {
@@ -177,11 +261,11 @@
     setNote();
     line('bot', greet());
     var list = (topic ? TOPICS[topic] : []).concat(topic && topic !== 'contact' ? SHOP.slice(0, 4) : SHOP);
-    list.forEach(function (qa) { var b = el('button', null, qa[0]); b.type = 'button'; b.addEventListener('click', function () { line('you', qa[0]); line('bot', qa[1]); }); opts.append(b); });
+    list.forEach(function (qa) { var b = el('button', null, qa[0]); b.type = 'button'; b.addEventListener('click', function () { line('you', qa[0]); line('bot', qa[1]); speak(qa[1]); }); opts.append(b); });
     shade.hidden = false; panel.hidden = false; x.focus();
     aiCheck().then(function (on) { setNote(); form.hidden = !on; if (log.children.length === 1) log.firstChild.lastChild.textContent = greet(); });
   }
-  function close() { panel.hidden = true; shade.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  function close() { stopListen(); stopSpeak(); panel.hidden = true; shade.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   x.addEventListener('click', close); shade.addEventListener('click', close);
   document.addEventListener('keydown', function (e) {
     if (panel.hidden) return;
@@ -191,8 +275,9 @@
   });
   form.addEventListener('submit', function (e) {
     e.preventDefault(); var q = input.value.trim().slice(0, 500); if (!q) return;
-    line('you', q); input.value = ''; input.disabled = send.disabled = true; var t = line('bot', '…');
-    ask(q).then(function (a) { t.textContent = a.text; input.disabled = send.disabled = false; input.focus(); log.scrollTop = log.scrollHeight; });
+    stopListen();
+    line('you', q); input.value = ''; input.disabled = send.disabled = true; if (mic) mic.disabled = true; var t = line('bot', '…');
+    ask(q).then(function (a) { t.textContent = a.text; input.disabled = send.disabled = false; if (mic) mic.disabled = false; input.focus(); log.scrollTop = log.scrollHeight; speak(a.text); });
   });
 
   function mount() {
