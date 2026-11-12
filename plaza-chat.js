@@ -7,7 +7,8 @@
   'use strict';
   if (window.LalaChat) return; // exactly one widget per page
   var EMAIL = 'lalaayenglobalplaza@gmail.com';
-  var VERSION = '20261111v';
+  var AMB_EMAIL = 'lalaayen@lalaayenglobalplaza.com';
+  var VERSION = '20261112a';
 
   // ===== Helper personas (display name + greeting; the Worker adds a matching one-line persona to the AI prompt) =====
   // coreHqEndpoint: leave null. When Peter gives a real Core HQ bot link, route it through the Worker (a same-origin
@@ -39,13 +40,13 @@
     'home': 'ethan', 'global-shop': 'atlas', 'lingerie': 'jem', 'gym-sports': 'atlas', 'temple': 'jem', 'wonderland': 'atlas',
     'pet-paradise': 'jem', 'author-bookstore': 'atlas', 'preloved-books': 'jem', 'thrift-store': 'atlas', 'affiliate-marketing': 'atlas',
     'lala-merchants': 'jem', 'diy-craft': 'atlas', 'party-shop': 'gerio', 'western': 'atlas', 'fashions': 'jem', 'costume-world': 'atlas', 'creative-studio': 'echo', 'portrait-studio': 'ara',
-    'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'atlas'
+    'shipping': 'mira', 'returns': 'peter', 'terms': 'ethan', 'privacy': 'atlas', 'ambassador': 'mira'
   };
   // Two-helper store pages: Atlas + Jem cards ([data-chat-persona]); the page host above alternates between them.
   // Two-helper studio pages: Creative Studio = Echo (host, created the studio) + Verio; Custom Portrait Studio = Ara (host) + Gerio.
   // The second helper opens from a [data-chat-persona] button on the page.
   // Optional extra greeting line per page (Echo created the Creative Studio, so Echo hosts it).
-  var PAGE_INTRO = { 'creative-studio': ' I created the Creative Studio and guide you through videos and creative projects.' };
+  var PAGE_INTRO = { 'creative-studio': ' I created the Creative Studio and guide you through videos and creative projects.', 'ambassador': ' I can help you hire Lala Ayen as a brand ambassador. I will first learn about your business, one question at a time, before any review video is made.' };
   var PERSONA_INTRO = { gerio: " I'm the AI Creative Artist: portraits, posters, invitations, cards and photo edits.", verio: " I'm the AI Video Creator: promotional videos, video greetings, animated greetings, slideshows and social media videos.", ara: " I'm the Custom Portrait Studio guide: portrait styles, prices and how to order.", atlas: " I help you find products, compare items, and answer sizing, shipping and returns questions.", jem: " I help with product ideas, gift picks, sizes, shipping and returns." };
   var PERSONA_TITLE = { ara: 'Queen of All Designers 👑' }; // optional title shown under the name in the chat header (Arlene, Oct 30)
   var ROTATE_BY_DAY = false; // true = shift every page's helper by one name each day
@@ -59,7 +60,7 @@
     'LALA_IRON_THRIFT_STORE_MARK1.html': ['thrift-store', 'Iron Thrift Store'], 'LALA_AYEN_AFFILIATE_MARKETING_MARK1.html': ['affiliate-marketing', 'Affiliate Marketing'],
     'LALA_AYEN_MERCHANTS_MARK1.html': ['lala-merchants', 'Merchants'], 'LALA_AYEN_DIY_CRAFT_MARK1.html': ['diy-craft', 'DIY & Craft'],
     'LALA_PARTY_SHOP_MARK1.html': ['party-shop', 'Party Shop'], 'LALA_COWGIRL_COWBOY_WORLD_MARK1.html': ['western', 'Cowgirl & Cowboy World'], 'LALA_AYEN_FASHIONS_MARK1.html': ['fashions', 'LALA AYEN Fashions'], 'LALA_AYEN_COSTUME_WORLD_MARK1.html': ['costume-world', 'Costume World'], 'creative-studio.html': ['creative-studio', 'Creative Studio'],
-    'custom-portrait-studio.html': ['portrait-studio', 'Portrait Studio'], 'shipping.html': ['shipping', 'Shipping'],
+    'custom-portrait-studio.html': ['portrait-studio', 'Portrait Studio'], 'ambassador.html': ['ambassador', 'Brand Ambassador'], 'shipping.html': ['shipping', 'Shipping'],
     'returns.html': ['returns', 'Returns'], 'terms.html': ['terms', 'Terms'], 'privacy.html': ['privacy', 'Privacy']
   };
   // Works with or without the .html extension (Cloudflare can serve /page for /page.html).
@@ -72,7 +73,7 @@
   var persona = Object.prototype.hasOwnProperty.call(PERSONAS, personaId) ? PERSONAS[personaId] : PERSONAS.ethan;
 
   // ===== Preset answers (used when the AI is off, and as fallback) =====
-  var SHOP = [['How can I buy an item?','Tap "＋ Add to Cart" on any product (choose size or color if asked). Open the 🛒 Cart at the top of the page and choose Pay with Square (US). One cart works across the whole Plaza.'],['How can I pay?',"US orders are paid on Square's secure checkout page in US dollars. Your card details are entered with Square and never reach our website. International checkout is coming soon."],['Do you ship outside the US?','For now we ship to US addresses only. International shipping is coming soon.'],['How long does shipping take?','US shipping is free. Most orders arrive in about 7 to 14 business days, including 1 to 3 business days of processing. Items from US warehouses usually arrive in about 3 to 8 business days. Each product page shows its own estimate.'],['Where is my order?','Email lalaayenglobalplaza@gmail.com with your order number (it is on your Square receipt) and we will check the status for you.'],['Can I return an item?','Yes. Returns are free for any item, including lingerie, for any reason, within 14 days of delivery. Email lalaayenglobalplaza@gmail.com with your order number, the item and the reason. We email you a free prepaid return label; ship the item to the address on that label (it may be a supplier or partner warehouse). Refunds go back to your original payment method.'],['It does not fit. Can I exchange it?','Yes. Request a free return (within 14 days of delivery) and place a new order for the size you need, or email lalaayenglobalplaza@gmail.com and we will help you choose.'],['My item arrived damaged or wrong.','Sorry about that! Email lalaayenglobalplaza@gmail.com with your order number and photos of the item and the package. We will send a replacement or a refund, whichever you prefer.'],['Can I cancel my order?','Yes, before it ships. Email lalaayenglobalplaza@gmail.com as soon as possible with your order number. After it ships, you can use our free 14-day returns.'],['Is the lingerie shop for adults only?','Yes. The Lingerie Boutique is for adults 18 and older only.'],['Can I ask about sizes or availability?','Yes. Email lalaayenglobalplaza@gmail.com with the product name and your question.'],['How do star reviews work?','Customer reviews are coming soon. Ratings are never fabricated.']];
+  var SHOP = [['How can I buy an item?','Tap "＋ Add to Cart" on any product (choose size or color if asked). Open the 🛒 Cart at the top of the page and choose Pay with Square (US). One cart works across the whole Plaza.'],['How can I pay?',"US orders are paid on Square's secure checkout page in US dollars. International (non-US) buyers can pay with PayPal at checkout when it is offered. Your card details are entered with Square or PayPal and never reach our website."],['Do you ship outside the US?','Yes. We ship to US and international addresses. Shipping is free on eligible items. Duties or taxes for international orders (if any) are the buyer\'s responsibility unless noted at checkout.'],['How long does shipping take?','Shipping is free on eligible items for US and international orders. Most orders arrive in about 7 to 14 business days, including 1 to 3 business days of processing. Items from US warehouses usually arrive in about 3 to 8 business days. Each product page shows its own estimate. Delivery times are estimates and can be longer during holidays or carrier delays.'],['Where is my order?','Email lalaayenglobalplaza@gmail.com with your order number (it is on your Square receipt) and we will check the status for you.'],['Can I return an item?','Yes. Returns are free for any item, including lingerie, for any reason, within 14 days of delivery. Email lalaayenglobalplaza@gmail.com with your order number, the item and the reason. We email you a free prepaid return label; ship the item to the address on that label (it may be a supplier or partner warehouse). Refunds go back to your original payment method.'],['It does not fit. Can I exchange it?','Yes. Request a free return (within 14 days of delivery) and place a new order for the size you need, or email lalaayenglobalplaza@gmail.com and we will help you choose.'],['My item arrived damaged or wrong.','Sorry about that! Email lalaayenglobalplaza@gmail.com with your order number and photos of the item and the package. We will send a replacement or a refund, whichever you prefer.'],['Can I cancel my order?','Yes, before it ships. Email lalaayenglobalplaza@gmail.com as soon as possible with your order number. After it ships, you can use our free 14-day returns.'],['Is the lingerie shop for adults only?','Yes. The Lingerie Boutique is for adults 18 and older only.'],['Can I ask about sizes or availability?','Yes. Email lalaayenglobalplaza@gmail.com with the product name and your question.'],['How do star reviews work?','Customer reviews are coming soon. Ratings are never fabricated.']];
   // Keyword hints (EN/TL/ES) so a typed question can fall back to a preset answer.
   var KEYS = [[/(where is my order|track|status|nasaan|order ko|mi pedido|rastre|estado)/i,4],[/(cancel|kansel|i-cancel|cancelar)/i,8],[/(damage|broken|wrong|sira|mali|da[ñn]ad|equivocad|roto)/i,7],[/(return|refund|ibalik|isauli|balik|devol|reembolso)/i,5],[/(fit|size|exchange|kasya|sukat|palit|talla|cambio|cambiar)/i,6],[/(outside|international|philippines|pilipinas|canada|abroad|ibang bansa|internacional|fuera)/i,2],[/(how long|shipping|deliver|arrive|gaano katagal|dating|darating|env[ií]o|entrega|tarda|llega)/i,3],[/\b(pay|card|square|bayad|pago|pagar|tarjeta)\b/i,1],[/(18|adult|lingerie|matanda|adulto|lencer)/i,9],[/(review|rating|star|reseñ|opini)/i,11],[/(available|stock|availability|meron|mayroon|disponible)/i,10],[/\b(buy|order|cart|add|bumili|bili|comprar|carrito)\b/i,0]];
   // Topic presets for the homepage service buttons and the studio pages (Arlene's flyer prices).
@@ -97,16 +98,24 @@
       ['How do I order a design?', 'Tap "Email to request" on the design you want and attach your photos to the email. We confirm your design and total by email, then you pay the agreed amount (signed-in customers) and receive your files.'],
       ['What formats do I get?', 'Digital file (hi-res), print-ready PDF, video file (MP4) and multiple sizes for social media. All are digital: nothing is shipped.'],
       ['Do you sell balloons and party supplies?', 'Yes. The Party Shop now has number foil balloons, birthday banners, cake toppers and a foil fringe backdrop; tap + Add to Cart on the item. The Party Creative Suite (digital designs) is also available to order now.']],
-    contact: [['How do I contact the Plaza?', 'Email ' + EMAIL + '. You can also prepare an email with the contact form on the Plaza Home page.']]
+    contact: [['How do I contact the Plaza?', 'Email ' + EMAIL + '. You can also prepare an email with the contact form on the Plaza Home page.']],
+    ambassador: [['How do I hire Lala Ayen as my ambassador?', 'First I will learn about your business, one question at a time — name, what you do, your products or services, benefits, customers, what makes you special, and your photos or links. I will summarize it back for you to confirm. Only after that research does Lala Ayen record an honest talking-head video review. No review is made without that research first. Type your business name to get started, or email ' + AMB_EMAIL + '.'],
+      ['What is Single vs Bundle?', 'Single is one poster or one video, posted once to TikTok, Facebook and Instagram. You get a copy and run it yourself. Bundle means you sit back and relax: you still get a copy, and Lala Ayen\'s team pushes it to all social media with a boost for one or two weeks. AI tool subscriptions and everyone\'s pay are already built into the price. Contact us for rates.'],
+      ['How much does it cost?', 'Contact us for rates. Please share your name, business and email (and a phone number if you like) and Lala Ayen will follow up. Email ' + AMB_EMAIL + '. We never ask you to send card or ID details in chat.'],
+      ['What is the promise and guarantee?', 'Lala Ayen: Songwriter. Musician. Artist. Author. Publisher. Producer. Content creator. Influencer. Promoter. Business owner. She runs Lala Ayen LLC. Promise: "We deliver a great service. We don\'t scam people." Guarantee: "If I don\'t deliver what we agreed, I\'ll fix it. If I still can\'t, I\'ll refund you." Terms: one round of changes, payment before work begins, and no promise of sales. Reviews are honest.']]
   };
-  var PAGE_TOPIC = { 'party-shop': 'party', 'creative-studio': 'videos', 'portrait-studio': 'portraits', 'author-bookstore': 'books', 'preloved-books': 'books' };
+  var PAGE_TOPIC = { 'party-shop': 'party', 'creative-studio': 'videos', 'portrait-studio': 'portraits', 'author-bookstore': 'books', 'preloved-books': 'books', 'ambassador': 'ambassador' };
 
   function fallback(q) {
     for (var i = 0; i < KEYS.length; i++) if (KEYS[i][0].test(q)) return SHOP[KEYS[i][1]][1];
     if (/(portrait|larawan|retrato)/i.test(q)) return TOPICS.portraits[0][1];
     if (/(video|vid)/i.test(q)) return TOPICS.videos[0][1];
     if (/(video greeting|slideshow|greeting video|animated)/i.test(q)) return TOPICS['party-video'][0][1];
-    if (/(invitation|invite|card|poster|bundle|imbitasyon|invitaci|tarjeta|banner)/i.test(q)) return TOPICS.party[0][1];
+    if (/(invitation|invite|card|poster|bundle|imbitasyon|invitaci|tarjeta|banner)/i.test(q) && !/(ambassador|brand ambassador|single vs|hire lala)/i.test(q)) return TOPICS.party[0][1];
+    if (/(ambassador|hire lala|promote my (business|brand|company)|brand ambassador)/i.test(q) && /(single|bundle|option|package)/i.test(q)) return TOPICS.ambassador[1][1];
+    if (/(ambassador|hire lala|promote my (business|brand|company)|brand ambassador).*(cost|price|rate|how much|magkano|presyo)/i.test(q) || /(cost|price|rate|how much|magkano|presyo).*(ambassador|promot|advertise|advertise)/i.test(q)) return TOPICS.ambassador[2][1];
+    if (/(ambassador|hire lala|promote my (business|brand|company)|brand ambassador)/i.test(q)) return TOPICS.ambassador[0][1];
+    if (/(promise|guarantee|we don.t scam|refund you)/i.test(q) && pageId === 'ambassador') return TOPICS.ambassador[3][1];
     return 'Each product card shows its price, sizes and colors. For anything else, please email ' + EMAIL + ' (include your order number if you have one) and we will help you.';
   }
 
@@ -230,7 +239,8 @@
   }
   var foot = el('div', 'lala-chat-foot'), note = el('p'), more = el('p');
   more.textContent = 'Live chat with our Core HQ team bots is coming soon.';
-  var mail = el('a', null, 'Email the Plaza ↗'); mail.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Plaza question (' + page[1] + ')');
+  var contactEmail = pageId === 'ambassador' ? AMB_EMAIL : EMAIL;
+  var mail = el('a', null, pageId === 'ambassador' ? 'Email Lala Ayen ↗' : 'Email the Plaza ↗'); mail.href = 'mailto:' + contactEmail + '?subject=' + encodeURIComponent((pageId === 'ambassador' ? 'Ambassador inquiry' : 'Plaza question') + ' (' + page[1] + ')');
   foot.append(note, more, mail);
   who.append(kicker, name, sub);
   if (speaker) head.append(avatar, who, speaker, x);
@@ -247,7 +257,11 @@
     var p = el('p', 'lala-chat-msg ' + (from === 'you' ? 'from-you' : 'from-bot')); var b = el('strong', null, from === 'you' ? 'You' : persona.name);
     var t = el('span', null, text); p.append(b, t); log.append(p); log.scrollTop = log.scrollHeight; return t;
   }
-  function greet() { var intro = PERSONA_INTRO[personaId] || PAGE_INTRO[pageId] || ''; return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human)." + intro + ' Tap a question below or type your own.' : ', your Lala Plaza helper.' + intro + ' Tap a question below.'); }
+  function greet() {
+    var intro = PERSONA_INTRO[personaId] || PAGE_INTRO[pageId] || '';
+    var notice = ' This conversation may be recorded or logged for quality so our team can follow up.';
+    return persona.greeting + (aiOn ? ", Lala Plaza's AI shop assistant (not a human)." + intro + notice + ' Tap a question below or type your own.' : ', your Lala Plaza helper.' + intro + notice + ' Tap a question below.');
+  }
   var pagePersonaId = personaId;
   function setPersona(id) { // a button can open the chat with another helper (e.g. Verio for the Party Creative Suite)
     if (id === personaId) return; personaId = id; persona = PERSONAS[id]; hist = [];
