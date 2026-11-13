@@ -5,7 +5,7 @@
    for signed-in customers only, "Pay agreed amount" via GET /api/pay-link (the Square link is never in the page). */
 (function () {
   'use strict';
-  var EMAIL = 'lalaayenglobalplaza@gmail.com';
+  var EMAIL = 'lalaayen@lalaayenglobalplaza.com';
   var PARTY_SUITE = {
     singles: [
       { name: 'Custom Birthday Invitation', price: 7.99, icon: '🎂' },

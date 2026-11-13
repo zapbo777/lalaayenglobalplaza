@@ -4,7 +4,7 @@
    Payment: Square only, via our Worker. While checkout is off, buttons fall back to "Email to book". */
 (function(){
   'use strict';
-  var EMAIL='lalaayenglobalplaza@gmail.com';
+  var EMAIL='lalaayen@lalaayenglobalplaza.com';
   var STUDIO_PRICES={
     video:[
       {id:'video:starter',name:'Starter Package',price:75},
