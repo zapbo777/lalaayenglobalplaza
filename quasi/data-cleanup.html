@@ -16,11 +16,11 @@
 <div class="field full"><label for="dcMsg">Message</label><textarea id="dcMsg" name="message" maxlength="1500" placeholder="What's messy about your list? How many rows, and what format (Excel, CSV, Google Sheets)?"></textarea></div>
 <div class="field full"><label for="dcRows">Up to 5 sample rows <span style="font-weight:400;color:var(--muted)">(paste one row per line)</span></label><textarea id="dcRows" name="rows" maxlength="2000" placeholder="JANE DOE, 555.0100, Jane@Example.com, Springfield IL"></textarea></div>
 </div>
-<p style="margin:14px 0 6px">Online submissions are coming soon. For now, this button opens an email to <a href="mailto:lalaayenglobalplaza@gmail.com">lalaayenglobalplaza@gmail.com</a> in your own email app with your details filled in. Nothing is sent or saved by this page.</p>
+<p style="margin:14px 0 6px">Online submissions are coming soon. For now, this button opens an email to <a href="mailto:lalaayen@lalaayenglobalplaza.com">lalaayen@lalaayenglobalplaza.com</a> in your own email app with your details filled in. Nothing is sent or saved by this page.</p>
 <div class="actions"><button class="btn main" type="submit">Prepare my email</button></div>
 <p id="dcStatus" class="status" role="status" aria-live="polite"></p></form>
 </section></main>
-<footer><p>QUASI Data Cleanup by Lala Ayen · <a href="mailto:lalaayenglobalplaza@gmail.com">lalaayenglobalplaza@gmail.com</a> · <a href="/privacy.html">Privacy</a></p><a class="mall-back" href="/" aria-label="Back to Lala Ayen Global Plaza mall">← Back to Lala Ayen Global Plaza</a></footer>
+<footer><p>QUASI Data Cleanup by Lala Ayen · <a href="mailto:lalaayen@lalaayenglobalplaza.com">lalaayen@lalaayenglobalplaza.com</a> · <a href="/privacy.html">Privacy</a></p><a class="mall-back" href="/" aria-label="Back to Lala Ayen Global Plaza mall">← Back to Lala Ayen Global Plaza</a></footer>
 <script>
 (function(){var f=document.getElementById('dcForm'),st=document.getElementById('dcStatus');
 function say(t,err){st.textContent=t;st.className='status'+(err?' err':'');}
@@ -34,7 +34,7 @@ f.addEventListener('submit',function(e){e.preventDefault();
  var all=[msg].concat(rows).join(' ');var m=all.match(CARD);
  if(SSN.test(all)||(m&&luhn(m[0])))return say('That looks like a Social Security or card number. Please remove it before sending.',true);
  var body=['Hello Ayen,','','I would like a free 5-row Data Cleanup sample.','','Name: '+name,'Email: '+email,'Business type: '+biz,'','Message:',msg||'(none)','','Sample rows:'].concat(rows.length?rows:['(none)']).join('\n');
- var href='mailto:lalaayenglobalplaza@gmail.com?subject='+encodeURIComponent('Data Cleanup sample request: '+biz)+'&body='+encodeURIComponent(body);
+ var href='mailto:lalaayen@lalaayenglobalplaza.com?subject='+encodeURIComponent('Data Cleanup sample request: '+biz)+'&body='+encodeURIComponent(body);
  say('Your email app should open with your request. Check it, then press send. Nothing was saved on this site.');
  window.location.href=href;});})();
 </script></body></html>

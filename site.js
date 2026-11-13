@@ -25,7 +25,7 @@
   const draftField = document.getElementById('inquiry-draft');
   const copyButton = document.getElementById('copy-draft');
   const openLink = document.getElementById('open-draft');
-  const recipient = 'lalaayenglobalplaza@gmail.com';
+  const recipient = 'lalaayen@lalaayenglobalplaza.com';
 
   if (form && status && preview && draftField && copyButton && openLink) {
     form.addEventListener('submit', (event) => {
@@ -107,7 +107,7 @@
     contact: {
       welcome: 'Welcome to the Contact Guide! Choose a question below or prepare an inquiry. This is not a live human or AI chat.',
       questions: [
-        ['How do I contact the Plaza?', 'Write to lalaayenglobalplaza@gmail.com or use the contact form on this page to prepare an email draft. You must send the draft yourself.'],
+        ['How do I contact the Plaza?', 'Write to lalaayen@lalaayenglobalplaza.com or use the contact form on this page to prepare an email draft. You must send the draft yourself.'],
         ['Where is your Facebook?', 'See the Lala Ayen LLC and Zapbo Tivi Facebook buttons at the top of the page.'],
         ['How do payments work?', 'The Square link is for a written, confirmed quote only. Never pay before agreeing on a total, scope, and terms.']
       ], service: 'General inquiry'

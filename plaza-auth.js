@@ -54,7 +54,7 @@
         api('/auth/signup',{email:em,password:p,name:val('account-name').trim()}).then(function(d){busy(false);
           if(d.user){state.user=d.user;byId('account-password').value='';render();say('Welcome! Your account is ready.');if(dlg&&dlg.open)dlg.close();}else say(d.error||'Could not create the account. Please try again.');})
         .catch(function(){busy(false);say('Network problem. Please try again.');});});
-      var reset=byId('account-reset');if(reset)reset.addEventListener('click',function(){say('Forgot your password? Email lalaayenglobalplaza@gmail.com from your account email address and we will help you reset it.');});
+      var reset=byId('account-reset');if(reset)reset.addEventListener('click',function(){say('Forgot your password? Email lalaayen@lalaayenglobalplaza.com from your account email address and we will help you reset it.');});
     }
     refresh();
   }

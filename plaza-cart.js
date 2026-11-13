@@ -5,7 +5,7 @@
   var KEY='lala_cart_v1',CKEY='lala_currency';
   var CURRENCIES=[['USD','US$ USD'],['EUR','€ EUR'],['GBP','£ GBP'],['CAD','CA$ CAD'],['AUD','A$ AUD'],['PHP','₱ PHP'],['JPY','¥ JPY'],['MXN','MX$ MXN'],['NZD','NZ$ NZD'],['SGD','S$ SGD'],['HKD','HK$ HKD'],['CNY','CN¥ CNY'],['KRW','₩ KRW'],['INR','₹ INR'],['AED','AED'],['BRL','R$ BRL']];
   var rates={USD:1},ratesInfo='';
-  var mail='lalaayenglobalplaza@gmail.com';
+  var mail='lalaayen@lalaayenglobalplaza.com';
   var byId=function(id){return document.getElementById(id);};
   var el=function(tag,attrs,text){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='class')e.className=attrs[k];else if(k in e&&typeof attrs[k]!=='string')e[k]=attrs[k];else e.setAttribute(k,attrs[k]);}if(text!=null)e.textContent=text;return e;};
   var opts=function(v){return String(v||'').split(/[,/|]/).map(function(x){return x.trim();}).filter(Boolean);};

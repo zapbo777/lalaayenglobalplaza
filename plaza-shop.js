@@ -4,7 +4,7 @@ const catalog = document.body.dataset.store || '';
 const storeGroup = String(document.body.dataset.storeGroup || '');
 const SHELF_GROUPS=['LALA AYEN GYM & SPORTS','LALA AYEN TEMPLE','LALA AYEN WONDERLAND']; // these show only on their own shelf pages, not in Global Shop // department shelf pages (e.g. LALA AYEN TEMPLE) filter Global Shop items by category prefix
 const byId = id => document.getElementById(id);
-const mail='lalaayenglobalplaza@gmail.com';
+const mail='lalaayen@lalaayenglobalplaza.com';
 // Customer accounts are handled by plaza-auth.js (one shared login for every page). Reviews and the online owner editor are not connected yet.
 const configured=false;
 let account=null,owner=false;
