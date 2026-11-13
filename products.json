@@ -13658,5 +13658,240 @@
   ],
   "merchantUrl": "",
   "isSample": false
+ },
+ {
+  "id": "item-3c5d9529-2478-5e7c-9aa9-d2925b1f1167",
+  "store": "beauty",
+  "title": "Velvet Matte Lipstick (AVIERLL)",
+  "category": "Lips",
+  "subcategory": "",
+  "condition": "New",
+  "description": "AVIERLL velvet matte lipstick, described on the listing as a moisturizing lip cream with a long-lasting, non-transfer, rich-color, lightweight finish. The packaging shown also says Creamy Matte Lipstick and Cream-Smooth Matte Finish. 6 shades as pictured; note your shade with your order. FREE shipping to the US. Typical delivery about 1-2 weeks.",
+  "sizes": "",
+  "colors": "6 shades as pictured",
+  "price": 8.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se79d36c015b04aedbb53c03184f4ebf8M.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/Se79d36c015b04aedbb53c03184f4ebf8M.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Se3dca8607ea84edf8f5a946a159f8a32f.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sf75d72c1682d497eb76b577f201f0e31S.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S8edaddb544224154a54f7bf3c3fa73abA.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sa76f5682dca9441cb8d8f6d41c86db95x.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sf113481d2c9d447b9a72c802b4c358fdp.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false,
+  "copy": {
+   "intro": "AVIERLL velvet matte lipstick, described on the listing as a moisturizing lip cream.",
+   "sections": [
+    {
+     "h": "From the listing",
+     "items": [
+      "Long lasting, non-transfer finish",
+      "Rich color, lightweight",
+      "Packaging shown says Creamy Matte Lipstick and Cream-Smooth Matte Finish"
+     ]
+    },
+    {
+     "h": "Shades",
+     "items": [
+      "6 shades as pictured",
+      "Note your shade with your order"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Typical delivery about 1-2 weeks."
+  }
+ },
+ {
+  "id": "item-c34f9956-d3e4-5ee1-b5d6-1cecc9bcc029",
+  "store": "beauty",
+  "title": "Matte Liquid Lipstick, Waterproof (QIBEST)",
+  "category": "Lips",
+  "subcategory": "",
+  "condition": "New",
+  "description": "QIBEST matte liquid lipstick. The listing describes it as waterproof, long lasting, and a velvet lip gloss/tint, including nude and red pigments. The tube and box shown also say Nonstick Lip Gloss and Silky Long Lasting Lip Gloss; net weight 2.5g as printed on the box. Shades 01#–24# as pictured; note your shade number with your order. FREE shipping to the US. Typical delivery about 1-2 weeks.",
+  "sizes": "",
+  "colors": "01#–24# as pictured",
+  "price": 6.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2e8069c6b05d400c94b356ad30a82b3f8.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S2e8069c6b05d400c94b356ad30a82b3f8.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S0d048fe37fe34b888a55e51054db2a58B.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sf3bc38077a0b41cb95aa98a598f026b5l.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S61654cb7e8944db8937c1e3c7ffdb8981.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S3fe1d740d58042bca6a8f679fb9fe77ch.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S6caa3ea6edf14130b32a5ecc3752acb74.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false,
+  "copy": {
+   "intro": "QIBEST matte liquid lipstick, described on the listing as waterproof and long lasting.",
+   "sections": [
+    {
+     "h": "From the listing",
+     "items": [
+      "Velvet lip gloss/tint finish",
+      "Nude and red pigments mentioned",
+      "Box shown says Nonstick Lip Gloss, Silky Long Lasting Lip Gloss, net weight 2.5g"
+     ]
+    },
+    {
+     "h": "Shades",
+     "items": [
+      "01#–24# as pictured on the gallery charts",
+      "Note your shade number with your order"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Typical delivery about 1-2 weeks."
+  }
+ },
+ {
+  "id": "item-dc0f44ee-bec7-578f-9765-708608097e44",
+  "store": "beauty",
+  "title": "2-in-1 Matte Lip Liner and Lip Gloss",
+  "category": "Lips",
+  "subcategory": "",
+  "condition": "New",
+  "description": "HANDAIYAN 2-in-1 matte lip liner pen and high-shine lip gloss. The listing also describes it as a plumping lip oil, velvet lip glaze, and waterproof lipstick with a stacked coating. Shades #01–#24 as pictured; note your shade number with your order. FREE shipping to the US. Typical delivery about 1-2 weeks.",
+  "sizes": "",
+  "colors": "#01–#24 as pictured",
+  "price": 7.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/S560c3411ea63406c88d9b4968a6fd3acs.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/S560c3411ea63406c88d9b4968a6fd3acs.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sd7a2decd72c7483abf84ae504f36592dT.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S9bb4bf466fd544bf95097e1705432722i.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S51bb9b5335204b9189f9be0bbe4efeb7Q.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S2516d568d7d9450cb2421754d11e2899s.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sbcafa09c7579481ab8157753a3d35f5cw.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false,
+  "copy": {
+   "intro": "HANDAIYAN 2-in-1 matte lip liner pen and high-shine lip gloss.",
+   "sections": [
+    {
+     "h": "From the listing",
+     "items": [
+      "Matte lip liner and high-shine lip gloss in one",
+      "Also described as plumping lip oil, velvet lip glaze, and waterproof lipstick with a stacked coating"
+     ]
+    },
+    {
+     "h": "Shades",
+     "items": [
+      "#01–#24 as pictured on the gallery swatch photo",
+      "Note your shade number with your order"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Typical delivery about 1-2 weeks."
+  }
+ },
+ {
+  "id": "item-fa637308-94b5-5a27-8b7b-f14bbb5d2316",
+  "store": "beauty",
+  "title": "9-Shade Smoky Eyeshadow Palette",
+  "category": "Eyes",
+  "subcategory": "",
+  "condition": "New",
+  "description": "9-shade eyeshadow palette. The listing names Black Swan, Smoky, Dark Black, and Grey Silver Glitter, and describes a matte finish that is long-lasting and easy to color. Palette as pictured. FREE shipping to the US. Typical delivery about 12 days.",
+  "sizes": "9-shade palette",
+  "colors": "Smoky palette as pictured",
+  "price": 9.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/Se79b90d2816f41f29549d043bce696d6f.png",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/Se79b90d2816f41f29549d043bce696d6f.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sfa519e488a0a4e55816cc36de9f9c1d9v.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sae45bfa2f97a45a6af62ebe4a5ab652cE.png",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Aad9a674d46db4e38988955a699bad0e8o.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/A8d6ae6079b3d4ccc99f776cc8948a52fl.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S99dacfb29b1148408714b2c6a0d109796.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false,
+  "copy": {
+   "intro": "9-shade eyeshadow palette in a smoky black, grey, and silver look, as pictured.",
+   "sections": [
+    {
+     "h": "From the listing",
+     "items": [
+      "Named Black Swan, Smoky, Dark Black, and Grey Silver Glitter",
+      "Described as a matte finish that is long-lasting and easy to color"
+     ]
+    },
+    {
+     "h": "What you get",
+     "items": [
+      "One 9-shade palette as pictured"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Typical delivery about 12 days."
+  }
+ },
+ {
+  "id": "item-173c2664-4c4d-5bfa-bcc7-15fafa39e28c",
+  "store": "beauty",
+  "title": "Plumping Liquid Lip Gloss 5-pack",
+  "category": "Lips",
+  "subcategory": "",
+  "condition": "New",
+  "description": "O'CHEAL water glow plump lip color liquid lip gloss, 5-pack as pictured. The listing describes it as a cream moisturizing, non-greasy lip oil/gel and lip care balm with a hydrating shine. Tubes shown also say Moisturize Lip Tint and Gives lips a natural shine but is not sticky. Five shades in the set as pictured. FREE shipping to the US. Ships from the US, typical delivery about 5-7 days.",
+  "sizes": "5-pack",
+  "colors": "5 shades as pictured (sold as a set)",
+  "price": 14.99,
+  "stock": 20,
+  "stockDisplay": "available",
+  "status": "ready",
+  "visibilityStatus": "Published",
+  "image": "https://ae-pic-a1.aliexpress-media.com/kf/Sd7f92282750d4dcb9e4a37011f25c29bo.jpg",
+  "images": [
+   "https://ae-pic-a1.aliexpress-media.com/kf/Sd7f92282750d4dcb9e4a37011f25c29bo.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S0f14cbc7a92640969bc3a0c63342a617q.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S227152de4f054ed6b7881bea6c120531q.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S03e984e819fe4d388579c4f55a3ce308H.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/S1de44d54f54e4a1bb4f8d2e6b31325faK.jpg",
+   "https://ae-pic-a1.aliexpress-media.com/kf/Se1fad50103844e0e9cc313184bc09bceY.jpg"
+  ],
+  "merchantUrl": "",
+  "isSample": false,
+  "copy": {
+   "intro": "O'CHEAL water glow plump liquid lip gloss, sold as a 5-pack as pictured.",
+   "sections": [
+    {
+     "h": "From the listing",
+     "items": [
+      "Described as cream moisturizing, non-greasy lip oil/gel and lip care balm with a hydrating shine",
+      "Tubes shown say Moisturize Lip Tint and Gives lips a natural shine but is not sticky"
+     ]
+    },
+    {
+     "h": "What you get",
+     "items": [
+      "5-pack with five shades in the set as pictured"
+     ]
+    }
+   ],
+   "ship": "FREE shipping to the US. Ships from the US, typical delivery about 5-7 days."
+  }
  }
 ]

@@ -40,24 +40,28 @@ Checked the other `plaza-shop.js` department pages for the same empty-page bug:
 
 A few tote-style items sit in Global Shop under `Fashion Accessories`. That is not the same empty-page bug (the Bags page already lists 14 bags), so they were left unchanged.
 
-## Makeup / skincare listing pack — not finished
+## Makeup listings added on this preview (Nov 13)
 
-No new lipstick, gloss, foundation, concealer, eyeshadow, mascara, eyeliner, blush, setting powder, or skincare items were added.
+Arlene approved adding beauty items on Nov 13 ("keep adding into the beauty"), with free supplier shipping only.
 
-CJ Dropshipping is the preferred supplier and AliExpress is allowed, but from this computer both sites blocked product-page access:
+Five makeup listings were added to `products.json` with `store: "beauty"` so they appear on `LALA_BEAUTY_MARK1.html`, in addition to the 39 existing accessories (Beauty page should now show 44 items). Public `merchantUrl` is left blank; supplier URLs and costs are only in `/workspace/lala-private/makeup_1113_supplier_map.csv`.
 
-- AliExpress search and item URLs returned a captcha / "punish" wall (or a 302 that could not be followed).
-- CJ homepage and sitemaps loaded, including a lipstick category URL (`/list/wholesale-lipstick-l-B68DF53F-4DD5-4659-A530-66D414CF2147.html`), but CJ product and category pages required Cloudflare "Human verification."
+Photos are the official AliExpress `imagePathList` galleries (6 photos each), downloaded and visually checked on Nov 13. Copy is taken from each listing title / on-page packaging text and gallery labels only — no invented reviews, stock counts, or guarantees.
 
-Owner rule: every sourced item must have **free US shipping shown on its own product page**. Items without that proof were dropped, which in this pass means **zero new listings** — nothing was invented.
+| Store title | Price | Photo | Colors recorded from the page/gallery |
+|---|---|---|---|
+| Velvet Matte Lipstick (AVIERLL) | $8.99 | OK | 6 shades as pictured (no printed names) |
+| Matte Liquid Lipstick, Waterproof (QIBEST) | $6.99 | OK | 01#–24# printed on gallery charts |
+| 2-in-1 Matte Lip Liner and Lip Gloss | $7.99 | OK | #01–#24 printed on gallery swatch (brand HANDAIYAN on the product) |
+| 9-Shade Smoky Eyeshadow Palette | $9.99 | OK | One smoky palette as pictured |
+| Plumping Liquid Lip Gloss 5-pack | $14.99 | OK | 5-pack / five shades as pictured (brand O'CHEAL on the tubes) |
 
-When a browser session can open those sites (or traffic is routed through Arlene's computer), source about 12–15 low-cost makeup/skincare items, confirm free US shipping on each item page, keep most retail prices under $15 with free shipping built in using the store formula, and add them on this preview branch only.
+Shipping line on each card: free shipping, with the typical delivery time from the Nov 12 item-page check (1-2 weeks for the first three, about 12 days for the palette, ships from the US about 5-7 days for the 5-pack).
 
-**Arlene must confirm each supplier's real shipping time and return policy before anything goes live.**
+**Arlene must confirm each supplier's real shipping time and return policy, and say OK, before anything goes live.**
 
 ## What is not on this preview
 
 - No push to `main` and no production deploy.
 - No payment or billing changes.
-- No new makeup listings in `products.json`.
 - Checkout is not disabled in code; the yellow banner tells reviewers not to place real orders here.
