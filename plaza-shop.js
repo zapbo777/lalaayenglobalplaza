@@ -4,6 +4,14 @@ const catalog = document.body.dataset.store || '';
 const storeGroup = String(document.body.dataset.storeGroup || '');
 const SHELF_GROUPS=['LALA AYEN GYM & SPORTS','LALA AYEN TEMPLE','LALA AYEN WONDERLAND']; // these show only on their own shelf pages, not in Global Shop // department shelf pages (e.g. LALA AYEN TEMPLE) filter Global Shop items by category prefix
 const byId = id => document.getElementById(id);
+// Beauty page (data-store=beauty) also shows Global Shop items in the Beauty & Wellness category,
+// without moving those items out of Global Shop.
+function inThisCatalog(p){
+  if(!p.store || p.store===catalog) return true;
+  if(catalog==='beauty' && p.store==='global-shop' && p.category==='Beauty & Wellness') return true;
+  return false;
+}
+
 const mail='lalaayenglobalplaza@gmail.com';
 // Customer accounts are handled by plaza-auth.js (one shared login for every page). Reviews and the online owner editor are not connected yet.
 const configured=false;
@@ -42,9 +50,9 @@ function updateAuthUI(){
 document.addEventListener('lala-auth',e=>{account=e.detail?.user||null;updateAuthUI();});
 async function loadPrepared(){try{const res=await fetch('products.json',{cache:'no-store'});if(res.ok){const data=await res.json();if(Array.isArray(data))inventory=data.map(clean).filter(x=>x.status==='ready'&&x.title&&x.price>=0);}}catch(e){inventory=[];}renderCategories();renderCatalog();if(catalog!=='affiliate-marketing')writeProductLd(matching());}
 function subscribeProducts(){return loadPrepared();}
-function renderCategories(){const box=byId('category-row');if(!box)return;box.replaceChildren();const shelfCats=(storeGroup||!categories[catalog])?[...new Set(inventory.filter(p=>p.store===catalog&&(!storeGroup||p.category.startsWith(storeGroup))&&(p.status==='ready'||owner)).map(p=>p.category))]:null;
+function renderCategories(){const box=byId('category-row');if(!box)return;box.replaceChildren();const shelfCats=(storeGroup||!categories[catalog])?[...new Set(inventory.filter(p=>inThisCatalog(p)&&(!storeGroup||p.category.startsWith(storeGroup))&&(p.status==='ready'||owner)).map(p=>p.category))]:null;
  for(const x of ['All',...(shelfCats||categories[catalog]||[])]){const button=document.createElement('button');button.type='button';button.className='category-chip'+(active===x?' active':'');button.textContent=storeGroup?x.replace(storeGroup+' · ',''):x;button.addEventListener('click',()=>{active=x;renderCategories();renderCatalog();});box.append(button);}}
-function matching(){const x=inventory.filter(p=>(p.store===catalog||!p.store)&&(!storeGroup||p.category.startsWith(storeGroup))&&(storeGroup||catalog!=='global-shop'||!SHELF_GROUPS.some(g=>p.category.startsWith(g)))&&((p.status==='ready')||owner)&& (active==='All'||p.category===active) &&([p.title,p.category,p.description,p.sizes].join(' ').toLowerCase().includes(term.toLowerCase())));
+function matching(){const x=inventory.filter(p=>inThisCatalog(p)&&(!storeGroup||p.category.startsWith(storeGroup))&&(storeGroup||catalog!=='global-shop'||!SHELF_GROUPS.some(g=>p.category.startsWith(g)))&&((p.status==='ready')||owner)&& (active==='All'||p.category===active) &&([p.title,p.category,p.description,p.sizes].join(' ').toLowerCase().includes(term.toLowerCase())));
  if(order==='low')x.sort((a,b)=>a.price-b.price);if(order==='high')x.sort((a,b)=>b.price-a.price);if(order==='title')x.sort((a,b)=>a.title.localeCompare(b.title));return x;}
 const displayStars=(r)=>r?.count>0?`<span class="rating-icon">${'★'.repeat(Math.round(r.avg))}${'☆'.repeat(5-Math.round(r.avg))}</span> ${r.avg.toFixed(1)} (${r.count})`:'☆☆☆☆☆ No reviews yet';
 let ratingCache={};
